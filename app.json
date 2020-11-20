@@ -1,6 +1,7 @@
 {
       "name": "IGRIS_BOT",
       "description": "An Anime themed Telegram group management bot.",
+      "logo": "https://telegra.ph/file/811f02b5ca1fcc3e72915.jpg", 
       "keywords": [
          "telegram",
          "anime",
