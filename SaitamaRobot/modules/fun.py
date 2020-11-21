@@ -17,7 +17,8 @@ GIF_ID = 'CgACAgUAAx0EVmwfqQACElhfo3yZv1njCC11INcQSAi4UlN8vwACqwADg_8wVeGSv41OYU
 
 @run_async
 def igris(update: Update, context: CallbackContext):
-    update.effective_message.reply_sticker(fun_strings.IGRIS_STICKERS))
+temp = random.choice(fun_strings.IGRIS_STICKERS)
+            reply_to.reply_sticker(temp)
     
 @run_async
 def runs(update: Update, context: CallbackContext):
