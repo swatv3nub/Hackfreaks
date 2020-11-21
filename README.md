@@ -7,11 +7,11 @@ A modular Telegram Python bot running on python3 with a sqlalchemy database.
 
 Originally a Marie fork, Saitama evolved further and was built to be more robust and more dedicated to Anime Chats. 
 
-Can be found on telegram as [IGRIS_BOT](https://t.me/IGRIS_BOT).
+Can be found on telegram as [IGRISROBOT](https://t.me/IGRIS_BOT).
 
-The Support group can be reached out to at [IGRIS_BOT Support](https://t.me/IGRIS_SUPPORT), where you can ask for help about [IGRIS_BOT](https://t.me/IGRIS_BOT), discover/request new features, report bugs, and stay in the loop whenever a new update is available. 
+The Support group can be reached out to at [IGRIS_BOT Support](https://t.me/IGRIS_SUPPORT), where you can ask for help about [IGRIS_BOT](https://t.me/IGRISROBOT), discover/request new features, report bugs, and stay in the loop whenever a new update is available. 
 
-News channel as at [SOME ASSOCIATION](https://t.me/IGRIS_BOT1) 
+News channel as at [DEMON ASSOCIATION](https://t.me/DEMON_ASSOCIATION) 
 
 ## How to setup/deploy.
 
