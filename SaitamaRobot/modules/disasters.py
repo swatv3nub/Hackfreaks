@@ -585,7 +585,7 @@ Group admins/group owners do not need these commands.
  ╠ `/sh`*:* Self explanator
  ╚ `/py`*:* Self explanatory
 
-Visit @{SUPPORT_CHAT} for more information.
+Visit @{IGRIS_SUPPORT} for more information.
 """
 
 SUDO_HANDLER = CommandHandler(("addsudo", "adddragon"), addsudo)
