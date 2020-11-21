@@ -12,13 +12,7 @@ from SaitamaRobot.modules.disable import DisableAbleCommandHandler
 from SaitamaRobot.modules.helper_funcs.chat_status import (is_user_admin)
 from SaitamaRobot.modules.helper_funcs.extraction import extract_user
 
-GIF_ID = 'CgACAgUAAx0EVmwfqQACElhfo3yZv1njCC11INcQSAi4UlN8vwACqwADg_8wVeGSv41OYU6zHgQ'
-
-
-@run_async
-def igris(update: Update, context: CallbackContext):
-temp = random.choice(fun_strings.IGRIS_STICKERS)
-            reply_to.reply_sticker(temp)
+GIF_ID = 'CgACAgUAAx0EVmwfqQACElhfo3yZv1njCC11INcQ
     
 @run_async
 def runs(update: Update, context: CallbackContext):
