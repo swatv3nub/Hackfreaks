@@ -102,6 +102,9 @@ DARE_STRINGS = (
     "Think about a word starts with E and it must be longer then 6 letters. After that Write that word *backwards* in 17 seconds",
 
      )
+IGRIS_STICKERS = [
+    'CAACAgUAAx0CWUsHswACAUVfuPA-bkMkVhy7vGjpcnGbX1BR7gACSgADaZCtOBQz5hqoRrkNHgQ'
+    ]
 
 GIFS = [
     'CgACAgUAAx0EVmwfqQACElhfo3yZv1njCC11INcQSAi4UlN8vwACqwADg_8wVeGSv41OYU6zHgQ',
@@ -381,7 +384,7 @@ TOSS = (
     "Tails",
 )
 
-DECIDE = ("Yes.", "No.", "Maybe.",Ask GodLike.")
+DECIDE = ("Yes.", "No.", "Maybe.","Ask GodLike.")
 
 TABLE = ("(╯°□°）╯彡 ┻━┻", "I ran out of tables, will order more.",
          "Go do some work instead of flippin tables.")
