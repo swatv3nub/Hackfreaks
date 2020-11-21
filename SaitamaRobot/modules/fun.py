@@ -16,6 +16,10 @@ GIF_ID = 'CgACAgUAAx0EVmwfqQACElhfo3yZv1njCC11INcQSAi4UlN8vwACqwADg_8wVeGSv41OYU
 
 
 @run_async
+def igris(update: Update, context: CallbackContext):
+    update.effective_message.reply_sticker(fun_strings.IGRIS_STICKERS))
+    
+@run_async
 def runs(update: Update, context: CallbackContext):
     update.effective_message.reply_text(random.choice(fun_strings.RUN_STRINGS))
 
@@ -44,13 +48,7 @@ def sanitize(update: Update, context: CallbackContext):
     
         
         
- @run_async
-def igris(update: Update, context: CallbackContext):
-    message = update.effective_message
-    name = message.reply_to_message.from_user.first_name if message.reply_to_message else message.from_user.first_name
-    reply_animation = message.reply_to_message.reply_sticker if message.reply_to_message else message.reply_animation
-    reply_sticker(random.choice(fun_strings.IGRIS_STICKERS), caption=f'*Killed {name}*') 
-        
+
 
 
 @run_async
@@ -210,6 +208,7 @@ __help__ = """
  • `/weebify <text>`*:* returns a weebified text
  • `/sanitize`*:* always use this before `/pat` or any contact
  • `/pat`*:* pats a user, or get patted (^-^)
+ • `/igris'* summon igris
   - - - - - - - - - -
 • *Games* 🎲 *:*
  • `/truth`*:* Get ready to reveal a surprising truth🤫
@@ -232,6 +231,7 @@ BLUETEXT_HANDLER = DisableAbleCommandHandler("bluetext", bluetext)
 RLG_HANDLER = DisableAbleCommandHandler("rlg", rlg)
 DECIDE_HANDLER = DisableAbleCommandHandler("decide", decide)
 TABLE_HANDLER = DisableAbleCommandHandler("table", table)
+IGRIS_HANDLER = DisableAbleCommandHandler("igris",igris)
 
 dispatcher.add_handler(TRUTH_HANDLER)
 dispatcher.add_handler(DARE_HANDLER)
@@ -246,6 +246,7 @@ dispatcher.add_handler(BLUETEXT_HANDLER)
 dispatcher.add_handler(RLG_HANDLER)
 dispatcher.add_handler(DECIDE_HANDLER)
 dispatcher.add_handler(TABLE_HANDLER)
+dispatcher.add_handler(IGRIS_HANDLER)
 
 __mod_name__ = "Fun"
 __command_list__ = [
@@ -255,5 +256,5 @@ __command_list__ = [
 __handlers__ = [
     RUNS_HANDLER, TRUTH_HANDLER, DARE_HANDLER, SLAP_HANDLER, PAT_HANDLER, ROLL_HANDLER, TOSS_HANDLER,
     SHRUG_HANDLER, BLUETEXT_HANDLER, RLG_HANDLER, DECIDE_HANDLER, TABLE_HANDLER,
-    SANITIZE_HANDLER
+    SANITIZE_HANDLER, IGRIS_HANDLER
 ]
