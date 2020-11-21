@@ -9,7 +9,7 @@ Originally a Marie fork, Saitama evolved further and was built to be more robust
 
 Can be found on telegram as [IGRISROBOT](https://t.me/IGRISROBOT).
 
-The Support group can be reached out to at [SOLO•GUILD](https//t.me/IGRIS_SUPPORT), where you can ask for help about [IGRIS_BOT](https://t.me/IGRISROBOT), discover/request new features, report bugs, and stay in the loop whenever a new update is available. 
+The Support group can be reached out to at [SOLO•GUILD](https://t.me/IGRIS_SUPPORT), where you can ask for help about [IGRISROBOT](https://t.me/IGRIS_SUPPORT), discover/request new features, report bugs, and stay in the loop whenever a new update is available. 
 
 
 
