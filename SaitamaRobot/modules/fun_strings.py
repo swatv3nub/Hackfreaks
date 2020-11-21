@@ -104,9 +104,9 @@ DARE_STRINGS = (
      )
 
 GIFS = [
-    'CgACAgUAAx0EVmwfqQACElhfo3yZv1njCC11INcQSAi4UlN8vwACqwADg_8wVeGSv41OYU6zHgQ',
-    'CgACAgUAAx0CVmwfqQACEoZfo4AAAcduM428ax1T0y-zo1tXdFUAAlUBAAJu09hWrXoj81vn9B8eBA',
-    'CgACAgQAAx0CVmwfqQACEodfo4AAAdRGH1X6XUseFvY1X6raVGkAAmgIAAJWQ9FR6NdhTVfyDzgeBA'
+    'CgACAgQAAx0CWUsHswACAepfuRoLB2FrO8Szzn6pbB5c58_-XgACbgIAApSrlVLu8j3RSVmX1R4E',
+    'CgACAgUAAx0CWUsHswACAeVfuRnmpgR_6z-jxsDti_lgJBkBcQACqwADg_8wVb0AAWmUdF6Vzh4E',
+    'CgACAgQAAx0CWUsHswACAhJfuRqejR0IxsQD_S3u_3eRJ1Bc9QACSwIAAiy0jVK9OpikqYzALR4E'
 ]
 
 SLAP_SAITAMA_TEMPLATES = (
@@ -379,7 +379,7 @@ TOSS = (
     "Tails",
 )
 
-DECIDE = ("Yes.", "No.", "Maybe.")
+DECIDE = ("Yes.", "No.", "Maybe.", " Ask GodLike.","Ask ZekXx.")
 
 TABLE = ("(╯°□°）╯彡 ┻━┻", "I ran out of tables, will order more.",
          "Go do some work instead of flippin tables.")
