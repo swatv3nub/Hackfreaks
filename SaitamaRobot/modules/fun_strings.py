@@ -282,12 +282,7 @@ PAT_STICKERS = (
     "CAACAgQAAxkBAAPEX7ol55uzT-EkbHOkA-_94MiMcBgAAvAAA9UzMws7KHpoG8wBjh4E") 
 
 PING_STRING = (
-" ▄▄▄▄▄▄▄
-█▄███▄█
-█▼▼▼▼
-█ "PONG!!!"
-█▲▲▲▲
-███████", 
+    " PONG!!! ", 
     "I am here!",
 )
 
