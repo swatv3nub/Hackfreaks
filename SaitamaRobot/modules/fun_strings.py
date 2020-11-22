@@ -106,7 +106,9 @@ DARE_STRINGS = (
 GIFS = [
     'CgACAgUAAx0EVmwfqQACElhfo3yZv1njCC11INcQSAi4UlN8vwACqwADg_8wVeGSv41OYU6zHgQ',
     'CgACAgUAAx0CVmwfqQACEoZfo4AAAcduM428ax1T0y-zo1tXdFUAAlUBAAJu09hWrXoj81vn9B8eBA',
-    'CgACAgQAAx0CVmwfqQACEodfo4AAAdRGH1X6XUseFvY1X6raVGkAAmgIAAJWQ9FR6NdhTVfyDzgeBA'
+    'CgACAgQAAx0CVmwfqQACEodfo4AAAdRGH1X6XUseFvY1X6raVGkAAmgIAAJWQ9FR6NdhTVfyDzgeBA', 
+    'CgACAgQAAxkBAAN4X7oiKAOFtoB2nH-3GRCTclxJapsAAm4CAAKUq5VSwanbaqA_tZceBA', 
+    'CgACAgQAAxkBAAN5X7oiMA8mY1BZGp5I4VdfoDg-oH8AAksCAAIstI1SCcfAOJunTIEeBA'
 ]
 
 SLAP_SAITAMA_TEMPLATES = (
@@ -267,14 +269,25 @@ PAT_TEMPLATES = (
 
 PAT_GIFS = (
     "CgACAgQAAxkBAALRX19Xs7tBdOH1gQwS_rglVRkTbgVYAAKEAgACmQn9UWlyGa_xy9_aGwQ",
-    "CgACAgEAAxkBAALRYF9Xs8EnhsDfDpld3ILoqTbzDmwxAAJFAAOJxjlHECanwn69E5QbBA")
+    "CgACAgEAAxkBAALRYF9Xs8EnhsDfDpld3ILoqTbzDmwxAAJFAAOJxjlHECanwn69E5QbBA", 
+    "CgACAgQAAxkBAAO5X7olTkYuRTw1AV__6mFehORkP4QAAiMCAAI3KIxSjBqOTuo4xf0eBA", 
+    "CgACAgQAAxkBAAO6X7olTklDbgs9nr5bNbM9xy0uunUAAmACAAL1G4xSKOH5wmDvxy4eBA", 
+    "CgACAgQAAxkBAAO7X7olTq_mAur7bsieTD5QnyQ06rUAAlwCAAINjoRSWyAJKJ9n2moeBA") 
 
 PAT_STICKERS = (
     "CAACAgQAAxkBAALRWV9Xs4HH0XaXfhZe-jWaZoXfs-IsAAJYAwACdDgSEHYOt4KvL02oGwQ",
-    "CAACAgQAAxkBAALRXF9Xs6XmIeDbnoL1wiDky0TdX-CvAAKKAQAC1TMzC9A3CtiT2rqVGwQ")
+    "CAACAgQAAxkBAALRXF9Xs6XmIeDbnoL1wiDky0TdX-CvAAKKAQAC1TMzC9A3CtiT2rqVGwQ", 
+    "CAACAgQAAxkBAAPCX7ol0GGF-58u9AfabFk_16ehVXEAArUAA9UzMwuz7SpKK9TonB4E",
+    "CAACAgQAAxkBAAPDX7ol2ixI5WdJ48h8rQYbc__6KisAAt8AA9UzMwusEnTVQ5yoAh4E", 
+    "CAACAgQAAxkBAAPEX7ol55uzT-EkbHOkA-_94MiMcBgAAvAAA9UzMws7KHpoG8wBjh4E") 
 
 PING_STRING = (
-    "PONG!!",
+"▄▄▄▄▄▄▄
+█▄███▄█
+█▼▼▼▼
+█ PONG!!! 
+█▲▲▲▲
+███████", 
     "I am here!",
 )
 
@@ -309,6 +322,7 @@ THROW = (
     "flings",
     "chucks",
     "hurls",
+    "Demon sword", 
 )
 
 HIT = (
@@ -377,6 +391,7 @@ EARS = [
 TOSS = (
     "Heads",
     "Tails",
+    "IGRIS ATE THE COIN", 
 )
 
 DECIDE = ("Yes.", "No.", "Maybe.", " Ask GodLike.","Ask ZekXx.")
