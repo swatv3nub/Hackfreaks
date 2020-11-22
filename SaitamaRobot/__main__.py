@@ -60,7 +60,7 @@ I am an 𝐴𝑛𝑖𝑚𝑒 Themed Group Managing Bot and I will help in managi
 ⚡ Hit /help to see my commands
 
 ==========================
-🔗 [ Support Group ](https://t.me/IGRIS_SUPPORT) 
+🔗 [ Support Group ](https://t.me/IGRISBOTSUPPORT) 
 ==========================
 """
 
