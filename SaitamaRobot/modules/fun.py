@@ -12,7 +12,7 @@ from SaitamaRobot.modules.disable import DisableAbleCommandHandler
 from SaitamaRobot.modules.helper_funcs.chat_status import (is_user_admin)
 from SaitamaRobot.modules.helper_funcs.extraction import extract_user
 
-GIF_ID = 'CgACAgUAAxkDAAImp1-6EiteWxwfbFw5tVHipR8-bWpFAAKrAAOD_zBV4ZK_jU5hTrMeBA'
+GIF_ID = 'CgACAgQAAxkBAAImsV-6EhnGIjOxUeRtrtBSyq6Xg3pQAAJoCAACVkPRUejXYU1X8g84HgQ'
 
 
 @run_async
