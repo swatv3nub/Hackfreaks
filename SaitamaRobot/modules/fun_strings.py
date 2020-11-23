@@ -114,7 +114,7 @@ IGRIS_STRINGS = (
       "Here we go again", 
       "IGRIS,*Joined the Chat*", 
       "Yaaaaaaa?", 
-      "IGRIS.EXE STOPPED WORKING"
+      "IGRIS.EXE STOPPED WORKING", 
       "Okay, Let's Go", 
       "Let's do this", 
       " Boring ", 
