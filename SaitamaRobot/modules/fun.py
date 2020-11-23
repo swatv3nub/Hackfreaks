@@ -19,18 +19,26 @@ GIF_ID = 'CgACAgUAAx0EVmwfqQACElhfo3yZv1njCC11INcQSAi4UlN8vwACqwADg_8wVeGSv41OYU
 def runs(update: Update, context: CallbackContext):
     update.effective_message.reply_text(random.choice(fun_strings.RUN_STRINGS))
 
-igris_type = random.choice(("Text","Sticker"))
-    if igris_type == "Text":
+@run_async
+def igris(update: Update, context: CallbackContext):
+    bot = context.bot
+    args = context.args
+    message = update.effective_message
 
-        temp = random.choice(fun_strings.IGRIS_STRINGS)    
-        reply_to.reply_text(temp)  
+    reply_to = message.reply_to_message if message.reply_to_message else message
+
+    igris_type = random.choice(("Text","Sticker"))
+    if igris_type == "Text":
+        try:
+            temp = random.choice(fun_strings.IGRIS_STRINGS)    
+            reply_to.reply_text(temp)  
               
     if igris_type == "Sticker":
         try:
             temp = random.choice(fun_strings.IGRIS_STICKERS)
             reply_to.reply_sticker(temp)
         except BadRequest:
-            pat_type = "Text"   
+            igris_type = "Text"   
                                                 
 @run_async
 def arise(update: Update, context: CallbackContext):
