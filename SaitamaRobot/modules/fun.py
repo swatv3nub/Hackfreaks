@@ -32,6 +32,8 @@ def igris(update: Update, context: CallbackContext):
         try:
             temp = random.choice(fun_strings.IGRIS_STRINGS)    
             reply_to.reply_text(temp)  
+        except BadRequest:
+            pat_type = "Text"
               
     if igris_type == "Sticker":
         try:
