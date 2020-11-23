@@ -113,8 +113,12 @@ IGRIS_STRINGS = (
       "STOP ARISING ME WITHOUT REASONS", 
       "Here we go again", 
       "IGRIS,*Joined the Chat*", 
-      "Yaaaaaaa?"
-      "IGRIS.EXE STOPPED WORKING", 
+      "Yaaaaaaa?", 
+      "IGRIS.EXE STOPPED WORKING"
+      "Okay, Let's Go", 
+      "Let's do this", 
+      " Boring ", 
+      "Hold up, Coming"
     
       ) 
      
