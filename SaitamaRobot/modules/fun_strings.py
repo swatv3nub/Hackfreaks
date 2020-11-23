@@ -122,8 +122,8 @@ IGRIS_STRINGS = (
     
       ) 
      
-IGRISPHOTO = (
-    "https://i.imgur.com/WcJPIHp.jpg") 
+IGRIS_PHOTO = (
+    "https://wallpapercave.com/wp/wp2164441.jpg") 
 
 
 GIFS = [
