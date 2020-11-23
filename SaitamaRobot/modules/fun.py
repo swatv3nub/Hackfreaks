@@ -46,9 +46,9 @@ def igris(update: Update, context: CallbackContext):
 def arise(update: Update, context: CallbackContext):
     message = update.effective_message
     name = message.reply_to_message.from_user.first_name if message.reply_to_message else message.from_user.first_name
-    reply_photo = message.reply_to_message.reply_img if message.reply_to_message else message.reply_photo
+    reply_photo = message.reply_to_message.reply_photo if message.reply_to_message else message.reply_photo
     reply_photo(
-        random.choice(fun_strings.IGRISPHOTO), caption=f'*arise! {name}*')                
+        random.choice(fun_strings.IGRIS_PHOTO), caption=f'*arise! {name}*')                
 
 @run_async
 def truth(update: Update, context: CallbackContext):
