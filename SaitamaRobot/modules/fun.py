@@ -21,7 +21,7 @@ def runs(update: Update, context: CallbackContext):
 
 @run_async
 def igris(update: Update, context: CallbackContext):
-    update.effective_message.reply_text(random.choice(fun_strings.IGRIS_STRINGS), (fun_strings.IGRIS_STICKERS))
+    update.effective_message.reply_text(random.choice(fun_strings.IGRIS_STRINGS)) 
 
 @run_async
 def truth(update: Update, context: CallbackContext):
