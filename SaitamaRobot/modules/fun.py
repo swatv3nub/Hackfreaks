@@ -20,6 +20,10 @@ def runs(update: Update, context: CallbackContext):
     update.effective_message.reply_text(random.choice(fun_strings.RUN_STRINGS))
 
 @run_async
+def igris(update: Update, context: CallbackContext):
+    update.effective_message.reply_text(random.choice(fun_strings.IGRIS_STRINGS), (fun_strings.IGRIS_STICKERS))
+
+@run_async
 def truth(update: Update, context: CallbackContext):
     update.effective_message.reply_text(random.choice(fun_strings.TRUTH_STRINGS))
 
@@ -205,11 +209,13 @@ __help__ = """
 • *Games* 🎲 *:*
  • `/truth`*:* Get ready to reveal a surprising truth🤫
  • `/dare`*:* A dare is on way 😈
+ • `/igris`*:* Summon up IGRIS
  • `/decide`*:* Randomly answers yes/no/maybe/idk
  • `/toss`*:* Tosses A coin
  • `/roll`*:* Roll a dice & get you a number
 
 """
+IGRIS_HANDLER = DisableAbleCommandHandler("igris", igris)
 TRUTH_HANDLER = DisableAbleCommandHandler("truth", truth)
 DARE_HANDLER = DisableAbleCommandHandler("dare", dare)
 SANITIZE_HANDLER = DisableAbleCommandHandler("sanitize", sanitize)
@@ -224,6 +230,7 @@ RLG_HANDLER = DisableAbleCommandHandler("rlg", rlg)
 DECIDE_HANDLER = DisableAbleCommandHandler("decide", decide)
 TABLE_HANDLER = DisableAbleCommandHandler("table", table)
 
+dispatcher.add_handler(IGRIS_HANDLER)
 dispatcher.add_handler(TRUTH_HANDLER)
 dispatcher.add_handler(DARE_HANDLER)
 dispatcher.add_handler(SANITIZE_HANDLER)
@@ -244,7 +251,7 @@ __command_list__ = [
     "table", "pat", "sanitize"
 ]
 __handlers__ = [
-    RUNS_HANDLER, TRUTH_HANDLER, DARE_HANDLER, SLAP_HANDLER, PAT_HANDLER, ROLL_HANDLER, TOSS_HANDLER,
+    RUNS_HANDLER,IGRIS_HANDLER, TRUTH_HANDLER, DARE_HANDLER, SLAP_HANDLER, PAT_HANDLER, ROLL_HANDLER, TOSS_HANDLER,
     SHRUG_HANDLER, BLUETEXT_HANDLER, RLG_HANDLER, DECIDE_HANDLER, TABLE_HANDLER,
     SANITIZE_HANDLER
 ]
