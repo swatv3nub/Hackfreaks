@@ -70,7 +70,7 @@ def gban(update: Update, context: CallbackContext):
 
     if int(user_id) in DEV_USERS:
         message.reply_text(
-            "That user is part of the Association\nI can't act against our own."
+            "That user is part of the GUILD\nI can't act against our own."
         )
         return
 
