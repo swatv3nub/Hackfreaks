@@ -248,7 +248,7 @@ dispatcher.add_handler(IGRIS_HANDLER)
 __mod_name__ = "Fun"
 __command_list__ = [
     "runs", "slap", "roll", "toss", "shrug", "bluetext", "rlg", "decide",
-    "table", "pat", "sanitize", "igris", 
+    "table", "pat", "sanitize", "igris"
 ]
 __handlers__ = [
     RUNS_HANDLER, TRUTH_HANDLER, DARE_HANDLER, SLAP_HANDLER, PAT_HANDLER, ROLL_HANDLER, TOSS_HANDLER,
