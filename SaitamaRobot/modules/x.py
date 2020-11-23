@@ -92,11 +92,11 @@ def neko(update, context):
 #    msg.reply_photo(nekos.img(target))
 
 
-#@run_async
-#def lesbian(update, context):
-#    msg = update.effective_message
-#    target = "les"
-#    msg.reply_video(nekos.img(target))
+  @run_async
+def lesbian(update, context):
+ msg = update.effective_message
+    target = "les"
+    msg.reply_video(nekos.img(target))
 
 
 #@run_async
