@@ -29,7 +29,7 @@ def dare(update: Update, context: CallbackContext):
     
 @run_async
 def igris(update: Update, context: CallbackContext):
-    update.effective_message.reply_text(random.choice(fun_strings.IGRIS_STRINGS)) 
+    update.effective_message.reply_text(random.choice(fun_strings.IGRIS_STRINGS,IGRIS_STICKERS)) 
     
 @run_async
 def sanitize(update: Update, context: CallbackContext):
