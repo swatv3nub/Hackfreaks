@@ -103,6 +103,24 @@ DARE_STRINGS = (
 
      )
 
+IGRIS_STRINGS = (
+      "YES SIR, Command me", 
+      "You Summoned me?", 
+      "First Shadow ARISED!", 
+      "I Only Serve To SUNG-JIN-WU, JUST KIDDING", 
+      "When is our next Mission?", 
+      "*You have Summoned the most powerful Shadow*", 
+      "STOP ARISING ME WITHOUT REASONS", 
+      "Here we go again", 
+      "IGRIS,*Joined the Chat*", 
+      "Yaaaaaaa?"
+      "IGRIS.EXE STOPPED WORKING", 
+    
+      ) 
+     
+      
+
+
 GIFS = [
     'CgACAgUAAx0EVmwfqQACElhfo3yZv1njCC11INcQSAi4UlN8vwACqwADg_8wVeGSv41OYU6zHgQ',
     'CgACAgUAAx0CVmwfqQACEoZfo4AAAcduM428ax1T0y-zo1tXdFUAAlUBAAJu09hWrXoj81vn9B8eBA',
