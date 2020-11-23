@@ -205,6 +205,7 @@ __help__ = """
  • `/weebify <text>`*:* returns a weebified text
  • `/sanitize`*:* always use this before `/pat` or any contact
  • `/pat`*:* pats a user, or get patted (^-^)
+ • `/igris'* summons igris from solo leveling
   - - - - - - - - - -
 • *Games* 🎲 *:*
  • `/truth`*:* Get ready to reveal a surprising truth🤫
