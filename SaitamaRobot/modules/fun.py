@@ -21,7 +21,22 @@ def runs(update: Update, context: CallbackContext):
 
 @run_async
 def igris(update: Update, context: CallbackContext):
-    update.effective_message.reply_text(random.choice(fun_strings.IGRIS_STRINGS)) 
+    igris_type = random.choice(("Text","Sticker"))
+    if igris_type == "Text":
+        try:
+            update.effective_message.reply_text(random.choice(fun_strings.IGRIS_STRINGS)
+      
+    if igris_type =="Sticker":
+        try:
+            update.effective_message.reply_sticker(random.choice(fun_strings.IGRIS_STICKERS)) 
+                                                
+@run_async
+def arise(update: Update, context: CallbackContext):
+    message = update.effective_message
+    name = message.reply_to_message.from_user.first_name if message.reply_to_message else message.from_user.first_name
+    reply_photo = message.reply_to_message.reply_photo if message.reply_to_message else message.reply_photo
+    reply_photo(
+        random.choice(fun_strings.IGRISPHOTO), caption=f'*Command Me! {name}*')                
 
 @run_async
 def truth(update: Update, context: CallbackContext):
@@ -215,6 +230,7 @@ __help__ = """
  • `/roll`*:* Roll a dice & get you a number
 
 """
+ARISE_HANDLER = DisableAbleCommandHandler("arise", arise)                                      
 IGRIS_HANDLER = DisableAbleCommandHandler("igris", igris)
 TRUTH_HANDLER = DisableAbleCommandHandler("truth", truth)
 DARE_HANDLER = DisableAbleCommandHandler("dare", dare)
@@ -230,6 +246,7 @@ RLG_HANDLER = DisableAbleCommandHandler("rlg", rlg)
 DECIDE_HANDLER = DisableAbleCommandHandler("decide", decide)
 TABLE_HANDLER = DisableAbleCommandHandler("table", table)
 
+dispatcher.add_handler(ARISE_HANDLER)                                          
 dispatcher.add_handler(IGRIS_HANDLER)
 dispatcher.add_handler(TRUTH_HANDLER)
 dispatcher.add_handler(DARE_HANDLER)
@@ -251,7 +268,7 @@ __command_list__ = [
     "table", "pat", "sanitize"
 ]
 __handlers__ = [
-    RUNS_HANDLER,IGRIS_HANDLER, TRUTH_HANDLER, DARE_HANDLER, SLAP_HANDLER, PAT_HANDLER, ROLL_HANDLER, TOSS_HANDLER,
+    RUNS_HANDLER,IGRIS_HANDLER,ARISE_HANDLER,TRUTH_HANDLER, DARE_HANDLER, SLAP_HANDLER, PAT_HANDLER, ROLL_HANDLER, TOSS_HANDLER,
     SHRUG_HANDLER, BLUETEXT_HANDLER, RLG_HANDLER, DECIDE_HANDLER, TABLE_HANDLER,
     SANITIZE_HANDLER
 ]
