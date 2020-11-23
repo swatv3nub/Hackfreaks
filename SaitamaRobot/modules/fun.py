@@ -28,6 +28,10 @@ def dare(update: Update, context: CallbackContext):
     update.effective_message.reply_text(random.choice(fun_strings.DARE_STRINGS))
     
 @run_async
+def igris(update: Update, context: CallbackContext):
+    update.effective_message.reply_text(random.choice(fun_strings.IGRIS_STRINGS)) 
+    
+@run_async
 def sanitize(update: Update, context: CallbackContext):
     message = update.effective_message
     name = message.reply_to_message.from_user.first_name if message.reply_to_message else message.from_user.first_name
@@ -223,6 +227,7 @@ BLUETEXT_HANDLER = DisableAbleCommandHandler("bluetext", bluetext)
 RLG_HANDLER = DisableAbleCommandHandler("rlg", rlg)
 DECIDE_HANDLER = DisableAbleCommandHandler("decide", decide)
 TABLE_HANDLER = DisableAbleCommandHandler("table", table)
+IGRIS_HANDLER = DisableAbleCommandHandler("igris", igris)
 
 dispatcher.add_handler(TRUTH_HANDLER)
 dispatcher.add_handler(DARE_HANDLER)
@@ -237,14 +242,15 @@ dispatcher.add_handler(BLUETEXT_HANDLER)
 dispatcher.add_handler(RLG_HANDLER)
 dispatcher.add_handler(DECIDE_HANDLER)
 dispatcher.add_handler(TABLE_HANDLER)
+dispatcher.add_handler(IGRIS_HANDLER)
 
 __mod_name__ = "Fun"
 __command_list__ = [
     "runs", "slap", "roll", "toss", "shrug", "bluetext", "rlg", "decide",
-    "table", "pat", "sanitize"
+    "table", "pat", "sanitize", "igris", 
 ]
 __handlers__ = [
     RUNS_HANDLER, TRUTH_HANDLER, DARE_HANDLER, SLAP_HANDLER, PAT_HANDLER, ROLL_HANDLER, TOSS_HANDLER,
     SHRUG_HANDLER, BLUETEXT_HANDLER, RLG_HANDLER, DECIDE_HANDLER, TABLE_HANDLER,
-    SANITIZE_HANDLER
+    SANITIZE_HANDLER, IGRIS_HANDLER
 ]
