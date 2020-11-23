@@ -24,7 +24,7 @@ def igris(update: Update, context: CallbackContext):
     igris_type = random.choice(("Text","Sticker"))
     if igris_type == "Text":
         try:
-            update.effective_message.reply_text(random.choice(fun_strings.IGRIS_STRINGS)
+            update.effective_message.reply_text(random.choice(fun_strings.IGRIS_STRINGS)) 
       
     if igris_type =="Sticker":
         try:
