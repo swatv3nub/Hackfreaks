@@ -423,7 +423,7 @@ NEKO_HANDLER = CommandHandler("neko", neko)
 #SOLOGIF_HANDLER = CommandHandler("sologif", sologif)
 #CUMGIF_HANDLER = CommandHandler("cumgif", cumgif)
 #EROKEMO_HANDLER = CommandHandler("erokemo", erokemo)
-#LESBIAN_HANDLER = CommandHandler("lesbian", lesbian)
+LESBIAN_HANDLER = CommandHandler("lesbian", lesbian)
 #WALLPAPER_HANDLER = CommandHandler("wallpaper", wallpaper)
 #LEWDK_HANDLER = CommandHandler("lewdk", lewdk)
 #NGIF_HANDLER = CommandHandler("ngif", ngif)
@@ -476,7 +476,7 @@ dispatcher.add_handler(NEKO_HANDLER)
 #dispatcher.add_handler(SOLOGIF_HANDLER)
 #dispatcher.add_handler(CUMGIF_HANDLER)
 #dispatcher.add_handler(EROKEMO_HANDLER)
-#dispatcher.add_handler(LESBIAN_HANDLER)
+dispatcher.add_handler(LESBIAN_HANDLER)
 #dispatcher.add_handler(WALLPAPER_HANDLER)
 #dispatcher.add_handler(LEWDK_HANDLER)
 #dispatcher.add_handler(NGIF_HANDLER)
@@ -529,7 +529,7 @@ __handlers__ = [
     #SOLOGIF_HANDLER,
     #CUMGIF_HANDLER,
     #EROKEMO_HANDLER,
-    #LESBIAN_HANDLER,
+    LESBIAN_HANDLER,
     #WALLPAPER_HANDLER,
     #LEWDK_HANDLER,
     #NGIF_HANDLER,
