@@ -122,7 +122,8 @@ IGRIS_STRINGS = (
     
       ) 
      
-      
+IGRISPHOTO = (
+    "https://i.imgur.com/WcJPIHp.jpg") 
 
 
 GIFS = [
