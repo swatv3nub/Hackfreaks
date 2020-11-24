@@ -103,6 +103,14 @@ DARE_STRINGS = (
 
      )
 
+IGRIS_IMG = (
+     "https://i.imgur.com/WcJPIHp.jpg", 
+     "https://i.imgur.com/7bM0Xoq.jpg", 
+     "https://i.imgur.com/faksrvE.jpg", 
+     "https://i.imgur.com/UjiCJhZ.jpg
+
+     ) 
+
 IGRIS_STRINGS = (
       "YES SIR, Command me", 
       "You Summoned me?", 
