@@ -22,3 +22,5 @@ def animequotes(update: Update, context: CallbackContext):
 
 __help__ = """
  • `/animequotes`*:* gives random anime quotes 
+
+ANIMEQUOTES_HANDLER = DisableAbleCommandHandler("animequotes", animequotes)
