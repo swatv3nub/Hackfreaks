@@ -215,7 +215,7 @@ def start(update: Update, context: CallbackContext):
                             text="🔥Add IGRIS To Your Group🔥",
                             url="t.me/{}?startgroup=true".format(
                                 context.bot.username))
-                    ]]
+                    ]])) 
                      
     else:
         update.effective_message.reply_text(
