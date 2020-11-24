@@ -57,11 +57,8 @@ Hello {},My Name is IGRIS
 I am an 𝐴𝑛𝑖𝑚𝑒 Themed Group Managing Bot and I will help in managing your group
 
 ⚡ I have the normal GROUP MANAGING functions like flood control, a warning system etc but I mainly have the advanced and handy Antispam system  which safegaurds and helps your group from spammers 
-
 ⚡ If u want a healthy and safe group you can add me to help take care of it
-
 ⚡ Hit /help to see my commands
-
 ==========================
 
 🔗 [ Support Group ](https://t.me/IGRISBOTSUPPORT) 
