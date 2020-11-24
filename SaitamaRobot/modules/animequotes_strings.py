@@ -1,0 +1,2 @@
+QUOTES_IMG = (
+      
