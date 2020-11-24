@@ -46,7 +46,7 @@ def igris(update: Update, context: CallbackContext):
 @run_async
 def arise(update: Update, context: CallbackContext):
     update.effective_message.reply_photo(
-        IGRIS_IMG, caption=to*Command me*')) 
+        IGRIS_IMG, caption=f'*Command me*')) 
 
                     
 
