@@ -14,6 +14,7 @@ from SaitamaRobot.modules.helper_funcs.extraction import extract_user
 
 GIF_ID = 'CgACAgUAAx0EVmwfqQACElhfo3yZv1njCC11INcQSAi4UlN8vwACqwADg_8wVeGSv41OYU6zHgQ'
 
+IGRIS_IMG = 'https://i.imgur.com/WcJPIHp.jpg'
 
 @run_async
 def runs(update: Update, context: CallbackContext):
