@@ -50,6 +50,7 @@ def arise(update: Update, context: CallbackContext):
     reply_photo(
         random.choice(fun_strings.IGRIS_IMG, caption=f'*Command Me {name}*')
 
+
 @run_async
 def truth(update: Update, context: CallbackContext):
     update.effective_message.reply_text(random.choice(fun_strings.TRUTH_STRINGS))
