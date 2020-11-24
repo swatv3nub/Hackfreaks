@@ -14,7 +14,7 @@ from SaitamaRobot.modules.helper_funcs.extraction import extract_user
 
 GIF_ID = 'CgACAgUAAx0EVmwfqQACElhfo3yZv1njCC11INcQSAi4UlN8vwACqwADg_8wVeGSv41OYU6zHgQ'
 
-IGRIS_IMG = 'https://i.imgur.com/WcJPIHp.jpg'
+IGRIS_IMG = "https://i.imgur.com/WcJPIHp.jpg"
 
 @run_async
 def runs(update: Update, context: CallbackContext):
@@ -45,11 +45,10 @@ def igris(update: Update, context: CallbackContext):
                                                 
 @run_async
 def arise(update: Update, context: CallbackContext):
-    message = update.effective_message
-    name = message.reply_to_message.from_user.first_name if message.reply_to_message else message.from_user.first_name
-    reply_photo = message.reply_to_message.reply_photo if message.reply_to_message else message.reply_photo
-    reply_photo(
-        random.choice(fun_strings.IGRIS_PHOTO), caption=f'*arise! {name}*')                
+    message = update.effective_message.reply_photo(
+        IGRIS_IMG)) 
+
+                    
 
 @run_async
 def truth(update: Update, context: CallbackContext):
