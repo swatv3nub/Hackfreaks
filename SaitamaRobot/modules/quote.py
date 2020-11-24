@@ -1,6 +1,5 @@
 import asyncio
 
-from telegram.errors import YouBlockedUser
 
 from SaitamaRobot import Message, userge
 
