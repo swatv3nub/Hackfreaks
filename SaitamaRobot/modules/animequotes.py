@@ -18,7 +18,8 @@ def animequotes(update: Update, context: CallbackContext):
     name = message.reply_to_message.from_user.first_name if message.reply_to_message else message.from_user.first_name
     reply_photo = message.reply_to_message.reply_photo if message.reply_to_message else message.reply_photo
     reply_photo(
-        random.choice(animequotes_strings.QUOTES_IMG)) 
+        random.choice(animequotes_strings.QUOTES_IMG))
+    
 """"
 
 __help__ = """
