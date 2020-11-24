@@ -1,6 +1,6 @@
 import asyncio
 
-from pyrogram.errors import YouBlockedUser
+from Saitama.errors import YouBlockedUser
 
 from SaitamaRobot import Message, userge
 
