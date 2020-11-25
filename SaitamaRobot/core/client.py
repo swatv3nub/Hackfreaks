@@ -8,7 +8,7 @@
 #
 # All rights reserved.
 
-__all__ = ['Userge']
+__all__ = ['SaitamaRobot']
 
 import time
 import signal
