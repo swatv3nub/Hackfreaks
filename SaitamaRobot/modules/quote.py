@@ -2,7 +2,7 @@ import asyncio
 
 from pyrogram.errors import YouBlockedUser
 
-from SaitamaRobpt import Message, SaitamaRobot
+from SaitamaRobot import Message, SaitamaRobot
 
 
 @igrisbot.on_cmd(
