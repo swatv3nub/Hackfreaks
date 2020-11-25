@@ -4,10 +4,6 @@ import time
 import re
 from sys import argv
 from typing import Optional
-from SaitamaRobot import igris
-
-if __name__ == "__main__":
-    igris.begin()
 
 from SaitamaRobot import (ALLOW_EXCL, CERT_PATH, DONATION_LINK, LOGGER,
                           OWNER_ID, PORT, SUPPORT_CHAT, TOKEN, URL, WEBHOOK,
