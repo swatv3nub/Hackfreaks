@@ -39,7 +39,7 @@ def afk(update: Update, context: CallbackContext):
        text = update.effective_message.reply_text
        try:
            options = [
-               '{} is now away!{}', '{} is now offline', '{} is now Ready
+               '{} is now away!{}', '{} is now offline', '{} is now dead'
            ]
            chosen_option = random.choice(options) 
            update.effective_message.reply_text(chosen_option.format(firstname,notice))
