@@ -42,7 +42,7 @@ def afk(update: Update, context: CallbackContext):
                '{} is now away!{}', '{} is now offline', '{} is now dead'
            ]
            chosen_option = random.choice(options) 
-           update.effective_message.reply_text(chosen_option.format(firstname)) 
+           update.effective_message.reply_text(chosen_option.format(firstname,notice) 
        except BadRequest:
          pass
 
