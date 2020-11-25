@@ -2,10 +2,10 @@ import asyncio
 
 from pyrogram.errors import YouBlockedUser
 
-from userge import Message, userge
+from SaitamaRobpt import Message, SaitamaRobot
 
 
-@userge.on_cmd(
+@igrisbot.on_cmd(
     "q",
     about={
         "header": "Quote a message",
