@@ -31,3 +31,4 @@ pyrate-limiter
 gtts
 nekos.py
 fontTools
+typing
