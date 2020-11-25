@@ -32,3 +32,4 @@ gtts
 nekos.py
 fontTools
 typing
+tswift
