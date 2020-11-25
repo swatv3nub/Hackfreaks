@@ -8,7 +8,7 @@
 #
 # All rights reserved.
 
-from userge import userge
+from igris import igris
 
 if __name__ == "__main__":
-    userge.begin()
+    igris.begin()
