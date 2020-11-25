@@ -4,12 +4,12 @@ import sys
 import time
 import spamwatch
 
-from igris.logger import logging  # noqa
-from igris.config import Config, get_version  # noqa
-from igris.core import (  # noqa
+from SaitamaRobot.logger import logging  # noqa
+from SaitamaRobot.config import Config, get_version  # noqa
+from SaitamaRobot.core import (  # noqa
     SaitamaRobot, filters, Message, get_collection, pool)
 
-igris = SaitamaRobot()
+SaitamaRobot = SaitamaRobot()
 
 import telegram.ext as tg
 from telethon import TelegramClient
