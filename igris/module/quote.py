@@ -2,10 +2,10 @@ import asyncio
 
 from pyrogram.errors import YouBlockedUser
 
-from userge import Message, userge
+from igris import Message, igris
 
 
-@userge.on_cmd(
+@igris.on_cmd(
     "q",
     about={
         "header": "Quote a message",
