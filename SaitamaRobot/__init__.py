@@ -4,13 +4,6 @@ import sys
 import time
 import spamwatch
 
-from SaitamaRobot.logger import logging  # noqa
-from SaitamaRobot.config import Config, get_version  # noqa
-from SaitamaRobot.core import (  # noqa
-    SaitamaRobot, filters, Message, get_collection, pool)
-
-SaitamaRobot = SaitamaRobot()
-
 import telegram.ext as tg
 from telethon import TelegramClient
 
