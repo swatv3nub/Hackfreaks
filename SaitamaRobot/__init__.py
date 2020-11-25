@@ -9,7 +9,7 @@ from telethon import TelegramClient
 from SaitamaRobot.logger import logging  # noqa
 from SaitamaRobot.config import Config, get_version  # noqa
 from SaitamaRobot.core import (  # noqa
-    Userge, filters, Message, get_collection, pool)
+    SaitamaRobot, filters, Message, get_collection, pool)
 
 SaitamaRobot = SaitamaRobot() 
 
