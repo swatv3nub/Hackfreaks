@@ -34,3 +34,4 @@ fontTools
 typing
 tswift
 git+https://github.com/code-rgb/pyrogram.git@verlock
+tgcrypto
