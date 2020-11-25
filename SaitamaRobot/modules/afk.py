@@ -44,7 +44,7 @@ def afk(update: Update, context: CallbackContext):
            chosen_option = random.choice(options) 
            update.effective_message.reply_text(chosen_option.format(firstname,notice) 
        except BadRequest:
-         pass
+           pass
 
 
 @run_async
