@@ -509,10 +509,10 @@ def sudolist(update: Update, context: CallbackContext):
 
 @run_async
 @whitelist_plus
-def devlist(update: Update, context: CallbackContext):
+def guild(update: Update, context: CallbackContext):
     bot = context.bot
     true_dev = list(set(DEV_USERS) - {OWNER_ID})
-    reply = "<b>Hero Association Members ⚡️:</b>\n"
+    reply = "<b>🍁SOLO•GUILD⚡️:</b>\n"
     for each_user in true_dev:
         user_id = int(each_user)
         try:
@@ -533,7 +533,7 @@ Group admins/group owners do not need these commands.
  ╠ `/demons`*:* Lists all Demon disasters
  ╠ `/tigers`*:* Lists all Tigers disasters
  ╠ `/wolves`*:* Lists all Wolf disasters
- ╚ `/heroes`*:* Lists all Hero Association members
+ ╚ `/guild`*:* Lists all SOLO•GUILD members
 
  ╔ *Ping:*
  ╠ `/ping`*:* gets ping time of bot to telegram server
@@ -609,7 +609,7 @@ WHITELISTLIST_HANDLER = CommandHandler(["whitelistlist", "wolves"],
 TIGERLIST_HANDLER = CommandHandler(["tigers"], tigerlist)
 SUPPORTLIST_HANDLER = CommandHandler(["supportlist", "demons"], supportlist)
 SUDOLIST_HANDLER = CommandHandler(["sudolist", "dragons"], sudolist)
-DEVLIST_HANDLER = CommandHandler(["devlist", "heroes"], devlist)
+GUILD_HANDLER = CommandHandler(["guild", "guild"], guild)
 
 dispatcher.add_handler(SUDO_HANDLER)
 dispatcher.add_handler(SUPPORT_HANDLER)
@@ -624,12 +624,12 @@ dispatcher.add_handler(WHITELISTLIST_HANDLER)
 dispatcher.add_handler(TIGERLIST_HANDLER)
 dispatcher.add_handler(SUPPORTLIST_HANDLER)
 dispatcher.add_handler(SUDOLIST_HANDLER)
-dispatcher.add_handler(DEVLIST_HANDLER)
+dispatcher.add_handler(GUILD_HANDLER)
 
 __mod_name__ = "Disasters"
 __handlers__ = [
     SUDO_HANDLER, SUPPORT_HANDLER, TIGER_HANDLER, WHITELIST_HANDLER,
     UNSUDO_HANDLER, UNSUPPORT_HANDLER, UNTIGER_HANDLER, UNWHITELIST_HANDLER,
     WHITELISTLIST_HANDLER, TIGERLIST_HANDLER, SUPPORTLIST_HANDLER,
-    SUDOLIST_HANDLER, DEVLIST_HANDLER
+    SUDOLIST_HANDLER, GUILD_HANDLER
 ]
