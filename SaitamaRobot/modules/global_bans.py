@@ -13,7 +13,6 @@ from SaitamaRobot.modules.helper_funcs.chat_status import (is_user_admin,
 from SaitamaRobot.modules.helper_funcs.extraction import (extract_user,
                                                           extract_user_and_text)
 from SaitamaRobot.modules.helper_funcs.misc import send_to_list
-from SaitamaRobot.modules.sql.users_sql import get_all_chats
 from telegram import ParseMode, Update
 from telegram.error import BadRequest, TelegramError
 from telegram.ext import (CallbackContext, CommandHandler, Filters,
@@ -70,7 +69,7 @@ def gban(update: Update, context: CallbackContext):
 
     if int(user_id) in DEV_USERS:
         message.reply_text(
-            "That user is part of the GUILD\nI can't act against our own."
+            "That user is part of the Association\nI can't act against our own."
         )
         return
 
@@ -139,7 +138,7 @@ def gban(update: Update, context: CallbackContext):
 
         return
 
-    message.reply_text("HAHA GBAN TIME!")
+    message.reply_text("On it!")
 
     start_time = time.time()
     datetime_fmt = "%Y-%m-%dT%H:%M"

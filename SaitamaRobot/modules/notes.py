@@ -1,10 +1,12 @@
 import re, ast
 from io import BytesIO
+import random
 from typing import Optional
 
 import SaitamaRobot.modules.sql.notes_sql as sql
 from SaitamaRobot import LOGGER, JOIN_LOGGER, SUPPORT_CHAT, dispatcher, DRAGONS
 from SaitamaRobot.modules.disable import DisableAbleCommandHandler
+from SaitamaRobot.modules.helper_funcs.handlers import MessageHandlerChecker
 from SaitamaRobot.modules.helper_funcs.chat_status import user_admin, connection_status
 from SaitamaRobot.modules.helper_funcs.misc import (build_keyboard,
                                                     revert_buttons)
@@ -49,12 +51,13 @@ def get(update, context, notename, show_none=True, no_format=False):
     message = update.effective_message  # type: Optional[Message]
 
     if note:
+        if MessageHandlerChecker.check_user(update.effective_user.id):
+            return
         # If we're replying to a message, reply to that message (unless it's an error)
         if message.reply_to_message:
             reply_id = message.reply_to_message.message_id
         else:
             reply_id = message.message_id
-
         if note.is_reply:
             if JOIN_LOGGER:
                 try:
@@ -94,7 +97,18 @@ def get(update, context, notename, show_none=True, no_format=False):
             valid_format = escape_invalid_curly_brackets(
                 note.value, VALID_NOTE_FORMATTERS)
             if valid_format:
-                text = valid_format.format(
+                if not no_format:
+                    if '%%%' in valid_format:
+                        split = valid_format.split('%%%')
+                        if all(split):
+                            text = random.choice(split)
+                        else:
+                            text = valid_format
+                    else:
+                        text = valid_format
+                else:
+                    text = valid_format
+                text = text.format(
                     first=escape_markdown(message.from_user.first_name),
                     last=escape_markdown(message.from_user.last_name or
                                          message.from_user.first_name),
@@ -480,19 +494,27 @@ __help__ = """
  • `/get <notename>`*:* get the note with this notename
  • `#<notename>`*:* same as /get
  • `/notes` or `/saved`*:* list all saved notes in this chat
- • `/number` *:* Will pull the note of that number in the list. 
+ • `/number` *:* Will pull the note of that number in the list
 If you would like to retrieve the contents of a note without any formatting, use `/get <notename> noformat`. This can \
-be useful when updating a current note.
+be useful when updating a current note
 
 *Admins only:*
  • `/save <notename> <notedata>`*:* saves notedata as a note with name notename
 A button can be added to a note by using standard markdown link syntax - the link should just be prepended with a \
-`buttonurl:` section, as such: `[somelink](buttonurl:example.com)`. Check `/markdownhelp` for more info.
+`buttonurl:` section, as such: `[somelink](buttonurl:example.com)`. Check `/markdownhelp` for more info
  • `/save <notename>`*:* save the replied message as a note with name notename
+ Separate diff replies by `%%%` to get random notes
+ *Example:* 
+ `/save notename
+ Reply 1
+ %%%
+ Reply 2
+ %%%
+ Reply 3`
  • `/clear <notename>`*:* clear note with this name
  • `/removeallnotes`*:* removes all notes from the group
  *Note:* Note names are case-insensitive, and they are automatically converted to lowercase before getting saved.
- 
+
 """
 
 __mod_name__ = "Notes"
