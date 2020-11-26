@@ -3,7 +3,8 @@ from typing import Union
 
 from future.utils import string_types
 from SaitamaRobot import dispatcher
-from SaitamaRobot.modules.helper_funcs.handlers import (CMD_STARTERS)
+from SaitamaRobot.modules.helper_funcs.handlers import (CMD_STARTERS,
+                                                        SpamChecker)
 from SaitamaRobot.modules.helper_funcs.misc import is_module_loaded
 from telegram import ParseMode, Update
 from telegram.ext import (CallbackContext, CommandHandler, Filters,
@@ -55,11 +56,16 @@ if is_module_loaded(FILENAME):
                                 command[1].lower()
                                 == message.bot.username.lower()):
                             return None
-
+                        chat = update.effective_chat
+                        user = update.effective_user
+                        if user.id == 1087968824:
+                            user_id = chat.id
+                        else:
+                            user_id = user.id
+                        if SpamChecker.check_user(user_id):
+                            return None
                         filter_result = self.filters(update)
                         if filter_result:
-                            chat = update.effective_chat
-                            user = update.effective_user
                             # disabled, admincmd, user admin
                             if sql.is_command_disabled(chat.id,
                                                        command[0].lower()):
