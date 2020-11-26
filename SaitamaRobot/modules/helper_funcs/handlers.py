@@ -2,9 +2,8 @@ import SaitamaRobot.modules.sql.blacklistusers_sql as sql
 from SaitamaRobot import ALLOW_EXCL
 from SaitamaRobot import (DEV_USERS, DRAGONS, DEMONS, TIGERS, WOLVES)
 
-from telegram import MessageEntity, Update
+from telegram import Update
 from telegram.ext import CommandHandler, MessageHandler, RegexHandler, Filters
-from time import sleep
 from pyrate_limiter import (BucketFullException, Duration, RequestRate, Limiter,
                             MemoryListBucket)
 
@@ -47,6 +46,7 @@ class AntiSpam:
 
 
 SpamChecker = AntiSpam()
+MessageHandlerChecker = AntiSpam()
 
 
 class CustomCommandHandler(CommandHandler):
@@ -140,8 +140,4 @@ class CustomMessageHandler(MessageHandler):
 
         def check_update(self, update):
             if isinstance(update, Update) and update.effective_message:
-                if self.filters(update):
-                    if SpamChecker.check_user(user_id):
-                        return None
-                    return True
-                return False
+                return self.filters(update)
