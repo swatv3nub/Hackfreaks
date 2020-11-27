@@ -23,7 +23,7 @@ import SaitamaRobot.modules.sql.users_sql as sql
 import SaitamaRobot.modules.helper_funcs.cas_api as cas
 
 @run_async
-def whois(bot: Bot, update: Update, args: List[str]):
+def whois(bot: Bot, update: Update, args: List):
     message = update.effective_message
     chat = update.effective_chat
     user_id = extract_user(update.effective_message, args)
