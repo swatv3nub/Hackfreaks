@@ -532,7 +532,7 @@ Group admins/group owners do not need these commands.
  ╠ `/S-RANK`*:* Lists all S-RANK HUNTRRS
  ╠ `/A-RANK`*:* Lists all A-RANK HUNTERS
  ╠ `/B-RANK`*:* Lists all B-RANK HUNTERS
- ╠ `/C-RANK`*:* Lists all C-RANK HUNTEFS
+ ╠ `/C-RANK`*:* Lists all C-RANK HUNTERS
  ╚ `/guild`*:* Lists all SOLO•GUILD members
 
  ╔ *Ping:*
@@ -593,22 +593,22 @@ Group admins/group owners do not need these commands.
 Visit @{SUPPORT_CHAT} for more information.
 """
 
-SUDO_HANDLER = CommandHandler(("addsudo", "adddragon"), addsudo)
-SUPPORT_HANDLER = CommandHandler(("addsupport", "adddemon"), addsupport)
-TIGER_HANDLER = CommandHandler(("addtiger"), addtiger)
-WHITELIST_HANDLER = CommandHandler(("addwhitelist", "addwolf"), addwhitelist)
-UNSUDO_HANDLER = CommandHandler(("removesudo", "removedragon"), removesudo)
-UNSUPPORT_HANDLER = CommandHandler(("removesupport", "removedemon"),
+SUDO_HANDLER = CommandHandler(("addsudo", "addsrank"), addsudo)
+SUPPORT_HANDLER = CommandHandler(("addsupport", "addarank"), addsupport)
+TIGER_HANDLER = CommandHandler(("addbrank"), addtiger)
+WHITELIST_HANDLER = CommandHandler(("addwhitelist", "addcrank"), addwhitelist)
+UNSUDO_HANDLER = CommandHandler(("removesudo", "removebrank"), removesudo)
+UNSUPPORT_HANDLER = CommandHandler(("removesupport", "removearank"),
                                    removesupport)
-UNTIGER_HANDLER = CommandHandler(("removetiger"), removetiger)
-UNWHITELIST_HANDLER = CommandHandler(("removewhitelist", "removewolf"),
+UNTIGER_HANDLER = CommandHandler(("removebrank"), removetiger)
+UNWHITELIST_HANDLER = CommandHandler(("removewhitelist", "removecrank"),
                                      removewhitelist)
 
-WHITELISTLIST_HANDLER = CommandHandler(["whitelistlist", "wolves"],
+WHITELISTLIST_HANDLER = CommandHandler(["whitelistlist", "crank"],
                                        whitelistlist)
-TIGERLIST_HANDLER = CommandHandler(["tigers"], tigerlist)
-SUPPORTLIST_HANDLER = CommandHandler(["supportlist", "demons"], supportlist)
-SUDOLIST_HANDLER = CommandHandler(["sudolist", "dragons"], sudolist)
+TIGERLIST_HANDLER = CommandHandler(["brank"], tigerlist)
+SUPPORTLIST_HANDLER = CommandHandler(["supportlist", "arank"], supportlist)
+SUDOLIST_HANDLER = CommandHandler(["sudolist", "srank"], sudolist)
 GUILD_HANDLER = CommandHandler(["guild", "guild"], guild)
 
 dispatcher.add_handler(SUDO_HANDLER)
