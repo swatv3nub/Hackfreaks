@@ -59,9 +59,10 @@ def truth(update: Update, context: CallbackContext):
     update.effective_message.reply_text(random.choice(fun_strings.TRUTH_STRINGS))
 
 @run_async
-def insult(update: Update, context: CallbackContext):
-    update.effective_message.reply_text(random.choice(fun_strings.INSULT_STRINGS))
-
+def insult(update: Update, _):
+    msg = update.effective_message
+    reply_text = msg.reply_to_message.reply_text if msg.reply_to_message else msg.reply_text
+    reply_text(random.choice(fun_strings.INSULT_STRINGS))
 
 @run_async
 def dare(update: Update, context: CallbackContext):
