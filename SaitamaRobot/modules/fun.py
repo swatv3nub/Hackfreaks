@@ -58,6 +58,10 @@ def arise(update: Update, context: CallbackContext):
 def truth(update: Update, context: CallbackContext):
     update.effective_message.reply_text(random.choice(fun_strings.TRUTH_STRINGS))
 
+@run_async
+def insult(update: Update, context: CallbackContext):
+    update.effective_message.reply_text(random.choice(fun_strings.INSULT_STRINGS))
+
 
 @run_async
 def dare(update: Update, context: CallbackContext):
@@ -242,11 +246,14 @@ __help__ = """
  • `/truth`*:* Get ready to reveal a surprising truth🤫
  • `/dare`*:* A dare is on way 😈
  • `/igris`*:* Summon up IGRIS
+ • `/insult`*:* Insult the person
  • `/decide`*:* Randomly answers yes/no/maybe/idk
  • `/toss`*:* Tosses A coin
  • `/roll`*:* Roll a dice & get you a number
 
 """
+
+INSULT_HANDLER = DisableAbleCommandHandler("insult", insult)
 ARISE_HANDLER = DisableAbleCommandHandler("arise", arise)                                      
 IGRIS_HANDLER = DisableAbleCommandHandler("igris", igris)
 TRUTH_HANDLER = DisableAbleCommandHandler("truth", truth)
@@ -263,6 +270,7 @@ RLG_HANDLER = DisableAbleCommandHandler("rlg", rlg)
 DECIDE_HANDLER = DisableAbleCommandHandler("decide", decide)
 TABLE_HANDLER = DisableAbleCommandHandler("table", table)
 
+dispatcher.add_handler(INSULT_HANDLER)
 dispatcher.add_handler(ARISE_HANDLER)                                          
 dispatcher.add_handler(IGRIS_HANDLER)
 dispatcher.add_handler(TRUTH_HANDLER)
@@ -286,6 +294,6 @@ __command_list__ = [
 ]
 __handlers__ = [
     RUNS_HANDLER,IGRIS_HANDLER,ARISE_HANDLER,TRUTH_HANDLER, DARE_HANDLER, SLAP_HANDLER, PAT_HANDLER, ROLL_HANDLER, TOSS_HANDLER,
-    SHRUG_HANDLER, BLUETEXT_HANDLER, RLG_HANDLER, DECIDE_HANDLER, TABLE_HANDLER,
+    SHRUG_HANDLER, BLUETEXT_HANDLER, RLG_HANDLER, DECIDE_HANDLER, TABLE_HANDLER,INSULT_HANDLER, 
     SANITIZE_HANDLER
 ]
