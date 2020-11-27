@@ -34,6 +34,8 @@ fontTools
 typing
 tswift
 cachetools
-
+pyowm
+tabulate
+parsel
 
 
