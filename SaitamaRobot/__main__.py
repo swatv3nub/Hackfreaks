@@ -51,33 +51,30 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-Hello {},The name's 𝙎𝙪𝙯𝙪𝙮𝙖
+Hello {},My Name is IGRIS
 
 I am an 𝐴𝑛𝑖𝑚𝑒 Themed Group Managing Bot and I will help in managing your group
 
-🧿 I have the normal GROUP MANAGING functions like flood control, a warning system etc but I mainly have the advanced and handy Antispam system and the SIBYL-x banning system which safegaurds and helps your group from spammers 
-🧿 If u want a healthy and safe group you can add me to help take care of it
-🧿 Hit /help to see my commands
+⚡ I have the normal GROUP MANAGING functions like flood control, a warning system etc but I mainly have the advanced and handy Antispam system  which safegaurds and helps your group from spammers 
+⚡ If u want a healthy and safe group you can add me to help take care of it
+⚡ Hit /help to see my commands
 
 ==========================
-🔗 [ Support Group ](https://t.me/SuzuyaSupport)
-🔗 [ Updates Channel ](https://t.me/SuzuyaUpdates)
+🔗 [ Support Group ](https://t.me/IGRISBOTSUPPORT) 
 ==========================
 """
 
 HELP_STRINGS = """
 Hey there! My name is *{}*.
-I'm a Pro Bot For Fun and help admins manage their groups with One Punch! Have a look at the following for an idea of some of \
+I'm a Shadow lives in darkness,I will help you manage your groups! Have a look at the following for an idea of some of \
 the things I can help you with.
 
 *Main* commands available:
  • /help: PM's you this message.
  • /help <module name>: PM's you info about that module.
- • /donate: information on how to donate!
  • /settings:
    • in PM: will send you your settings for all supported modules.
    • in a group: will redirect you to pm, with all that chat's settings.
-
 
 {}
 And the following:
@@ -85,12 +82,7 @@ And the following:
     dispatcher.bot.first_name, ""
     if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n")
 
-SAITAMA_IMG = "https://telegra.ph/file/baf58ec4aca2df39c8b61.jpg"
-
-DONATE_STRING = """Heya, glad to hear you want to donate!
-Saitama is hosted on one of Kaizoku's Servers and doesn't require any donations as of now but \
-You can donate to the original writer of the Base code, Paul
-There are two ways of supporting him; [PayPal](paypal.me/PaulSonOfLars), or [Monzo](monzo.me/paulnionvestergaardlarsen)."""
+SAITAMA_IMG = "https://telegra.ph/file/baf58ec4aca2df39c8b61.jpg"."""
 
 IMPORTED = {}
 MIGRATEABLE = []
@@ -455,7 +447,7 @@ def get_settings(update: Update, context: CallbackContext):
         send_settings(chat.id, user.id, True)
 
 
-@run_async
+#@run_async
 def donate(update: Update, context: CallbackContext):
     user = update.effective_message.from_user
     chat = update.effective_chat  # type: Optional[Chat]
@@ -517,7 +509,7 @@ def main():
     settings_callback_handler = CallbackQueryHandler(
         settings_button, pattern=r"stngs_")
 
-    donate_handler = CommandHandler("donate", donate)
+   # donate_handler = CommandHandler("donate", donate)
     migrate_handler = MessageHandler(Filters.status_update.migrate,
                                      migrate_chats)
 
@@ -528,7 +520,7 @@ def main():
     dispatcher.add_handler(help_callback_handler)
     dispatcher.add_handler(settings_callback_handler)
     dispatcher.add_handler(migrate_handler)
-    dispatcher.add_handler(donate_handler)
+   # dispatcher.add_handler(donate_handler)
 
     dispatcher.add_error_handler(error_callback)
 
