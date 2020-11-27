@@ -14,7 +14,7 @@ from telegram import ParseMode
 from telegram.ext import CommandHandler, run_async, Filters
 from telegram.utils.helpers import escape_markdown, mention_html
 from SaitamaRobot.modules.helper_funcs.chat_status import user_admin, sudo_plus, is_user_admin
-from SaitamaRobot import dispatcher, OWNER_ID, SUDO_USERS, SUPPORT_USERS, DEV_USERS, WHITELIST_USERS
+from SaitamaRobot import dispatcher, OWNER_ID, DRAGONS, DEMONS, DEV_USERS, WOLVES
 from SaitamaRobot.__main__ import STATS, USER_INFO, TOKEN
 from SaitamaRobot.modules.disable import DisableAbleCommandHandler, DisableAbleRegexHandler
 from SaitamaRobot.modules.helper_funcs.extraction import extract_user
