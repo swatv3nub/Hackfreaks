@@ -13,15 +13,15 @@ from telegram.ext import CommandHandler, MessageHandler, CallbackQueryHandler, F
 from telegram.ext.dispatcher import run_async, DispatcherHandlerStop
 from telegram.utils.helpers import escape_markdown
 
-from tg_bot import dispatcher, updater, TOKEN, WEBHOOK, OWNER_ID, CERT_PATH, PORT, URL, LOGGER, \
+from SaitamaRobot import dispatcher, updater, TOKEN, WEBHOOK, OWNER_ID, CERT_PATH, PORT, URL, LOGGER, \
     ALLOW_EXCL
 # needed to dynamically load modules
 # NOTE: Module order is not guaranteed, specify that in the config file!
-from tg_bot.modules import ALL_MODULES
-from tg_bot import dispatcher
-from tg_bot.modules.disable import DisableAbleCommandHandler
-from tg_bot.modules.helper_funcs.chat_status import is_user_admin
-from tg_bot.modules.helper_funcs.misc import paginate_modules
+from SaitamaRobot.modules import ALL_MODULES
+from SaitamaRobot import dispatcher
+from SaitamaRobot.modules.disable import DisableAbleCommandHandler
+from SaitamaRobot.modules.helper_funcs.chat_status import is_user_admin
+from SaitamaRobot.modules.helper_funcs.misc import paginate_modules
 
 
 
@@ -29,19 +29,12 @@ PM_START_TEXT = """
 Hello {},My Name is IGRIS
 
 I am an 𝐴𝑛𝑖𝑚𝑒 Themed Group Managing Bot and I will help in managing your group
-
 ⚡ I have the normal GROUP MANAGING functions like flood control, a warning system etc but I mainly have the advanced and handy Antispam system  which safegaurds and helps your group from spammers 
-
 ⚡ If u want a healthy and safe group you can add me to help take care of it
-
 ⚡ Hit /help to see my commands
-
 ==========================
-
 🔗 [ Support Group ](https://t.me/IGRISBOTSUPPORT) 
-
 ==========================
-
 
 """
 
