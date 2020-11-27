@@ -154,7 +154,7 @@ DEV_USERS.add(123)
 updater = tg.Updater(TOKEN, workers=WORKERS)
 dispatcher = updater.dispatcher
 
-SUDO_USERS = list(SUDO_USERS) + list(DEV_USERS)
+DRAGONS = list(SUDO_USERS) + list(DEV_USERS)
 DEV_USERS = list(DEV_USERS)
 WOLVES = list(WHITELIST_USERS)
 DEMONS = list(SUPPORT_USERS)
