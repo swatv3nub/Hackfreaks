@@ -7,7 +7,7 @@ from typing import Optional
 from telegram import User, Chat, ChatMember, Update, Bot
 from telegram import error
 
-from tg_bot import DEL_CMDS, DRAGONS, WOLVES
+from SaitamaRobot import DEL_CMDS, DRAGONS, WOLVES
 
 
 def send_message(message, text,  *args,**kwargs):
