@@ -78,17 +78,17 @@ def whois(bot: Bot, update: Update, args: List[str]):
     elif user.id in DEV_USERS:
         text += "\n🚴‍♂️Pling,This person is my dev🤷‍♂️\nI would never do anything against him!."
         
-    elif user.id in SUDO_USERS:
+    elif user.id in DRAGONS:
         text += "\n🚴‍♂️Pling,This person is one of my sudo users! " \
                     "Nearly as powerful as my owner🕊so watch it.."
         
-    elif user.id in SUPPORT_USERS:
+    elif user.id in DEMONS:
         text += "\n🚴‍♂️Pling,This person is one of my support users! " \
                         "Not quite a sudo user, but can still gban you off the map."
         
   
        
-    elif user.id in WHITELIST_USERS:
+    elif user.id in WOLVES:
         text += "\n🚴‍♂️Pling,This person has been whitelisted! " \
                         "That means I'm not allowed to ban/kick them."
     
