@@ -65,7 +65,7 @@ I am an 𝐴𝑛𝑖𝑚𝑒 Themed Group Managing Bot and I will help in managi
 
 HELP_STRINGS = """
 Hey there! My name is *{}*.
-I'm a Pro Bot For Fun and help admins manage their groups with One Punch! Have a look at the following for an idea of some of \
+I'm a Shadow From Solo Leveling,I will help you manage your groups! Have a look at the following for an idea of some of \
 the things I can help you with.
 
 *Main* commands available:
