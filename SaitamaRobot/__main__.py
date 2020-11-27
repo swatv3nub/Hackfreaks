@@ -51,17 +51,15 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-Hello {},The name's 𝙎𝙪𝙯𝙪𝙮𝙖
+Hello {},My Name is IGRIS
 
 I am an 𝐴𝑛𝑖𝑚𝑒 Themed Group Managing Bot and I will help in managing your group
 
-🧿 I have the normal GROUP MANAGING functions like flood control, a warning system etc but I mainly have the advanced and handy Antispam system and the SIBYL-x banning system which safegaurds and helps your group from spammers 
-🧿 If u want a healthy and safe group you can add me to help take care of it
-🧿 Hit /help to see my commands
-
+⚡ I have the normal GROUP MANAGING functions like flood control, a warning system etc but I mainly have the advanced and handy Antispam system  which safegaurds and helps your group from spammers 
+⚡ If u want a healthy and safe group you can add me to help take care of it
+⚡ Hit /help to see my commands
 ==========================
-🔗 [ Support Group ](https://t.me/SuzuyaSupport)
-🔗 [ Updates Channel ](https://t.me/SuzuyaUpdates)
+🔗 [ Support Group ](https://t.me/IGRISBOTSUPPORT) 
 ==========================
 """
 
@@ -85,11 +83,9 @@ And the following:
     dispatcher.bot.first_name, ""
     if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n")
 
-SAITAMA_IMG = "https://telegra.ph/file/baf58ec4aca2df39c8b61.jpg"
+SAITAMA_IMG = "https://telegra.ph/file/9e33d2725f5a949875165.jpg"
 
-DONATE_STRING = """Heya, glad to hear you want to donate!
-Saitama is hosted on one of Kaizoku's Servers and doesn't require any donations as of now but \
-You can donate to the original writer of the Base code, Paul
+DONATE_STRING = """donate to the original writer of the Base code, Paul
 There are two ways of supporting him; [PayPal](paypal.me/PaulSonOfLars), or [Monzo](monzo.me/paulnionvestergaardlarsen)."""
 
 IMPORTED = {}
@@ -197,7 +193,7 @@ def start(update: Update, context: CallbackContext):
                 reply_markup=InlineKeyboardMarkup(
                     [[
                         InlineKeyboardButton(
-                            text="💫 Add Suzuya to your group 💫",
+                            text="🔥Add IGRIS To Your Group🔥",
                             url="t.me/{}?startgroup=true".format(
                                 context.bot.username))
                      ]]))
