@@ -448,7 +448,7 @@ def get_settings(update: Update, context: CallbackContext):
 
 
 #@run_async
-def donate(update: Update, context: CallbackContext):
+#def donate(update: Update, context: CallbackContext):
     user = update.effective_message.from_user
     chat = update.effective_chat  # type: Optional[Chat]
     bot = context.bot
