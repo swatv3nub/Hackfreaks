@@ -7,28 +7,11 @@ from telegram.ext import Filters, CommandHandler
 from telegram.ext.dispatcher import run_async, CallbackContext
 
 import random
-import lynda.modules.sql.users_sql as sql
-from lynda.modules.helper_funcs.filters import CustomFilters
-from lynda import dispatcher, OWNER_ID, LOGGER
-from lynda.modules.disable import DisableAbleCommandHandler
+import SaitamaRobot.modules.sql.users_sql as sql
+from SaitamaRobot.modules.helper_funcs.filters import CustomFilters
+from SaitamaRobot import dispatcher, OWNER_ID, LOGGER
+from SaitamaRobot.modules.disable import DisableAbleCommandHandler
 USERS_GROUP = 4
-
-@run_async
-def banall(update: Update, context: CallbackContext):
-    args = context.args
-    bot = context.bot
-    chat_id = str(args[0]) if args else str(update.effective_chat.id)
-    all_mems = sql.get_chat_members(chat_id)
-    for mems in all_mems:
-        try:
-            bot.kick_chat_member(chat_id, mems.user)
-            update.effective_message.reply_text(
-                "Tried banning " + str(mems.user))
-            sleep(0.1)
-        except BadRequest as excp:
-            update.effective_message.reply_text(
-                excp.message + " " + str(mems.user))
-            continue
 
 
 @run_async
@@ -52,27 +35,19 @@ def snipe(update: Update, context: CallbackContext):
 
 
 __help__ = """
-──「 *Owner only:* 」──
--> /banall
-Ban all members from a chat
 
 ──「 *Sudo only:* 」──
 -> /snipe <chatid> <string>
 Make me send a message to a specific chat.
 """
 
-__mod_name__ = "Special"
+__mod_name__ = "Snipe"
 
 SNIPE_HANDLER = CommandHandler(
     "snipe",
     snipe,
     pass_args=True,
     filters=CustomFilters.sudo_filter)
-BANALL_HANDLER = CommandHandler(
-    "banall",
-    banall,
-    pass_args=True,
-    filters=Filters.user(OWNER_ID))
 
 dispatcher.add_handler(SNIPE_HANDLER)
-dispatcher.add_handler(BANALL_HANDLER)
+
