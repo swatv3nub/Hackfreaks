@@ -20,7 +20,6 @@ from SaitamaRobot.modules.disable import DisableAbleCommandHandler, DisableAbleR
 from SaitamaRobot.modules.helper_funcs.extraction import extract_user
 from SaitamaRobot.modules.helper_funcs.filters import CustomFilters
 import SaitamaRobot.modules.sql.users_sql as sql
-import SaitamaRobot.modules.helper_funcs.cas_api as cas
 
 @run_async
 def whoisdef caschecker(update: Update, context: CallbackContext) -> str:
@@ -94,16 +93,6 @@ def whoisdef caschecker(update: Update, context: CallbackContext) -> str:
         text += "\n🚴‍♂️Pling,This person has been whitelisted! " \
                         "That means I'm not allowed to ban/kick them."
     
-
-
-    text +="\n"
-    text += "\nCAS banned: "
-    result = cas.banchecker(user.id)
-    text += str(result)
-    for mod in USER_INFO:
-        if mod.__mod_name__ == "WHOIS":
-            continue
-
         try:
             mod_info = mod.__user_info__(user.id)
         except TypeError:
