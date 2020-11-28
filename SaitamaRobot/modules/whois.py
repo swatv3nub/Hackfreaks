@@ -22,7 +22,7 @@ from SaitamaRobot.modules.helper_funcs.filters import CustomFilters
 import SaitamaRobot.modules.sql.users_sql as sql
 
 @run_async
-def whoisdef caschecker(update: Update, context: CallbackContext) -> str:
+def whoisdef caschecker(update: Update, context: CallbackContext) -> args:
     bot = context.bot
     args = context.args
     message = update.effective_message
