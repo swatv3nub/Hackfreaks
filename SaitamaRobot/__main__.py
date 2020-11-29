@@ -83,7 +83,7 @@ And the following:
     dispatcher.bot.first_name, ""
     if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n")
 
-SAITAMA_IMG = "CgACAgEAAxkBAAII2V_DQD-ZIfHj2CZlt8N42a_GkxmNAAKXAAMrIxhG4lzATPC_TKkeBA"
+SAITAMA_IMG = "https://telegra.ph/file/9e33d2725f5a949875165.jpg"
 
 DONATE_STRING = """donate to the original writer of the Base code, Paul
 There are two ways of supporting him; [PayPal](paypal.me/PaulSonOfLars), or [Monzo](monzo.me/paulnionvestergaardlarsen)."""
@@ -183,7 +183,7 @@ def start(update: Update, context: CallbackContext):
 
         else:
             first_name = update.effective_user.first_name
-            update.effective_message.reply_animation(
+            update.effective_message.reply_photo(
                 SAITAMA_IMG,
                 PM_START_TEXT.format(
                     escape_markdown(first_name),
