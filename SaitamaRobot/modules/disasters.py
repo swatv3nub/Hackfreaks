@@ -83,7 +83,7 @@ def addsudo(update: Update, context: CallbackContext) -> str:
         json.dump(data, outfile, indent=4)
 
     update.effective_message.reply_text(
-        rt + "\nSuccessfully set Disaster level of {} to Dragon!".format(
+        rt + "\nSuccessfully Promoted this user to S-RANK HUNTER".format(
             user_member.first_name))
 
     log_message = (
@@ -122,7 +122,7 @@ def addsupport(
         data = json.load(infile)
 
     if user_id in DRAGONS:
-        rt += "Requested HA to deomote thisS-RANK Hunter to A-RANK"
+        rt += "Requested SG to deomote thisS-RANK Hunter to A-RANK"
         data['sudos'].remove(user_id)
         DRAGONS.remove(user_id)
 
@@ -131,7 +131,7 @@ def addsupport(
         return ""
 
     if user_id in WOLVES:
-        rt += "Requested HA to promote this C-RANK Hunter to A-RANK"
+        rt += "Requested SG to promote this C-RANK Hunter to A-RANK"
         data['whitelists'].remove(user_id)
         WOLVES.remove(user_id)
 
@@ -294,7 +294,7 @@ def removesudo(update: Update, context: CallbackContext) -> str:
         data = json.load(infile)
 
     if user_id in DRAGONS:
-        message.reply_text("Requested HA to demote this user to Normal Human")
+        message.reply_text("Requested SG to demote this user to Normal Human")
         DRAGONS.remove(user_id)
         data['sudos'].remove(user_id)
 
@@ -338,7 +338,7 @@ def removesupport(update: Update, context: CallbackContext) -> str:
         data = json.load(infile)
 
     if user_id in DEMONS:
-        message.reply_text("Requested HA to demote this user to Normal Human")
+        message.reply_text("Requested SG to demote this user to Normal Human")
         DEMONS.remove(user_id)
         data['supports'].remove(user_id)
 
