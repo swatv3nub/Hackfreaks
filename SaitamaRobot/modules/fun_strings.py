@@ -299,7 +299,7 @@ SLAP_TEMPLATES = (
     "{user2} was turned into a Jojo reference!",
     "{user1} hits {user2} with {item}.",
     "Round 2!..Ready? .. FIGHT!!",
-    "WhoPixel will oof {user2} to infinity and beyond.",
+    "GOKAGE Used his S Rank Skills and slap {user2} out of the planet.",
     "{user2} ate a bat and discovered a new disease.",
     "{user1} folded {user2} into a paper plane",
     "{user1} served {user2} some bat soup.",
@@ -311,7 +311,7 @@ SLAP_TEMPLATES = (
     "Sakura Haruno just got more useful than {user2}",
     "{user1} unplugged {user2}'s life support.",
     "{user1} subscribed {user2}' to 5 years of bad internet.",
-    "You know what’s worse than Dad jokes? {user2}!",
+    "Zekxx Threw his Demon Sword on {user2}!",
     "{user1} took all of {user2}'s cookies.",
     "{user2} wa mou.......Shindeiru! - {user1}.",
     "{user2} lost his race piece!",  #No game no life reference
