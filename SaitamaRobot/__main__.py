@@ -54,7 +54,7 @@ PM_START_TEXT = """
 Hello {},My Name is IGRIS
 𝐈 𝐀𝐌 𝐀 𝐑𝐎𝐘𝐀𝐋 𝐊𝐍𝐈𝐆𝐇𝐓 𝐅𝐑𝐎𝐌 𝐒𝐎𝐋𝐎 𝐋𝐄𝐕𝐄𝐋𝐈𝐍𝐆.
 I will help you manage your group.
-Click /help to know all my commands. 
+Click /help to know all my COMMANDS. 
 """
 
 HELP_STRINGS = """
@@ -77,7 +77,7 @@ And the following:
     dispatcher.bot.first_name, ""
     if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n")
 
-SAITAMA_IMG = "https://telegra.ph/file/9e33d2725f5a949875165.jpg"
+SAITAMA_IMG = "https://telegra.ph/file/3d6b5ac78befd0bffac47.mp4"
 
 DONATE_STRING = """donate to the original writer of the Base code, Paul
 There are two ways of supporting him; [PayPal](paypal.me/PaulSonOfLars), or [Monzo](monzo.me/paulnionvestergaardlarsen)."""
