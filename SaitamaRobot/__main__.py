@@ -52,8 +52,9 @@ def get_readable_time(seconds: int) -> str:
 
 PM_START_TEXT = """
 Hello {},My Name is IGRIS
-I am a Royal Knight From Solo Leveling Send /help to see what I can do. 
-
+𝐈 𝐀𝐌 𝐀 𝐑𝐎𝐘𝐀𝐋 𝐊𝐍𝐈𝐆𝐇𝐓 𝐅𝐑𝐎𝐌 𝐒𝐎𝐋𝐎 𝐋𝐄𝐕𝐄𝐋𝐈𝐍𝐆.
+I will help you manage your group.
+Click /help to know all my commands. 
 """
 
 HELP_STRINGS = """
