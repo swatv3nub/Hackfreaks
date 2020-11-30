@@ -54,7 +54,7 @@ PM_START_TEXT = """
 Hello {},My Name is IGRIS
 𝐈 𝐀𝐌 𝐀 𝐑𝐎𝐘𝐀𝐋 𝐊𝐍𝐈𝐆𝐇𝐓 𝐅𝐑𝐎𝐌 𝐒𝐎𝐋𝐎 𝐋𝐄𝐕𝐄𝐋𝐈𝐍𝐆.
 I will help you manage your group.
-Click /help to know all my COMMANDS. 
+TO KNOW MY COMMANDS CLICK /help.
 """
 
 HELP_STRINGS = """
