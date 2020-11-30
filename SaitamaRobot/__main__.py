@@ -190,7 +190,15 @@ def start(update: Update, context: CallbackContext):
                             text="🔥Add IGRIS To Your Group🔥",
                             url="t.me/{}?startgroup=true".format(
                                 context.bot.username))
-                     ]]))
+                     ], 
+                     [
+                         InlineKeyboardButton(
+                             text="🍁Support Group🍁",
+                             url=f"https://t.me/{SUPPORT_CHAT}"),
+                         InlineKeyboardButton(
+                             text="✨Updates Channel✨",
+                             url="https://t.me/IGRISROBOT_SUPPORT")
+                     ]])) 
     else:
         update.effective_message.reply_text(
             "I'm online!\n<b>Up since:</b> <code>{}</code>".format(uptime),
