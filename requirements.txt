@@ -38,4 +38,4 @@ pyowm
 tabulate
 parsel
 googletrans
-
+mtranslate
