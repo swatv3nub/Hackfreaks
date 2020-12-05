@@ -1,5 +1,5 @@
 from mtranslate import translate
-from SaitamaRobot import client
+from SaitamaRobot import telethn
 import json
 import requests
 from SaitamaRobot.events import register
@@ -53,4 +53,4 @@ async def _(event):
 help = """
 - /tr [List of Language Codes](t.me/fateunionupdates/32) :- as reply to a long message.
 """
-_mod_name_ = "Translator"
+__mod_name__= "Translator"
