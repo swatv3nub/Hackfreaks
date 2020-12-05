@@ -14,7 +14,7 @@ def register(**args):
     args['pattern'] = pattern.replace('^/', r_pattern, 1)
 
     def decorator(func):
-        oko.add_event_handler(func, events.NewMessage(**args))
+        telethn.add_event_handler(func, events.NewMessage(**args))
         return func
 
     return decorator
@@ -32,7 +32,7 @@ def chataction(**args):
 def userupdate(**args):
     """ Registers user updates. """
     def decorator(func):
-        oko.add_event_handler(func, events.UserUpdate(**args))
+        telethn.add_event_handler(func, events.UserUpdate(**args))
         return func
 
     return decorator
@@ -46,7 +46,7 @@ def inlinequery(**args):
         args['pattern'] = '(?i)' + pattern
 
     def decorator(func):
-        oko.add_event_handler(func, events.InlineQuery(**args))
+        telethn.add_event_handler(func, events.InlineQuery(**args))
         return func
 
     return decorator
