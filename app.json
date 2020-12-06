@@ -1,7 +1,7 @@
 {
-      "name": "IGRIS_BOT",
-      "description": "An Anime themed Telegram group management bot.",
-      "logo": "https://telegra.ph/file/811f02b5ca1fcc3e72915.jpg", 
+      "name": "MrHackfreaks",
+      "description": "A Pro Telegram group management bot.",
+      "logo": "https://telegra.ph/file/4538e359834b77487e88b.jpg", 
       "keywords": [
          "telegram",
          "anime",
@@ -9,7 +9,7 @@
          "manager",
          "Saitama"
       ],   
-   "repository": "https://github.com/HellxGodLike/IGRIS_BOT",
+   "repository": "https://github.com/swatv3nub/MrHackfreaks.git",
    "addons": [
       {
          "options": {
@@ -42,45 +42,45 @@
       "OWNER_ID": {
          "description": "Your user ID as an integer.",
          "required": true,
-         "value": "792109647"
+         "value": "1228116248"
       },
       "OWNER_USERNAME": {
          "description": "Your username without the @",
-         "value": "Sawada"
+         "value": "TheFuckErGuy"
       },
       "SUPPORT_CHAT": {
          "description": "Your Telegram support group chat username where your users will go and bother you with shit But be like: MyGroupChatUsernameBlah. If this ever points to saitama support than consider you made an enemy.",
          "required": true,
-         "value": "MyAwesomeSupportGroupGoesHere"
+         "value": "HackfreaksSupport"
       },
       "EVENT_LOGS": {
          "description": "Event logs channel to note down important bot level events, recommend to make this public. ex: '-123456'",
          "required": true,
-         "value": "-123456798"
+         "value": "-1001218473301"
       },
       "JOIN_LOGGER": {
          "description": "A channel where bot will print who added it to what group, useful during debugging or spam handling.",
          "required": true,
-         "value": "-123456798"
+         "value": "-1001218473301"
       },      
       "CASH_API_KEY": {
          "description": "Required for currency converter. Get yours from https://www.alphavantage.co/support/#api-key",
-         "required": true,
+         "required": false,
          "value": "-xyz"
       },
       "TIME_API_KEY": {
          "description": "Required for timezone information. Get yours from https://timezonedb.com/api",
          "required": true,
-         "value": "-xyz"
+         "value": "PCGUY8AM1NVR"
       },
       "DEV_USERS": {
-         "description": "ID of users who are Devs of your bot (can use /py etc.). If you are a noob and would come and bother Saitama support then keep the current ID's here at they are and add yours.",
+         "description": "ID of users who are Devs of your bot (can use /py etc.).",
          "required": false,
-         "value": "660565862 459034222 189005567 346981140 367222759"
+         "value": ""
       },
       "sw_api": {
          "description": "Spamwatch API Token, Get one from @SpamWatchBot.",
-         "required": false,
+         "required": true,
          "value": ""
       }, 
       "STRICT_GBAN": {
@@ -90,12 +90,12 @@
       "DRAGONS": {
          "description": "A space separated list of user IDs who you want to assign as sudo users.",
          "required": false,
-         "value": "459034222 189005567 660565862 346981140 367222759"
+         "value": ""
       },
       "DEMONS": {
          "description": "A space separated list of user IDs who you wanna assign as support users(gban perms only).",
          "required": false,
-         "value": "615304572"
+         "value": ""
       },
       "TIGERS": {
          "description": "A space separated list of user IDs who you wanna assign as tiger users.",
