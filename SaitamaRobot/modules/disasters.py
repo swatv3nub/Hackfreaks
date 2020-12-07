@@ -20,7 +20,7 @@ ELEVATED_USERS_FILE = os.path.join(os.getcwd(),
 def check_user_id(user_id: int, context: CallbackContext) -> Optional[str]:
     bot = context.bot
     if not user_id:
-        reply = "That...is a chat! baka ka omae?"
+        reply = "That...is a chat! U mad?"
 
     elif user_id == bot.id:
         reply = "This does not work that way."
@@ -28,19 +28,7 @@ def check_user_id(user_id: int, context: CallbackContext) -> Optional[str]:
     else:
         reply = None
     return reply
-
-
-# This can serve as a deeplink example.
-#disasters =
-# """ Text here """
-
-# do not async, not a handler
-#def send_disasters(update):
-#    update.effective_message.reply_text(
-#        disasters, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
-
-### Deep link example ends
-
+  
 
 @run_async
 @dev_plus
@@ -63,16 +51,16 @@ def addsudo(update: Update, context: CallbackContext) -> str:
         data = json.load(infile)
 
     if user_id in DRAGONS:
-        message.reply_text("This member is already a S-RANK Hunter")
+        message.reply_text("This member is already an Elite")
         return ""
 
     if user_id in DEMONS:
-        rt += "Requested HA to promote a A-RANK Hunter to S-RANK."
+        rt += "Requested to promote a Knight to an Elite."
         data['supports'].remove(user_id)
         DEMONS.remove(user_id)
 
     if user_id in WOLVES:
-        rt += "Requested HA to promote a C-RANK Hunter to S-RANK."
+        rt += "Requested to promote a Horsemen to a Knight."
         data['whitelists'].remove(user_id)
         WOLVES.remove(user_id)
 
@@ -83,7 +71,7 @@ def addsudo(update: Update, context: CallbackContext) -> str:
         json.dump(data, outfile, indent=4)
 
     update.effective_message.reply_text(
-        rt + "\nSuccessfully Promoted this user to S-RANK HUNTER".format(
+        rt + "\nSuccessfully Promoted this user to an Elite".format(
             user_member.first_name))
 
     log_message = (
@@ -122,16 +110,16 @@ def addsupport(
         data = json.load(infile)
 
     if user_id in DRAGONS:
-        rt += "Requested SG to deomote thisS-RANK Hunter to A-RANK"
+        rt += "Requested to deomote this Elite to a Knight"
         data['sudos'].remove(user_id)
         DRAGONS.remove(user_id)
 
     if user_id in DEMONS:
-        message.reply_text("This user is already a A-RANK Hunter.")
+        message.reply_text("This user is already a Knight")
         return ""
 
     if user_id in WOLVES:
-        rt += "Requested SG to promote this C-RANK Hunter to A-RANK"
+        rt += "Requested to promote this Horsemen to Knight"
         data['whitelists'].remove(user_id)
         WOLVES.remove(user_id)
 
@@ -142,7 +130,7 @@ def addsupport(
         json.dump(data, outfile, indent=4)
 
     update.effective_message.reply_text(
-        rt + f"\n{user_member.first_name} was added as a A-RANK HUNTER!")
+        rt + f"\n{user_member.first_name} was added as a Knight!")
 
     log_message = (
         f"#SUPPORT\n"
@@ -177,17 +165,17 @@ def addwhitelist(update: Update, context: CallbackContext) -> str:
         data = json.load(infile)
 
     if user_id in DRAGONS:
-        rt += "This member is a  S-RANK, Demoting to C-RANK."
+        rt += "This member is an Elite, Demoting to Horsemen."
         data['sudos'].remove(user_id)
         DRAGONS.remove(user_id)
 
     if user_id in DEMONS:
-        rt += "This user is already a S-RANK Hunter, Demoting to C-RANK."
+        rt += "This user is already an Knite, Demoting to Horsemen."
         data['supports'].remove(user_id)
         DEMONS.remove(user_id)
 
     if user_id in WOLVES:
-        message.reply_text("This user is already a C-RANK Hunter.")
+        message.reply_text("This user is already a HorseMen.")
         return ""
 
     data['whitelists'].append(user_id)
@@ -198,7 +186,7 @@ def addwhitelist(update: Update, context: CallbackContext) -> str:
 
     update.effective_message.reply_text(
         rt +
-        f"\nSuccessfully promoted {user_member.first_name} to a C-RANK Hunter!")
+        f"\nSuccessfully promoted {user_member.first_name} to a Horsemen!")
 
     log_message = (
         f"#WHITELIST\n"
@@ -233,22 +221,22 @@ def addtiger(update: Update, context: CallbackContext) -> str:
         data = json.load(infile)
 
     if user_id in DRAGONS:
-        rt += "This member is a S-RANK Hunter, Demoting to B-RANK."
+        rt += "This member is an Elite, Demoting to Goblin."
         data['sudos'].remove(user_id)
         DRAGONS.remove(user_id)
 
     if user_id in DEMONS:
-        rt += "This user is already a S-RANK Hunter, Demoting to B-RANK."
+        rt += "This user is already a Knight, Demoting to  Goblin."
         data['supports'].remove(user_id)
         DEMONS.remove(user_id)
 
     if user_id in WOLVES:
-        rt += "This user is already a C-RANK Hunter, Demoting to B-RANK."
+        rt += "This user is already a Horsemen, Demoting to Goblin."
         data['whitelists'].remove(user_id)
         WOLVES.remove(user_id)
 
     if user_id in TIGERS:
-        message.reply_text("This user is already a B-RANK Hunter.")
+        message.reply_text("This user is already a Goblin.")
         return ""
 
     data['tigers'].append(user_id)
@@ -259,7 +247,7 @@ def addtiger(update: Update, context: CallbackContext) -> str:
 
     update.effective_message.reply_text(
         rt +
-        f"\nSuccessfully promoted {user_member.first_name} to a B-RANK Hunter!"
+        f"\nSuccessfully promoted {user_member.first_name} to a Goblin!"
     )
 
     log_message = (
@@ -294,7 +282,7 @@ def removesudo(update: Update, context: CallbackContext) -> str:
         data = json.load(infile)
 
     if user_id in DRAGONS:
-        message.reply_text("Requested SG to demote this user to Normal Human")
+        message.reply_text("Requested to demote this user to Normal Human")
         DRAGONS.remove(user_id)
         data['sudos'].remove(user_id)
 
@@ -314,7 +302,7 @@ def removesudo(update: Update, context: CallbackContext) -> str:
         return log_message
 
     else:
-        message.reply_text("This user is not a S-RANK Hunter!")
+        message.reply_text("This user is not an Elite!")
         return ""
 
 
@@ -338,7 +326,7 @@ def removesupport(update: Update, context: CallbackContext) -> str:
         data = json.load(infile)
 
     if user_id in DEMONS:
-        message.reply_text("Requested SG to demote this user to Normal Human")
+        message.reply_text("Requested to demote this user to Normal Human")
         DEMONS.remove(user_id)
         data['supports'].remove(user_id)
 
@@ -357,7 +345,7 @@ def removesupport(update: Update, context: CallbackContext) -> str:
         return log_message
 
     else:
-        message.reply_text("This user is not a A-RANK HUNTER!")
+        message.reply_text("This user is not a Knight!")
         return ""
 
 
@@ -399,7 +387,7 @@ def removewhitelist(update: Update, context: CallbackContext) -> str:
 
         return log_message
     else:
-        message.reply_text("This user is not a C-RANK HUNTER!")
+        message.reply_text("This user is not a Horsemen!")
         return ""
 
 
@@ -441,14 +429,14 @@ def removetiger(update: Update, context: CallbackContext) -> str:
 
         return log_message
     else:
-        message.reply_text("This user is not a B-RANK HUNTER!")
+        message.reply_text("This user is not a Goblin!")
         return ""
 
 
 @run_async
 @whitelist_plus
 def whitelistlist(update: Update, context: CallbackContext):
-    reply = "<b>Known C-RANK HUNTER 🎗:</b>\n"
+    reply = "<b>Known Horsemens ??:</b>\n"
     bot = context.bot
     for each_user in WOLVES:
         user_id = int(each_user)
@@ -464,7 +452,7 @@ def whitelistlist(update: Update, context: CallbackContext):
 @run_async
 @whitelist_plus
 def tigerlist(update: Update, context: CallbackContext):
-    reply = "<b>Known B-RANK HUNTER 🥈:</b>\n"
+    reply = "<b>Known Goblins ??:</b>\n"
     bot = context.bot
     for each_user in TIGERS:
         user_id = int(each_user)
@@ -480,7 +468,7 @@ def tigerlist(update: Update, context: CallbackContext):
 @whitelist_plus
 def supportlist(update: Update, context: CallbackContext):
     bot = context.bot
-    reply = "<b>Known A-RANK HUNTER🥇:</b>\n"
+    reply = "<b>Known Knights ??:</b>\n"
     for each_user in DEMONS:
         user_id = int(each_user)
         try:
@@ -496,7 +484,7 @@ def supportlist(update: Update, context: CallbackContext):
 def sudolist(update: Update, context: CallbackContext):
     bot = context.bot
     true_sudo = list(set(DRAGONS) - set(DEV_USERS))
-    reply = "<b>Known S-RANK Hunter🏅:</b>\n"
+    reply = "<b>Known Elites ??:</b>\n"
     for each_user in true_sudo:
         user_id = int(each_user)
         try:
@@ -512,7 +500,7 @@ def sudolist(update: Update, context: CallbackContext):
 def guild(update: Update, context: CallbackContext):
     bot = context.bot
     true_dev = list(set(DEV_USERS) - {OWNER_ID})
-    reply = "<b>🍁SOLO•GUILD⚡️:</b>\n"
+    reply = "<b>?? My Pro Devs ??:</b>\n"
     for each_user in true_dev:
         user_id = int(each_user)
         try:
@@ -524,92 +512,92 @@ def guild(update: Update, context: CallbackContext):
 
 
 __help__ = f"""
-*⚠️ Notice:*
+*?? Notice:*
 Commands listed here only work for users with special access are mainly used for troubleshooting, debugging purposes.
 Group admins/group owners do not need these commands. 
 
- ╔ *List all special users:*
- ╠ `/S-RANK`*:* Lists all S-RANK HUNTRRS
- ╠ `/A-RANK`*:* Lists all A-RANK HUNTERS
- ╠ `/B-RANK`*:* Lists all B-RANK HUNTERS
- ╠ `/C-RANK`*:* Lists all C-RANK HUNTERS
- ╚ `/guild`*:* Lists all SOLO•GUILD members
+ + *List all special users:*
+ ¦ `/elite`*:* Lists all Elites (Sudo)
+ ¦ `/knight`*:* Lists all Knights (Support)
+ ¦ `/goblin`*:* Lists all Goblins (Whitelisted2.0)
+ ¦ `/horsemen`*:* Lists all Horsemens (Whitelisted1.0)
+ + `/dev`*:* Lists all Devs (No one as of now, Still I am a Noob)
 
- ╔ *Ping:*
- ╠ `/ping`*:* gets ping time of bot to telegram server
- ╚ `/pingall`*:* gets all listed ping times
+ + *Ping:*
+ ¦ `/ping`*:* gets ping time of bot to telegram server
+ + `/pingall`*:* gets all listed ping times
 
- ╔ *Broadcast: (Bot owner only)*
- ╠  *Note:* This supports basic markdown
- ╠ `/broadcastall`*:* Broadcasts everywhere
- ╠ `/broadcastusers`*:* Broadcasts too all users
- ╚ `/broadcastgroups`*:* Broadcasts too all groups
+ + *Broadcast: (Bot owner only)*
+ ¦  *Note:* This supports basic markdown
+ ¦ `/broadcastall`*:* Broadcasts everywhere
+ ¦ `/broadcastusers`*:* Broadcasts too all users
+ + `/broadcastgroups`*:* Broadcasts too all groups
 
- ╔ *Groups Info:*
- ╠ `/groups`*:* List the groups with Name, ID, members count as a txt
- ╚ `/getchats`*:* Gets a list of group names the user has been seen in. Bot owner only
+ + *Groups Info:*
+ ¦ `/groups`*:* List the groups with Name, ID, members count as a txt
+ + `/getchats`*:* Gets a list of group names the user has been seen in. Bot owner only
 
- ╔ *Blacklist:* 
- ╠ `/ignore`*:* Blacklists a user from 
- ╠  using the bot entirely
- ╚ `/notice`*:* Whitelists the user to allow bot usage
+ + *Blacklist:* 
+ ¦ `/ignore`*:* Blacklists a user from 
+ ¦  using the bot entirely
+ + `/notice`*:* Whitelists the user to allow bot usage
 
- ╔ *Speedtest:*
- ╚ `/speedtest`*:* Runs a speedtest and gives you 2 options to choose from, text or image output
+ + *Speedtest:*
+ + `/speedtest`*:* Runs a speedtest and gives you 2 options to choose from, text or image output
 
- ╔ *Global Bans:*
- ╠ `/gban user reason`*:* Globally bans a user
- ╚ `/ungban user reason`*:* Unbans the user from the global bans list
+ + *Global Bans:*
+ ¦ `/gban user reason`*:* Globally bans a user
+ + `/ungban user reason`*:* Unbans the user from the global bans list
 
- ╔ *Module loading:*
- ╠ `/listmodules`*:* Lists names of all modules
- ╠ `/load modulename`*:* Loads the said module to 
- ╠   memory without restarting.
- ╠ `/unload modulename`*:* Loads the said module from
- ╚   memory without restarting.memory without restarting the bot 
+ + *Module loading:*
+ ¦ `/listmodules`*:* Lists names of all modules
+ ¦ `/load modulename`*:* Loads the said module to 
+ ¦   memory without restarting.
+ ¦ `/unload modulename`*:* Unoads the said module from
+ +   memory without restarting bot 
 
- ╔ *Remote commands:*
- ╠ `/rban user group`*:* Remote ban
- ╠ `/runban user group`*:* Remote un-ban
- ╠ `/rpunch user group`*:* Remote punch
- ╠ `/rmute user group`*:* Remote mute
- ╠ `/runmute user group`*:* Remote un-mute
- ╚ `/ginfo username/link/ID`*:* Pulls info panel for entire group
+ + *Remote commands:*
+ ¦ `/rban user groupid`*:* Remote ban
+ ¦ `/runban user groupid`*:* Remote un-ban
+ ¦ `/rpunch user groupid`*:* Remote punch
+ ¦ `/rmute user groupid`*:* Remote mute
+ ¦ `/runmute user groupid`*:* Remote un-mute
+ + `/ginfo username/link/ID`*:* GroupInfo, Pulls info panel for entire group
 
- ╔ *Windows self hosted only:*
- ╠ `/reboot`*:* Restarts the bots service
- ╚ `/gitpull`*:* Pulls the repo and then restarts the bots service
+ + *Windows self hosted only:*
+ ¦ `/reboot`*:* Restarts the bots service
+ + `/gitpull`*:* Pulls the repo and then restarts the bots service
 
- ╔ *Chatbot:* 
- ╚ `/listaichats`*:* Lists the chats the chatmode is enabled in
+ + *Chatbot:* 
+ + `/listaichats`*:* Lists the chats the chatmode is enabled in
  
- ╔ *Debugging and Shell:* 
- ╠ `/debug <on/off>`*:* Logs commands to updates.txt
- ╠ `/logs`*:* Run this in support group to get logs in pm
- ╠ `/eval`*:* Self explanatory
- ╠ `/sh`*:* Self explanator
- ╚ `/py`*:* Self explanatory
+ + *Debugging and Shell:* 
+ ¦ `/debug <on/off>`*:* Logs commands to updates.txt
+ ¦ `/logs`*:* Run this in support group to get logs in pm
+ ¦ `/eval`*:* Are U a Supaar Nuub, Saar
+ ¦ `/sh`*:* Are U a Supaar Nuub, Saar
+ + `/py`*:* Are U a Supaar Nuub, Saar
 
 Visit @{SUPPORT_CHAT} for more information.
 """
 
-SUDO_HANDLER = CommandHandler(("addsudo", "addsrank"), addsudo)
-SUPPORT_HANDLER = CommandHandler(("addsupport", "addarank"), addsupport)
-TIGER_HANDLER = CommandHandler(("addbrank"), addtiger)
-WHITELIST_HANDLER = CommandHandler(("addwhitelist", "addcrank"), addwhitelist)
-UNSUDO_HANDLER = CommandHandler(("removesudo", "removebrank"), removesudo)
-UNSUPPORT_HANDLER = CommandHandler(("removesupport", "removearank"),
+SUDO_HANDLER = CommandHandler(("addsudo", "addelite"), addsudo)
+SUPPORT_HANDLER = CommandHandler(("addsupport", "addknight"), addsupport)
+TIGER_HANDLER = CommandHandler(("addgoblin"), addtiger)
+WHITELIST_HANDLER = CommandHandler(("addwhitelist", "addhorsemen"), addwhitelist)
+UNSUDO_HANDLER = CommandHandler(("removesudo", "removeelite"), removesudo)
+UNSUPPORT_HANDLER = CommandHandler(("removesupport", "removeknight"),
                                    removesupport)
-UNTIGER_HANDLER = CommandHandler(("removebrank"), removetiger)
-UNWHITELIST_HANDLER = CommandHandler(("removewhitelist", "removecrank"),
+UNTIGER_HANDLER = CommandHandler(("removegoblin"), removetiger)
+UNWHITELIST_HANDLER = CommandHandler(("removewhitelist", "removehorsemen"),
                                      removewhitelist)
 
-WHITELISTLIST_HANDLER = CommandHandler(["whitelistlist", "crank"],
+WHITELISTLIST_HANDLER = CommandHandler(["whitelistlist", "horsemen"],
                                        whitelistlist)
-TIGERLIST_HANDLER = CommandHandler(["brank"], tigerlist)
-SUPPORTLIST_HANDLER = CommandHandler(["supportlist", "arank"], supportlist)
-SUDOLIST_HANDLER = CommandHandler(["sudolist", "srank"], sudolist)
-GUILD_HANDLER = CommandHandler(["guild", "guild"], guild)
+TIGERLIST_HANDLER = CommandHandler(["goblin"], tigerlist)
+SUPPORTLIST_HANDLER = CommandHandler(["supportlist", "knight"], supportlist)
+SUDOLIST_HANDLER = CommandHandler(["sudolist", "elite"], sudolist)
+GUILD_HANDLER = CommandHandler(["guild", "dev"], guild)
 
 dispatcher.add_handler(SUDO_HANDLER)
 dispatcher.add_handler(SUPPORT_HANDLER)
@@ -626,7 +614,7 @@ dispatcher.add_handler(SUPPORTLIST_HANDLER)
 dispatcher.add_handler(SUDOLIST_HANDLER)
 dispatcher.add_handler(GUILD_HANDLER)
 
-__mod_name__ = "HUNTERS"
+__mod_name__ = "Fighters"
 __handlers__ = [
     SUDO_HANDLER, SUPPORT_HANDLER, TIGER_HANDLER, WHITELIST_HANDLER,
     UNSUDO_HANDLER, UNSUPPORT_HANDLER, UNTIGER_HANDLER, UNWHITELIST_HANDLER,
