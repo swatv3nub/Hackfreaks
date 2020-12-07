@@ -51,11 +51,28 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-Hello {},My Name is {}!
-I am HACKFREAKS.
-I will help you manage your group.
-To know what I can do, type/click /help.
+Hi {}, my name is {}! 
+I am a Pro group management bot, with some more features.
+I'm here to make your group management fun and easy!
+I have lots of handy features, such as Flood Control, Spam Protection, A Warning/Banning System, A Note Keeping System, and even replies with INTELLIVOID AI.
+Please Use /help command For Assistance And Help Regarding Special Modules
+You can find the list of available commands with Help Module.
+Any issues or need help related to me?
+==========================
+âœ— [Updates Channel](t.me/HackfreaksUpdates)
+âœ— [Support Group](t.me/HackfreaksSupport)
+Maintained by @TheFuckErGuy
+Wanna Add me to your Group? Just click the button below!
 """
+
+buttons = [
+    [
+        InlineKeyboardButton(
+            text="Repository", url="https://github.com/swatv3nub/Hackfreaks"
+        ),
+        InlineKeyboardButton(text="Add Me to a group âž•", url="https://t.me/MrHackfreaksRobot?startgroup=true"),
+    ]
+]
 
 HELP_STRINGS = """
 Hey there! My name is *{}*.
