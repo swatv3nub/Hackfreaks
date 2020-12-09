@@ -75,7 +75,7 @@ def addsudo(update: Update, context: CallbackContext) -> str:
             user_member.first_name))
 
     log_message = (
-        f"#SUDO\n"
+        f"#ELITE\n"
         f"<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))}\n"
         f"<b>User:</b> {mention_html(user_member.id, html.escape(user_member.first_name))}"
     )
@@ -133,7 +133,7 @@ def addsupport(
         rt + f"\n{user_member.first_name} was added as a Knight!")
 
     log_message = (
-        f"#SUPPORT\n"
+        f"#KNIGHT\n"
         f"<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))}\n"
         f"<b>User:</b> {mention_html(user_member.id, html.escape(user_member.first_name))}"
     )
@@ -189,7 +189,7 @@ def addwhitelist(update: Update, context: CallbackContext) -> str:
         f"\nSuccessfully promoted {user_member.first_name} to a Horsemen!")
 
     log_message = (
-        f"#WHITELIST\n"
+        f"#HORSEMEN\n"
         f"<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))} \n"
         f"<b>User:</b> {mention_html(user_member.id, html.escape(user_member.first_name))}"
     )
@@ -251,7 +251,7 @@ def addtiger(update: Update, context: CallbackContext) -> str:
     )
 
     log_message = (
-        f"#TIGER\n"
+        f"#GOBLIN\n"
         f"<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))} \n"
         f"<b>User:</b> {mention_html(user_member.id, html.escape(user_member.first_name))}"
     )
@@ -290,7 +290,7 @@ def removesudo(update: Update, context: CallbackContext) -> str:
             json.dump(data, outfile, indent=4)
 
         log_message = (
-            f"#UNSUDO\n"
+            f"#DIS-ELITED\n"
             f"<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))}\n"
             f"<b>User:</b> {mention_html(user_member.id, html.escape(user_member.first_name))}"
         )
@@ -334,7 +334,7 @@ def removesupport(update: Update, context: CallbackContext) -> str:
             json.dump(data, outfile, indent=4)
 
         log_message = (
-            f"#UNSUPPORT\n"
+            f"#DIS-KNIGHTED\n"
             f"<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))}\n"
             f"<b>User:</b> {mention_html(user_member.id, html.escape(user_member.first_name))}"
         )
@@ -377,7 +377,7 @@ def removewhitelist(update: Update, context: CallbackContext) -> str:
             json.dump(data, outfile, indent=4)
 
         log_message = (
-            f"#UNWHITELIST\n"
+            f"#DIS-HORSEMEN\n"
             f"<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))}\n"
             f"<b>User:</b> {mention_html(user_member.id, html.escape(user_member.first_name))}"
         )
@@ -419,7 +419,7 @@ def removetiger(update: Update, context: CallbackContext) -> str:
             json.dump(data, outfile, indent=4)
 
         log_message = (
-            f"#UNTIGER\n"
+            f"#DIS-GOBLIN\n"
             f"<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))}\n"
             f"<b>User:</b> {mention_html(user_member.id, html.escape(user_member.first_name))}"
         )
@@ -500,7 +500,7 @@ def sudolist(update: Update, context: CallbackContext):
 def guild(update: Update, context: CallbackContext):
     bot = context.bot
     true_dev = list(set(DEV_USERS) - {OWNER_ID})
-    reply = "<b>?? My Pro Devs :</b>\n"
+    reply = "<b>My Pro Devs :</b>\n"
     for each_user in true_dev:
         user_id = int(each_user)
         try:
