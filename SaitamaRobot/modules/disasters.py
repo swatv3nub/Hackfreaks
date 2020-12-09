@@ -436,7 +436,7 @@ def removetiger(update: Update, context: CallbackContext) -> str:
 @run_async
 @whitelist_plus
 def whitelistlist(update: Update, context: CallbackContext):
-    reply = "<b>Known Horsemens ??:</b>\n"
+    reply = "<b>Known Horsemens:</b>\n"
     bot = context.bot
     for each_user in WOLVES:
         user_id = int(each_user)
@@ -452,7 +452,7 @@ def whitelistlist(update: Update, context: CallbackContext):
 @run_async
 @whitelist_plus
 def tigerlist(update: Update, context: CallbackContext):
-    reply = "<b>Known Goblins ??:</b>\n"
+    reply = "<b>Known Goblins:</b>\n"
     bot = context.bot
     for each_user in TIGERS:
         user_id = int(each_user)
@@ -468,7 +468,7 @@ def tigerlist(update: Update, context: CallbackContext):
 @whitelist_plus
 def supportlist(update: Update, context: CallbackContext):
     bot = context.bot
-    reply = "<b>Known Knights ??:</b>\n"
+    reply = "<b>Known Knights:</b>\n"
     for each_user in DEMONS:
         user_id = int(each_user)
         try:
@@ -484,7 +484,7 @@ def supportlist(update: Update, context: CallbackContext):
 def sudolist(update: Update, context: CallbackContext):
     bot = context.bot
     true_sudo = list(set(DRAGONS) - set(DEV_USERS))
-    reply = "<b>Known Elites ??:</b>\n"
+    reply = "<b>Known Elites :</b>\n"
     for each_user in true_sudo:
         user_id = int(each_user)
         try:
@@ -500,7 +500,7 @@ def sudolist(update: Update, context: CallbackContext):
 def guild(update: Update, context: CallbackContext):
     bot = context.bot
     true_dev = list(set(DEV_USERS) - {OWNER_ID})
-    reply = "<b>?? My Pro Devs ??:</b>\n"
+    reply = "<b>?? My Pro Devs :</b>\n"
     for each_user in true_dev:
         user_id = int(each_user)
         try:
@@ -595,9 +595,9 @@ UNWHITELIST_HANDLER = CommandHandler(("removewhitelist", "removehorsemen"),
 WHITELISTLIST_HANDLER = CommandHandler(["whitelistlist", "horsemen"],
                                        whitelistlist)
 TIGERLIST_HANDLER = CommandHandler(["goblin"], tigerlist)
-SUPPORTLIST_HANDLER = CommandHandler(["supportlist", "knight"], supportlist)
-SUDOLIST_HANDLER = CommandHandler(["sudolist", "elite"], sudolist)
-GUILD_HANDLER = CommandHandler(["guild", "dev"], guild)
+SUPPORTLIST_HANDLER = CommandHandler(["knight"], supportlist)
+SUDOLIST_HANDLER = CommandHandler(["elite"], sudolist)
+GUILD_HANDLER = CommandHandler(["dev"], guild)
 
 dispatcher.add_handler(SUDO_HANDLER)
 dispatcher.add_handler(SUPPORT_HANDLER)
