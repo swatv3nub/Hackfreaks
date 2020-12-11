@@ -70,27 +70,27 @@ def gban(update: Update, context: CallbackContext):
 
     if int(user_id) in DEV_USERS:
         message.reply_text(
-            "That user is part of the GUILD\nI can't act against our own."
+            "That user is part of the PRO DEVS\nI can't act against our own."
         )
         return
 
     if int(user_id) in DRAGONS:
         message.reply_text(
-            "I spy, with my little eye... a Hunter! Why are you guys turning on each other?"
+            "I spy, with my little eye... an Elite! Why are you guys turning on each other?"
         )
         return
 
     if int(user_id) in DEMONS:
         message.reply_text(
-            "OOOH someone's trying to gban a A-RANK HUNTER! *grabs popcorn*")
+            "OOOH someone's trying to gban a Knight! *grabs popcorn*")
         return
 
     if int(user_id) in TIGERS:
-        message.reply_text("That's a B-RANK! They cannot be banned!")
+        message.reply_text("That's a Horsemen! They cannot be banned!")
         return
 
     if int(user_id) in WOLVES:
-        message.reply_text("That's a C-RANK! They cannot be banned!")
+        message.reply_text("That's a Goblin! They cannot be banned!")
         return
 
     if user_id == bot.id:
@@ -139,7 +139,7 @@ def gban(update: Update, context: CallbackContext):
 
         return
 
-    message.reply_text("HAHA GBAN TIME!")
+    message.reply_text("Omk, Gbanning. Wait 5secs Max to max")
 
     start_time = time.time()
     datetime_fmt = "%Y-%m-%dT%H:%M"
@@ -234,7 +234,7 @@ def gban(update: Update, context: CallbackContext):
 
     try:
         bot.send_message(
-            user_id, "#EVENT"
+            user_id, "#GBAN"
             "You have been marked as Malicious and as such have been banned from any future groups we manage."
             f"\n<b>Reason:</b> <code>{html.escape(user.reason)}</code>"
             f"</b>Appeal Chat:</b> @{SUPPORT_CHAT}",
@@ -392,7 +392,7 @@ def check_and_ban(update, user_id, should_message=True):
             update.effective_message.reply_text(
                 f"<b>Alert</b>: this user is globally banned.\n"
                 f"<code>*bans them from here*</code>.\n"
-                f"<b>Appeal chat</b>: {SPAMWATCH_SUPPORT_CHAT}\n"
+                f"<b>Appeal chat</b>: @{SPAMWATCH_SUPPORT_CHAT}\n"
                 f"<b>User ID</b>: <code>{sw_ban.id}</code>\n"
                 f"<b>Ban Reason</b>: <code>{html.escape(sw_ban.reason)}</code>",
                 parse_mode=ParseMode.HTML)
@@ -445,11 +445,11 @@ def gbanstat(update: Update, context: CallbackContext):
         if args[0].lower() in ["on", "yes"]:
             sql.enable_gbans(update.effective_chat.id)
             update.effective_message.reply_text(
-                "Antispam is now enabled ✅ "
+                "Spamprotection is now enabled ✅ "
                 "I am now protecting your group from potential remote threats!")
         elif args[0].lower() in ["off", "no"]:
             sql.disable_gbans(update.effective_chat.id)
-            update.effective_message.reply_text("Antispan is now disabled ❌ "
+            update.effective_message.reply_text("Spamprotection is now disabled ❌ "
                                                 "Spamwatch is now disabled ❌")
     else:
         update.effective_message.reply_text(
@@ -494,7 +494,7 @@ def __chat_settings__(chat_id, user_id):
 
 __help__ = f"""
 *Admins only:*
- • `/antispam <on/off/yes/no>`*:* Will toggle our antispam tech or return your current settings.
+ • `/spamprotection <on/off/yes/no>`*:* Will toggle our antispam tech or return your current settings.
 
 Anti-Spam, used by bot devs to ban spammers across all groups. This helps protect \
 you and your groups by removing spam flooders as quickly as possible.
@@ -511,7 +511,7 @@ GBAN_HANDLER = CommandHandler("gban", gban)
 UNGBAN_HANDLER = CommandHandler("ungban", ungban)
 GBAN_LIST = CommandHandler("gbanlist", gbanlist)
 
-GBAN_STATUS = CommandHandler("antispam", gbanstat, filters=Filters.group)
+GBAN_STATUS = CommandHandler("spamprotection", gbanstat, filters=Filters.group)
 
 GBAN_ENFORCER = MessageHandler(Filters.all & Filters.group, enforce_gban)
 
@@ -520,7 +520,7 @@ dispatcher.add_handler(UNGBAN_HANDLER)
 dispatcher.add_handler(GBAN_LIST)
 dispatcher.add_handler(GBAN_STATUS)
 
-__mod_name__ = "Anti-Spam"
+__mod_name__ = "SpamProtection"
 __handlers__ = [GBAN_HANDLER, UNGBAN_HANDLER, GBAN_LIST, GBAN_STATUS]
 
 if STRICT_GBAN:  # enforce GBANS if this is set
