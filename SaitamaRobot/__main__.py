@@ -200,7 +200,11 @@ def start(update: Update, context: CallbackContext):
                               text="🔥Add Hackfreaks To Your Group🔥",
                               url="t.me/{}?startgroup=true".format(
                                   context.bot.username))
-                          ], 
+                          ], [
+                              InlineKeyboardButton(
+                              text="About Project Hackfreaks", 
+                              url="https://t.me/ProjectHackfreaks"
+        )],
                           [
                               InlineKeyboardButton(
                               text="🍁Support Group🍁",
