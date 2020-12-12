@@ -54,13 +54,15 @@ PM_START_TEXT = """
 Hi {}, my name is {}! 
 I am a Pro group management bot, with some more features.
 I'm here to make your group management fun and easy!
-I have lots of handy features, such as Flood Control, Spam Protection, A Warning/Banning System, A Note Keeping System, and even replies with INTELLIVOID AI.
+I have lots of handy features, such as Flood Control, Spam Protection, A Warning/Banning System, A Note Keeping System, and even replies with INTELLIVOID ChatBot API.
 Please Use /help command For Assistance And Help Regarding Special Modules
 You can find the list of available commands with Help Module.
 Any issues or need help related to me?
 ==========================
-âœ— [Updates Channel](t.me/HackfreaksUpdates)
-âœ— [Support Group](t.me/HackfreaksSupport)
+X— [Updates Channel](t.me/HackfreaksUpdates).
+X— [Support Group](t.me/HackfreaksSupport).
+X— [Repository](github.com/swatv3nub/Hackfreaks),Full Of Bugs.
+
 Maintained by @TheFuckErGuy
 Wanna Add me to your Group? Just click the button below!
 """
@@ -68,7 +70,7 @@ Wanna Add me to your Group? Just click the button below!
 buttons = [
     [
         InlineKeyboardButton(
-            text="Repository", url="https://github.com/swatv3nub/Hackfreaks"
+            text="About Project Hackfreaks", url="https://t.me/ProjectHackfreaks"
         ),
         InlineKeyboardButton(text="Add Me to a group âž•", url="https://t.me/MrHackfreaksRobot?startgroup=true"),
     ]
