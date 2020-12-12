@@ -59,9 +59,9 @@ Please Use /help command For Assistance And Help Regarding Special Modules
 You can find the list of available commands with Help Module.
 Any issues or need help related to me?
 ==========================
-X— [Updates Channel](t.me/HackfreaksUpdates).
-X— [Support Group](t.me/HackfreaksSupport).
-X— [Repository](github.com/swatv3nub/Hackfreaks),Full Of Bugs.
+✗ [Updates Channel](t.me/HackfreaksUpdates).
+✗ [Support Group](t.me/HackfreaksSupport).
+✗ [Repository](github.com/swatv3nub/Hackfreaks),Full Of Bugs.
 
 Maintained by @TheFuckErGuy
 Wanna Add me to your Group? Just click the button below!
