@@ -1,5 +1,3 @@
-#Written by @Surv_ivor, Further Edited by @TheFSociety2_0
-
 import html
 from io import BytesIO
 from typing import Optional, List
@@ -338,7 +336,7 @@ def gmutestat(bot: Bot, update: Update, args: List[str]):
 
 
 def __stats__():
-    return "{} gmuted users.".format(sql.num_gmuted_users())
+    return "{}• Gmuted Users.".format(sql.num_gmuted_users())
 
 
 def __user_info__(user_id):
