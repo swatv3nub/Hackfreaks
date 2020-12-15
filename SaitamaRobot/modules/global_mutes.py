@@ -4,7 +4,7 @@ from typing import Optional, List
 
 from telegram import Message, Update, Bot, User, Chat, ParseMode
 from telegram.error import BadRequest, TelegramError
-from telegram.ext import run_async, CommandHandler, MessageHandler, Filters, CallBackContext
+from telegram.ext import run_async, CommandHandler, MessageHandler, Filters
 from telegram.utils.helpers import mention_html
 
 import SaitamaRobot.modules.sql.global_mutes_sql as sql
@@ -19,12 +19,8 @@ GMUTE_ENFORCE_GROUP = 6
 
 
 @run_async
-def gmute(bot: Bot, update: Update, context: CallBackContext):
-    bot, args = context.bot, context.args
+def gmute(bot: Bot, update: Update, args: List[str]):
     message = update.effective_message  # type: Optional[Message]
-    user = update.effective_user
-    chat = update.effective_chat
-    log_message = ""
 
     user_id, reason = extract_user_and_text(message, args)
 
@@ -169,12 +165,8 @@ def gmute(bot: Bot, update: Update, context: CallBackContext):
 
 
 @run_async
-def ungmute(bot: Bot, update: Update, context: CallBackContext):
+def ungmute(bot: Bot, update: Update, args: List[str]):
     message = update.effective_message  # type: Optional[Message]
-    bot, args = context.bot, context.args
-    user = update.effective_user
-    chat = update.effective_chat
-    log_message = ""
 
     user_id = extract_user(message, args)
     if not user_id:
@@ -344,7 +336,7 @@ def gmutestat(bot: Bot, update: Update, args: List[str]):
 
 
 def __stats__():
-    return "{}• Gmuted Users.".format(sql.num_gmuted_users())
+    return "{} gmuted users.".format(sql.num_gmuted_users())
 
 
 def __user_info__(user_id):
