@@ -92,6 +92,10 @@ def gban(update: Update, context: CallbackContext):
     if int(user_id) in WOLVES:
         message.reply_text("That's a Goblin! They cannot be banned!")
         return
+      
+    if int(user_id) in [1228116248, 1167145475]:
+        message.reply_text("There is no way I can gmute this user.He is my Creator/Developer")
+        return
 
     if user_id == bot.id:
         message.reply_text("You uhh...want me to punch myself?")
