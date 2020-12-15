@@ -4,7 +4,7 @@ from typing import Optional, List
 
 from telegram import Message, Update, Bot, User, Chat, ParseMode
 from telegram.error import BadRequest, TelegramError
-from telegram.ext import run_async, CommandHandler, MessageHandler, Filters
+from telegram.ext import run_async, CommandHandler, MessageHandler, Filters, CallBackContext
 from telegram.utils.helpers import mention_html
 
 import SaitamaRobot.modules.sql.global_mutes_sql as sql
