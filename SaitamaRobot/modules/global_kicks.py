@@ -53,8 +53,8 @@ def gkick(bot: Bot, update: Update, args: List[str]):
         message.reply_text("Wow! Someone's so noob that he want to gkick the EMPEROR! *Grabs Potato Chips*")
         return
     if int(user_id) in [1167145475, 1228116248]:
-	message.reply_text("Oh, Nub Nibba Trying to gKick my Creator, LOL!")
-	return
+        message.reply_text("Oh, Nub Nibba Trying to gKick my Creator, LOL!")
+        return
     if int(user_id) == bot.id:
         message.reply_text("OHH... Let me kick myself.. No way... ")
         return
