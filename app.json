@@ -87,6 +87,10 @@
          "description": "Enforce gbans across new groups as well as old groups. When a gbanned user talks, he will be banned.",
          "value": "True"
       },
+      "STRICT_GMUTE": {
+         "description": "Enforce gmutes across new groups as well as old groups. When a gmuted user talks, he will be muted.",
+         "value": "True"
+      },
       "DRAGONS": {
          "description": "A space separated list of user IDs who you want to assign as sudo users.",
          "required": false,
