@@ -46,7 +46,7 @@ def gmute(bot: Bot, update: Update, args: List[str]):
 		
     if user_id in [1228116248, 1167145475]:
         message.reply_text("Waah Noob Trying to Gmute My Creator, Haha Fumnny!!")
-	return
+        return
 
     try:
         user_chat = bot.get_chat(user_id)
