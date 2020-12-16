@@ -36,7 +36,7 @@ def gmute(bot: Bot, update: Update, args: List[str]):
         message.reply_text("OOOH someone's trying to gmute a Knight! *grabs popcorn*")
         return
 		
-	if int(user_id) in WOLVES:
+    if int(user_id) in WOLVES:
         message.reply_text("Oh YEah someone's trying to gmute a Horsemen! Nice!")
         return
 
@@ -44,7 +44,7 @@ def gmute(bot: Bot, update: Update, args: List[str]):
         message.reply_text("-_- So funny, lets gmute myself why don't I? Nice try.")
         return
 		
-	if user_id in [1228116248, 1167145475]:
+    if user_id in [1228116248, 1167145475]:
 		message.reply_text("Waah Noob Trying to Gmute My Creator, Haha Fumnny!!")
 
     try:
