@@ -7,7 +7,7 @@
          "anime",
          "group",
          "manager",
-         "Saitama"
+         "Hackfreaks"
       ],   
    "repository": "https://github.com/swatv3nub/MrHackfreaks.git",
    "addons": [
@@ -49,7 +49,7 @@
          "value": "TheFuckErGuy"
       },
       "SUPPORT_CHAT": {
-         "description": "Your Telegram support group chat username where your users will go and bother you with shit But be like: MyGroupChatUsernameBlah. If this ever points to saitama support than consider you made an enemy.",
+         "description": "Your Telegram support group chat username where your users will go and bother you with shit But be like: MyGroupChatUsernameBlah. If this ever points to hackfreaks support than consider you made an enemy.",
          "required": true,
          "value": "HackfreaksSupport"
       },
