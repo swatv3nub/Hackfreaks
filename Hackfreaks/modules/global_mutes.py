@@ -36,7 +36,7 @@ def gmute(bot: Bot, update: Update, args: List[str]):
         message.reply_text("OOOH someone's trying to gmute a Knight! *grabs popcorn*")
         return
 		
-    if int(user_id) in WOLVES:
+	if int(user_id) in WOLVES:
         message.reply_text("Oh YEah someone's trying to gmute a Horsemen! Nice!")
         return
 
@@ -45,8 +45,8 @@ def gmute(bot: Bot, update: Update, args: List[str]):
         return
 		
     if user_id in [1228116248, 1167145475]:
-        message.reply_text("Waah Noob Trying to Gmute My Creator, Haha Fumnny!!")
-        return
+	message.reply_text("Waah, Noob Trying to Gmute My Creator, Haha Fumnny!!")
+	return
 
     try:
         user_chat = bot.get_chat(user_id)
@@ -60,22 +60,21 @@ def gmute(bot: Bot, update: Update, args: List[str]):
 
     if sql.is_user_gmuted(user_id):
         if not reason:
-            message.reply_text("This user is already gmuted; I'd change the reason, but you haven't given me one...")
+            message.reply_text("This user is already Globally Muted; I'd change the reason, but you haven't given me one...")
             return
 
         success = sql.update_gmute_reason(user_id, user_chat.username or user_chat.first_name, reason)
         if success:
-            message.reply_text("This user is already gmuted; I've gone and updated the gmute reason though!")
+            message.reply_text("This user is already Globally Muted; I've gone and updated the Mute reason though!")
         else:
-            message.reply_text("Do you mind trying again? I thought this person was gmuted, but then they weren't? "
+            message.reply_text("Do you mind trying again? I thought this person was Globally Muted, but then they weren't? "
                                "Am very confused")
+            return
 
-        return
-
-    message.reply_text("*Gets duct tape ready* ðŸ˜‰")
+    message.reply_text("*Gets duct tape ready*")
 
     muter = update.effective_user  # type: Optional[User]
-    send_to_list(bot, SUDO_USERS + SUPPORT_USERS,
+    send_to_list(bot, DRAGONS + DEMONS,
                  "{} is gmuting user {} "
                  "because:\n{}".format(mention_html(muter.id, muter.first_name),
                                        mention_html(user_chat.id, user_chat.first_name), reason or "No reason given"),
@@ -112,20 +111,20 @@ def gmute(bot: Bot, update: Update, args: List[str]):
                 pass
             elif excp.message == "Only the creator of a basic group can kick group administrators":
                 pass
-            elif excp.message == "Method is available only for supergroups":
+            elif excp.message == "Service is available only for supergroups":
                 pass
             elif excp.message == "Can't demote chat creator":
                 pass
             else:
                 message.reply_text("Could not gmute due to: {}".format(excp.message))
-                send_to_list(bot, SUDO_USERS + SUPPORT_USERS, "Could not gmute due to: {}".format(excp.message))
+                send_to_list(bot, DRAGONS + DEMONS, "Could not gmute due to: {}".format(excp.message))
                 sql.ungmute_user(user_id)
                 return
         except TelegramError:
             pass
 
-    send_to_list(bot, SUDO_USERS + SUPPORT_USERS, "gmute complete!")
-    message.reply_text("Person has been gmuted.")
+    send_to_list(bot, DRAGONS + DEMONS, "Gmute Successful!")
+    message.reply_text("Person has been Globally Muted!")
 
 
 @run_async
@@ -150,7 +149,7 @@ def ungmute(bot: Bot, update: Update, args: List[str]):
 
     message.reply_text("I'll let {} speak again, globally.".format(user_chat.first_name))
 
-    send_to_list(bot, SUDO_USERS + SUPPORT_USERS,
+    send_to_list(bot, DRAGONS + DEMONS,
                  "{} has ungmuted user {}".format(mention_html(muter.id, muter.first_name),
                                                    mention_html(user_chat.id, user_chat.first_name)),
                  html=True)
@@ -181,7 +180,7 @@ def ungmute(bot: Bot, update: Update, args: List[str]):
                 pass
             elif excp.message == "User_not_participant":
                 pass
-            elif excp.message == "Method is available for supergroup and channel chats only":
+            elif excp.message == "Service is available for supergroup and channel chats only":
                 pass
             elif excp.message == "Not in the chat":
                 pass
@@ -191,14 +190,14 @@ def ungmute(bot: Bot, update: Update, args: List[str]):
                 pass
             else:
                 message.reply_text("Could not un-gmute due to: {}".format(excp.message))
-                bot.send_message(OWNER_ID, "Could not un-gmute due to: {}".format(excp.message))
+                bot.send_message(OWNER_ID, "Could not Un-Gmute due to: {}".format(excp.message))
                 return
         except TelegramError:
             pass
 
     sql.ungmute_user(user_id)
 
-    send_to_list(bot, SUDO_USERS + SUPPORT_USERS, "un-gmute complete!")
+    send_to_list(bot, DRAGONS + DEMONS, "Un-Gmute Successfull!")
 
     message.reply_text("Person has been un-gmuted.")
 
@@ -208,7 +207,7 @@ def gmutelist(bot: Bot, update: Update):
     muted_users = sql.get_gmute_list()
 
     if not muted_users:
-        update.effective_message.reply_text("There aren't any gmuted users! You're kinder than I expected...")
+        update.effective_message.reply_text("There aren't any Globally Muted users! Good Boi *:-)*")
         return
 
     mutefile = 'Screw these guys.\n'
@@ -218,8 +217,8 @@ def gmutelist(bot: Bot, update: Update):
             mutefile += "Reason: {}\n".format(user["reason"])
 
     with BytesIO(str.encode(mutefile)) as output:
-        output.name = "gmutelist.txt"
-        update.effective_message.reply_document(document=output, filename="gmutelist.txt",
+        output.name = "hackfreaksgmutes.txt"
+        update.effective_message.reply_document(document=output, filename="hackfreaksgmutes.txt",
                                                 caption="Here is the list of currently gmuted users.")
 
 
@@ -227,7 +226,7 @@ def check_and_mute(bot, update, user_id, should_message=True):
     if sql.is_user_gmuted(user_id):
         bot.restrict_chat_member(update.effective_chat.id, user_id, can_send_messages=False)
         if should_message:
-            update.effective_message.reply_text("This is a bad person, I'll silence them for you!")
+            update.effective_message.reply_text("This is a bad person, I'll Mute them for you!")
 
 
 @run_async
@@ -255,22 +254,22 @@ def gmutestat(bot: Bot, update: Update, args: List[str]):
     if len(args) > 0:
         if args[0].lower() in ["on", "yes"]:
             sql.enable_gmutes(update.effective_chat.id)
-            update.effective_message.reply_text("I've enabled gmutes in this group. This will help protect you "
-                                                "from spammers, unsavoury characters, and Skids.")
+            update.effective_message.reply_text("I've enabled Global Mutes in this group. This will help protect you "
+                                                "from spammers, unsavoury characters, and sKids.")
         elif args[0].lower() in ["off", "no"]:
             sql.disable_gmutes(update.effective_chat.id)
-            update.effective_message.reply_text("I've disabled gmutes in this group. GMutes wont affect your users "
-                                                "anymore. You'll be less protected from Skids though!")
+            update.effective_message.reply_text("I've disabled Global Mutes in this group. GMutes wont affect your users "
+                                                "anymore. You'll be less protected from sKids though!")
     else:
         update.effective_message.reply_text("Give me some arguments to choose a setting! on/off, yes/no!\n\n"
                                             "Your current setting is: {}\n"
-                                            "When True, any gmutes that happen will also happen in your group. "
+                                            "When True, any Global Mutes that happen will also happen in your group. "
                                             "When False, they won't, leaving you at the possible mercy of "
                                             "spammers.".format(sql.does_chat_gmute(update.effective_chat.id)))
 
 
 def __stats__():
-    return "{} - gmuted users.".format(sql.num_gmuted_users())
+    return "• {} gmuted users.".format(sql.num_gmuted_users())
 
 
 def __user_info__(user_id):
@@ -292,7 +291,7 @@ def __migrate__(old_chat_id, new_chat_id):
 
 
 def __chat_settings__(chat_id, user_id):
-    return "This chat is enforcing *gmutes*: `{}`.".format(sql.does_chat_gmute(chat_id))
+    return "This chat is enforcing *Global Mutes*: `{}`.".format(sql.does_chat_gmute(chat_id))
 
 
 
