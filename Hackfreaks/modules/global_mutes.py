@@ -36,7 +36,7 @@ def gmute(bot: Bot, update: Update, args: List[str]):
         message.reply_text("OOOH someone's trying to gmute a Knight! *grabs popcorn*")
         return
 		
-	if int(user_id) in WOLVES:
+    if int(user_id) in WOLVES:
         message.reply_text("Oh YEah someone's trying to gmute a Horsemen! Nice!")
         return
 
