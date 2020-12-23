@@ -342,7 +342,7 @@ def del_blacklist(update, context):
     to_match = extract_text(message)
     if not to_match:
         return
-    if app.is_approved(chat.id, user.id):
+    if user.is_approved(chat.id, user.id):
         return
     getmode, value = sql.get_blacklist_setting(chat.id)
 
