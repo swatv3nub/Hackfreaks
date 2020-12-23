@@ -7,6 +7,7 @@ from telegram.ext import CommandHandler, MessageHandler, Filters, run_async
 from telegram.utils.helpers import mention_html
 
 import Hackfreaks.modules.sql.blacklist_sql as sql
+import Hackfreak.modules.sql.approve_sql as sql 
 from Hackfreaks import dispatcher, LOGGER
 from Hackfreaks.modules.disable import DisableAbleCommandHandler
 from Hackfreaks.modules.helper_funcs.chat_status import user_admin, user_not_admin
@@ -342,7 +343,7 @@ def del_blacklist(update, context):
     to_match = extract_text(message)
     if not to_match:
         return
-    if user.is_approved(chat.id, user.id):
+    if sql.is_approved(chat.id, user.id):
         return
     getmode, value = sql.get_blacklist_setting(chat.id)
 
