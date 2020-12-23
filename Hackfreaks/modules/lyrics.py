@@ -9,7 +9,7 @@ from Hackfreaks.modules.disable import DisableAbleCommandHandler
 
 @run_async
 def lyrics(update, context):
-    msg = update.effective_message
+    message = update.effective_message
     query = message.text.strip().split(" ", 1)
     try:
         search_query = str(args[1])
