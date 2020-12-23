@@ -11,14 +11,14 @@ from Hackfreaks.modules.disable import DisableAbleCommandHandler
 def lyrics(update, context):
     msg = update.effective_message
     query = message.text.strip().split(" ", 1)
-     try:
-         search_query = str(args[1])
-     except:
-         if message.reply_to_message:
-             search_query = message.reply_to_message.text
-         else:
-             update.effective_message.reply_text("You haven't specified which song to look for!")
-             return
+    try:
+        search_query = str(args[1])
+    except:
+        if message.reply_to_message:
+            search_query = message.reply_to_message.text
+        else:
+            update.effective_message.reply_text("You haven't specified which song to look for!")
+            return
     song = Song.find_song(query)
     if song:
         if song.lyrics:
