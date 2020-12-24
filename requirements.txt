@@ -39,3 +39,5 @@ tabulate
 parsel
 googletrans
 mtranslate
+aiohttp[speedups]
+nekos.py
