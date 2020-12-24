@@ -9,13 +9,13 @@ from Hackfreaks.modules.disable import DisableAbleCommandHandler
 
 @run_async
 def lyrics(update, context):
-    message = update.effective_message
-    args = message.text.strip().split(" ", 1)
+    msg = update.effective_message
+    args = msg.text.strip().split(" ", 1)
     try:
         query = str(args[1])
     except:
-        if message.reply_to_message:
-            query = message.reply_to_message.text
+        if msg.reply_to_message:
+            query = msg.reply_to_message.text
         else:
             update.effective_message.reply_text("You haven't specified which song to look for!")
             return
