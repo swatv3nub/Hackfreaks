@@ -358,8 +358,8 @@ If you want Hentai Supplier in your Private Group, ask [Here](https://t.me/TheHe
 __mod_name__ = "Hentai"
 
 
-ADDHENTAI_HANDLER = CommandHandler("addhentai", hsadd, pass_args=True, filters=CustomFilters.sudo_filter)
-REMOVEHENTAI_HANDLER = CommandHandler("removehentai", hsremove, pass_args=True, filters=CustomFilters.sudo_filter)
+ADDHENTAI_HANDLER = CommandHandler("addhentai", addhentai, pass_args=True, filters=CustomFilters.sudo_filter)
+REMOVEHENTAI_HANDLER = CommandHandler("removehentai", removehentai, pass_args=True, filters=CustomFilters.sudo_filter)
 
 PUSSY_HANDLER = DisableAbleCommandHandler("pussy", pussy)
 HENTAIG_HANDLER = DisableAbleCommandHandler("hentaigif", hentaig)
