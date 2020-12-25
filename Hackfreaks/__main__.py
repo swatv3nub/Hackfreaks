@@ -7,7 +7,7 @@ from typing import Optional
 from Hackfreaks import (ALLOW_EXCL, CERT_PATH, DONATION_LINK, LOGGER,
                           OWNER_ID, PORT, SUPPORT_CHAT, TOKEN, URL, WEBHOOK,
                           dispatcher, StartTime, telethn, updater)
-# needed to dynamically load modules
+# needed to dynamically load modules 
 # NOTE: Module order is not guaranteed, specify that in the config file!
 from Hackfreaks.modules import ALL_MODULES
 from Hackfreaks.modules.helper_funcs.chat_status import is_user_admin
@@ -52,16 +52,15 @@ def get_readable_time(seconds: int) -> str:
 
 PM_START_TEXT = """
 Hi {}, my name is {}! 
-I am a Pro group management bot, with some more features.
-I'm here to make your group management fun and easy!
-I have lots of handy features, such as Flood Control, Spam Protection, A Warning/Banning System, A Note Keeping System, and even replies with INTELLIVOID ChatBot API.
-Please Use /help command For Assistance And Help Regarding Special Modules
-You can find the list of available commands with Help Module.
-Any issues or need help related to me?
+I am a Pro group management bot, with some Special features.
+ 
+Hosted in Heroku with Mongo Database,
+I Can make your group management fun and easy!
+Press or type /help to Get to know about my Modules
 ==========================
 ✗ [Updates Channel](t.me/HackfreaksUpdates).
 ✗ [Support Group](t.me/HackfreaksSupport).
-✗ [Repository](github.com/swatv3nub/Hackfreaks),Full Of Bugs.
+✗ [Repository](github.com/swatv3nub/Hackfreaks)
 
 Maintained by @TheFuckErGuy
 Wanna Add me to your Group? Just click the button below!
@@ -77,17 +76,17 @@ buttons = [
 ]
 
 HELP_STRINGS = """
-Hey there! My name is *{}*.
-I will help you manage your groups! Have a look at the following for an idea of some of \
+Hello there! My name is *{}*.
+Have a look at the following for an idea of some of \
 the things I can help you with.
 
 *Main* commands available:
- • /help: PM's you this message.
- • /help <module name>: PM's you info about that module.
- • /donate: information on how to donate!
- • /settings:
-   • in PM: will send you your settings for all supported modules.
-   • in a group: will redirect you to pm, with all that chat's settings.
+ ✗ /help: PM's you this message. 
+ ✗ /help <module name>: PM's you info about that module.
+ ✗ /donate: information on how to donate!
+ ✗ /settings:
+   ✗ in PM: will send you your settings for all supported modules.
+   ✗ in a group: will redirect you to pm, with all that chat's settings.
 
 
 {}
@@ -96,10 +95,11 @@ And the following:
     dispatcher.bot.first_name, ""
     if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n")
 
-HACKFREAKS_IMG = "https://telegra.ph/file/4538e359834b77487e88b.jpg"
+HACKFREAKS_IMG = "https://images2.alphacoders.com/157/157332.jpg"
 
-DONATE_STRING = """donate to the original writer of the Base code, Paul
-There are two ways of supporting him; [PayPal](paypal.me/PaulSonOfLars), or [Monzo](monzo.me/paulnionvestergaardlarsen)."""
+DONATE_STRING = """Hope You are Satisfied with Me. As of now I don't need any Donations
+Since I am Hosted in Heroku with a Cheap Database add-on. If I need Some After Growing and Upgrading to a Faster and Advanced Hosting,
+I will update this String."""
 
 IMPORTED = {}
 MIGRATEABLE = []
