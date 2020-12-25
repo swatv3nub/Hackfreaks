@@ -3,7 +3,7 @@ from typing import Optional, List
 
 from telegram import Message, Chat, Update, Bot, User, InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, ChatPermissions
 
-from Hackfreaks import TIGERS, WOLVES, dispatcher
+from Hackfreaks import TIGER_USERS, WHITELIST_USERS, dispatcher
 from Hackfreaks.modules.helper_funcs.chat_status import (
     bot_admin, can_restrict, connection_status, is_user_admin, user_admin,
     user_admin_no_reply)
@@ -19,6 +19,7 @@ from Hackfreaks.modules.log_channel import loggable
 from Hackfreaks.modules.sql import antiflood_sql as sql
 from Hackfreaks.modules.connection import connected
 from Hackfreaks.modules.helper_funcs.alternate import send_message
+from Hackfreaks.modules.sql.approve_sql import is_approved
 FLOOD_GROUP = 3
 
 
@@ -32,10 +33,12 @@ def check_flood(update, context) -> str:
         return ""
 
     # ignore admins and whitelists
-    if (is_user_admin(chat, user.id) or user.id in WOLVES or user.id in TIGERS):
+    if (is_user_admin(chat, user.id) or user.id in WHITELIST_USERS or
+            user.id in TIGER_USERS):
         sql.update_flood(chat.id, None)
         return ""
-
+    if is_approved(chat.id, user.id):
+         return
     should_ban = sql.update_flood(chat.id, user.id)
     if not should_ban:
         return ""
@@ -72,14 +75,16 @@ def check_flood(update, context) -> str:
                 permissions=ChatPermissions(can_send_messages=False))
             execstrings = ("Muted for {}".format(getvalue))
             tag = "TMUTE"
-        send_message(update.effective_message,
-                     "Beep Boop! Boop Beep!\n{}!".format(execstrings))
+        send_message(
+            update.effective_message,
+            "Wonderful, I like to leave flooding to only yuiimembers but you, "
+            "you were just a disappointment {}!".format(execstrings))
 
         return "<b>{}:</b>" \
                "\n#{}" \
                "\n<b>User:</b> {}" \
                "\nFlooded the group.".format(tag, html.escape(chat.title),
-                                             mention_html(user.id, html.escape(user.first_name)))
+                                             mention_html(user.id, user.first_name))
 
     except BadRequest:
         msg.reply_text(
@@ -112,7 +117,7 @@ def flood_button(update: Update, context: CallbackContext):
                     can_send_other_messages=True,
                     can_add_web_page_previews=True))
             update.effective_message.edit_text(
-                f"Unmuted by {mention_html(user.id, html.escape(user.first_name))}.",
+                f"Unmuted by {mention_html(user.id, user.first_name)}.",
                 parse_mode="HTML")
         except:
             pass
@@ -161,9 +166,9 @@ def set_flood(update, context) -> str:
                 return "<b>{}:</b>" \
                        "\n#SETFLOOD" \
                        "\n<b>Admin:</b> {}" \
-                       "\nDisable antiflood.".format(html.escape(chat_name), mention_html(user.id, html.escape(user.first_name)))
+                       "\nDisable antiflood.".format(html.escape(chat_name), mention_html(user.id, user.first_name))
 
-            elif amount <= 3:
+            elif amount < 3:
                 send_message(
                     update.effective_message,
                     "Antiflood must be either 0 (disabled) or number greater than 3!"
@@ -184,7 +189,7 @@ def set_flood(update, context) -> str:
                        "\n#SETFLOOD" \
                        "\n<b>Admin:</b> {}" \
                        "\nSet antiflood to <code>{}</code>.".format(html.escape(chat_name),
-                                                                    mention_html(user.id, html.escape(user.first_name)), amount)
+                                                                    mention_html(user.id, user.first_name), amount)
 
         else:
             message.reply_text(
@@ -268,7 +273,6 @@ def set_flood_mode(update, context):
         elif args[0].lower() == 'tban':
             if len(args) == 1:
                 teks = """It looks like you tried to set time value for antiflood but you didn't specified time; Try, `/setfloodmode tban <timevalue>`.
-
 Examples of time value: 4m = 4 minutes, 3h = 3 hours, 6d = 6 days, 5w = 5 weeks."""
                 send_message(
                     update.effective_message, teks, parse_mode="markdown")
@@ -278,7 +282,6 @@ Examples of time value: 4m = 4 minutes, 3h = 3 hours, 6d = 6 days, 5w = 5 weeks.
         elif args[0].lower() == 'tmute':
             if len(args) == 1:
                 teks = update.effective_message, """It looks like you tried to set time value for antiflood but you didn't specified time; Try, `/setfloodmode tmute <timevalue>`.
-
 Examples of time value: 4m = 4 minutes, 3h = 3 hours, 6d = 6 days, 5w = 5 weeks."""
                 send_message(
                     update.effective_message, teks, parse_mode="markdown")
@@ -300,7 +303,7 @@ Examples of time value: 4m = 4 minutes, 3h = 3 hours, 6d = 6 days, 5w = 5 weeks.
         return "<b>{}:</b>\n" \
                 "<b>Admin:</b> {}\n" \
                 "Has changed antiflood mode. User will {}.".format(settypeflood, html.escape(chat.title),
-                                                                            mention_html(user.id, html.escape(user.first_name)))
+                                                                            mention_html(user.id, user.first_name))
     else:
         getmode, getvalue = sql.get_flood_setting(chat.id)
         if getmode == 1:
@@ -339,15 +342,12 @@ def __chat_settings__(chat_id, user_id):
 __help__ = """
 Antiflood allows you to take action on users that send more than x messages in a row. Exceeding the set flood \
 will result in restricting that user.
-
  This will mute users if they send more than 10 messages in a row, bots are ignored.
  • `/flood`*:* Get the current flood control setting
-
 • *Admins only:*
  • `/setflood <int/'no'/'off'>`*:* enables or disables flood control
  *Example:* `/setflood 10`
  • `/setfloodmode <ban/kick/mute/tban/tmute> <value>`*:* Action to perform when user have exceeded flood limit. ban/kick/mute/tmute/tban
-
 • *Note:*
  • Value must be filled for tban and tmute!!
  It can be:
