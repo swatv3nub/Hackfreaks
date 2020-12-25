@@ -2,7 +2,7 @@ import html
 
 import Hackfreaks.modules.sql.locks_sql as sql
 import telegram.ext as tg
-from Hackfreaks import DEV_USERS, LOGGER, SUDO_USERS, dispatcher
+from Hackfreaks import DEV_USERS, LOGGER, DRAGONS, dispatcher
 from Hackfreaks.modules.disable import DisableAbleCommandHandler
 from Hackfreaks.modules.helper_funcs.chat_status import (
     bot_can_delete, can_delete, connection_status, is_bot_admin, is_user_admin,
@@ -86,7 +86,7 @@ def restr_members(bot,
                   other=False,
                   previews=False):
     for mem in members:
-        if mem.user in SUDO_USERS or mem.user in DEV_USERS:
+        if mem.user in DRAGONS or mem.user in DEV_USERS:
             pass
         try:
             bot.restrict_chat_member(
