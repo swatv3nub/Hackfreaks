@@ -82,6 +82,8 @@ __help__ = """
  • `/markdownhelp`*:* quick summary of how markdown works in telegram - can only be called in private chats
 *Paste:*
  • `/paste`*:* Saves replied content to `nekobin.com` and replies with a url
+*UrbanDictionnary:*
+ • `/ud`*:* Search for a word in Urban Disctionary and replies with it's Meaning
 *Wikipedia:*
  • `/wiki <query>`*:* wikipedia your query
 *Currency converter:* 
