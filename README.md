@@ -9,7 +9,7 @@ Originally a Marie fork, MrHackfreaks evolved further and was built to be more r
 
 Can be found on telegram as [MrHackfreaks](https://t.me/MrHackfreaksRobot).
 
-The Support group can be reached out to at [SUPPORT](https://t.me/HackfreaksSupport), where you can ask for help about MrHackfreaksRobot,discover/request new features, report bugs, and stay in the loop whenever a new update is available. 
+The Support group can be reached out to at our [SupprtChat](https://t.me/HackfreaksSupport), where you can ask for help about MrHackfreaksRobot,discover/request new features, report bugs, and stay in the loop whenever a new update is available. 
 
 
 
@@ -18,7 +18,7 @@ The Support group can be reached out to at [SUPPORT](https://t.me/HackfreaksSupp
 ### Read these notes carefully before proceeding 
 
  - Your code must be open source and a link to your fork's repository must be there in the start reply of the bot. [See this](https://github.com/swatv3nub/hackfreaks?blob/shiken/Hackfreaks/__main__.py#L25)
- - Lastly, if you are found to run this repo without the code being open sourced or the repository link not mentioned in the bot, we will push a gban for you in our network because of being in violation of the license, you are free to be a dick and not respect the open source code (we do not mind) but we will not be having you around our chats.
+ - Lastly, if you are found to run this repo without the code being open sourced or the repository link not mentioned in the bot/UpdatesChannel/SupportChat, we will push a gban for you in our network because of being in violation of the license, you are free to be a dick and not respect the open source code (we do not mind) but we will not be having you around our chats.
 
 
 <details>
@@ -60,13 +60,13 @@ An example `config.py` file could be:
 from Hackfreaks.sample_config import Config
 
 class Development(Config):
-    OWNER_ID = 254318997  # your telegram ID
-    OWNER_USERNAME = "SonOfLars"  # your telegram username
+    OWNER_ID = 1228116248  # your telegram ID
+    OWNER_USERNAME = "TheFuckErGuy"  # your telegram username
     API_KEY = "your bot api key"  # your api key, as provided by the @botfather
     SQLALCHEMY_DATABASE_URI = 'postgresql://username:password@localhost:5432/database'  # sample db credentials
     JOIN_LOGGER = '-1234567890' # some group chat that your bot is a member of
     USE_JOIN_LOGGER = True
-    SUDO_USERS = [18673980, 83489514]  # List of id's for users which have sudo access to the bot.
+    SUDO_USERS = []  # List of id's for users which have sudo access to the bot.
     LOAD = []
     NO_LOAD = ['translation']
 ```
@@ -81,16 +81,15 @@ The following env variables are supported:
 
  - `DATABASE_URL`: Your database URL
  - `JOIN_LOGGER`: optional: a chat where your replied saved messages are stored, to stop people deleting their old 
- - `LOAD`: Space-separated list of modules you would like to load
  - `NO_LOAD`: Space-separated list of modules you would like NOT to load
  - `WEBHOOK`: Setting this to ANYTHING will enable webhooks when in env mode
  messages
  - `URL`: The URL your webhook should connect to (only needed for webhook mode)
-
- - `SUDO_USERS`: A space-separated list of user_ids which should be considered sudo users
- - `SUPPORT_USERS`: A space-separated list of user_ids which should be considered support users (can gban/ungban,
+ - `EVENT_LOGGER` : A chat/Channel to Log all the Events Happening in the Bot like, Gbans, BotAdminPromotions Etc
+ - `DRAGONS`: A space-separated list of user_ids which should be considered sudo users
+ - `DEMONS`: A space-separated list of user_ids which should be considered support users (can gban/ungban,
  nothing else)
- - `WHITELIST_USERS`: A space-separated list of user_ids which should be considered whitelisted - they can't be banned.
+ - `WOLVES`: A space-separated list of user_ids which should be considered whitelisted - they can't be banned.
  - `DONATION_LINK`: Optional: link where you would like to receive donations.
  - `CERT_PATH`: Path to your webhook certificate
  - `PORT`: Port to use for your webhooks
@@ -198,11 +197,11 @@ You can use [nssm](https://nssm.cc/usage) to install the bot as service on windo
 Make sure to edit the start and restart bats to your needs. 
 Note: the restart bat requires that User account control be disabled.
 
-For queries or any issues regarding the bot please open an issue ticket or visit us at [One Punch Support](https://t.me/OnePunchSupport)
+For queries or any issues regarding the bot please open an issue ticket or visit us at [Hackfreaks Support](https://t.me/HackfreaksSupport)
 ## How to setup on Heroku 
 For starters click on this button 
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/AnimeKaizoku/Hackfreaks.git) 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/swatv3nub/Hackfreaks.git) 
 
 
 ## Credits
@@ -213,4 +212,4 @@ Also, missing proper credit for blacklistusers taken from TheRealPhoenixBot (wil
 
 Any other authorship/credits can be seen through the commits.
 
-Should any be missing kindly let us know at [One Punch Support](https://t.me/OnePunchSupport) or simply submit a pull request on the readme.
+Should any be missing kindly let us know at [Hackfreaks Support](https://t.me/HackfreaksSupport) or simply submit a pull request on the readme.
