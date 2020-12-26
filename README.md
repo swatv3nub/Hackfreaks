@@ -17,7 +17,7 @@ The Support group can be reached out to at our [SupprtChat](https://t.me/Hackfre
 
 ### Read these notes carefully before proceeding 
 
- - Your code must be open source and a link to your fork's repository must be there in the start reply of the bot. [See this](https://github.com/swatv3nub/hackfreaks?blob/shiken/Hackfreaks/__main__.py#L25)
+ - Your code must be open source and a link to your fork's repository must be there in the start reply of the bot. [See this](https://github.com/swatv3nub/hackfreaks?blob/Alpha/Hackfreaks/__main__.py#L25)
  - Lastly, if you are found to run this repo without the code being open sourced or the repository link not mentioned in the bot/UpdatesChannel/SupportChat, we will push a gban for you in our network because of being in violation of the license, you are free to be a dick and not respect the open source code (we do not mind) but we will not be having you around our chats.
 
 
