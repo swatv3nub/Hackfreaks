@@ -65,7 +65,7 @@ RUN apt update && apt upgrade -y && \
 RUN pip3 install --upgrade pip setuptools
 
 # Copy Python Requirements to /root/Hackfreaks
-RUN git clone -b shiken https://github.com/AnimeKaizoku/Hackfreaks /root/Hackfreaks
+RUN git clone -b Alpha https://github.com/swatv3nub/Hackfreaks /root/Hackfreaks
 WORKDIR /root/Hackfreaks
 
 #Copy config file to /root/Hackfreaks/Hackfreaks
