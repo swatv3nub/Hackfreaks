@@ -138,7 +138,7 @@ def get_dynasty_name(chat_id):
         return get['chat_name']
 
 
-def get_user_fban(dynasty_id, user_id):
+def get_user_dban(dynasty_id, user_id):
     if not DYNASTY_BANNED_FULL.get(dynasty_id):
         return False, False, False
     user_info = DYNASTY_BANNED_FULL[dynasty_id].get(user_id)
@@ -181,7 +181,7 @@ def get_user_owner_dynasty_full(user_id):
     return user_dynasties
 
 
-def get_user_fbanlist(user_id):
+def get_user_dbanlist(user_id):
     banlist = DYNASTY_BANNED_FULL
     user_name = ""
     dynastyname = []
@@ -510,7 +510,7 @@ def get_drules(dynasty_id):
         return rules
 
 
-def fban_user(dynasty_id, user_id, first_name, last_name, user_name, reason, time):
+def dban_user(dynasty_id, user_id, first_name, last_name, user_name, reason, time):
     with DYNASTY_LOCK:
         r = SESSION.query(BansD).all()
         for I in r:
@@ -534,7 +534,7 @@ def fban_user(dynasty_id, user_id, first_name, last_name, user_name, reason, tim
         return r
 
 
-def multi_fban_user(multi_dynasty_id, multi_user_id, multi_first_name,
+def multi_dban_user(multi_dynasty_id, multi_user_id, multi_first_name,
                     multi_last_name, multi_user_name, multi_reason):
     if True:  # with DYNASTY_LOCK:
         counter = 0
@@ -575,7 +575,7 @@ def multi_fban_user(multi_dynasty_id, multi_user_id, multi_first_name,
         return counter
 
 
-def un_fban_user(dynasty_id, user_id):
+def un_dban_user(dynasty_id, user_id):
     with DYNASTY_LOCK:
         r = SESSION.query(BansD).all()
         for I in r:
@@ -593,9 +593,9 @@ def un_fban_user(dynasty_id, user_id):
         return I
 
 
-def get_fban_user(dynasty_id, user_id):
-    list_fbanned = DYNASTY_BANNED_USERID.get(dynasty_id)
-    if list_fbanned is None:
+def get_dban_user(dynasty_id, user_id):
+    list_dbanned = DYNASTY_BANNED_USERID.get(dynasty_id)
+    if list_dbanned is None:
         DYNASTY_BANNED_USERID[dynasty_id] = []
     if user_id in DYNASTY_BANNED_USERID[dynasty_id]:
         r = SESSION.query(BansD).all()
@@ -610,24 +610,24 @@ def get_fban_user(dynasty_id, user_id):
         return False, None, None
 
 
-def get_all_fban_users(dynasty_id):
-    list_fbanned = DYNASTY_BANNED_USERID.get(dynasty_id)
-    if list_fbanned is None:
+def get_all_dban_users(dynasty_id):
+    list_dbanned = DYNASTY_BANNED_USERID.get(dynasty_id)
+    if list_dbanned is None:
         DYNASTY_BANNED_USERID[dynasty_id] = []
     return DYNASTY_BANNED_USERID[dynasty_id]
 
 
-def get_all_fban_users_target(dynasty_id, user_id):
-    list_fbanned = DYNASTY_BANNED_FULL.get(dynasty_id)
-    if list_fbanned is None:
+def get_all_dban_users_target(dynasty_id, user_id):
+    list_dbanned = DYNASTY_BANNED_FULL.get(dynasty_id)
+    if list_dbanned is None:
         DYNASTY_BANNED_FULL[dynasty_id] = []
         return False
-    getuser = list_fbanned[str(user_id)]
+    getuser = list_dbanned[str(user_id)]
     return getuser
 
 
-def get_all_fban_users_global():
-    list_fbanned = DYNASTY_BANNED_USERID
+def get_all_dban_users_global():
+    list_dbanned = DYNASTY_BANNED_USERID
     total = []
     for x in list(DYNASTY_BANNED_USERID):
         for y in DYNASTY_BANNED_USERID[x]:
