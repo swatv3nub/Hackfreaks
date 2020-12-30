@@ -89,7 +89,7 @@ class DynastySubs(BASE):
 # BansF.__table__.drop()
 # DynastySubs.__table__.drop()
 
-Dynastyerations.__table__.create(checkfirst=True)
+Dynasty.__table__.create(checkfirst=True)
 ChatF.__table__.create(checkfirst=True)
 BansF.__table__.create(checkfirst=True)
 DynastyUserSettings.__table__.create(checkfirst=True)
