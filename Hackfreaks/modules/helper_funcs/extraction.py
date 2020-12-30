@@ -168,5 +168,5 @@ def extract_unt_fedban(message: Message,
     return user_id, text
 
 
-def extract_user_fban(message: Message, args: List[str]) -> Optional[int]:
-    return extract_unt_fedban(message, args)[0]
+def extract_user_dban(message: Message, args: List[str]) -> Optional[int]:
+    return extract_unt_dynastyban(message, args)[0]
