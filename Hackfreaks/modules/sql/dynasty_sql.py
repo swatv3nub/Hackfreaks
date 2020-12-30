@@ -85,8 +85,8 @@ class DynastySubs(BASE):
 
 # Dropping db
 # Dynasties.__table__.drop()
-# ChatF.__table__.drop()
-# BansF.__table__.drop()
+# ChatD.__table__.drop()
+# BansD.__table__.drop()
 # DynastySubs.__table__.drop()
 
 Dynasties.__table__.create(checkfirst=True)
@@ -254,7 +254,7 @@ def del_dynasty(dynasty_id):
         DYNASTY_BYNAME.pop(dynasty_name)
         if DYNASTY_CHATS_BYID.get(dynasty_id):
             for x in DYNASTY_CHATS_BYID[dynasty_id]:
-                delchats = SESSION.query(ChatF).get(str(x))
+                delchats = SESSION.query(ChatD).get(str(x))
                 if delchats:
                     SESSION.delete(delchats)
                     SESSION.commit()
@@ -264,7 +264,7 @@ def del_dynasty(dynasty_id):
         getall = DYNASTY_BANNED_USERID.get(dynasty_id)
         if getall:
             for x in getall:
-                banlist = SESSION.query(BansF).get((dynasty_id, str(x)))
+                banlist = SESSION.query(BansD).get((dynasty_id, str(x)))
                 if banlist:
                     SESSION.delete(banlist)
                     SESSION.commit()
@@ -315,7 +315,7 @@ def rename_dynasty(dynasty_id, owner_id, newname):
 def chat_join_dynasty(dynasty_id, chat_name, chat_id):
     with DYNASTY_LOCK:
         global DYNASTY_CHATS, DYNASTY_CHATS_BYID
-        r = ChatF(chat_id, chat_name, dynasty_id)
+        r = ChatD(chat_id, chat_name, dynasty_id)
         SESSION.add(r)
         DYNASTY_CHATS[str(chat_id)] = {'chat_name': chat_name, 'fid': dynasty_id}
         checkid = DYNASTY_CHATS_BYID.get(dynasty_id)
@@ -446,7 +446,7 @@ def chat_leave_dynasty(chat_id):
         DYNASTY_CHATS.pop(str(chat_id))
         DYNASTY_CHATS_BYID[str(dynasty_id)].remove(str(chat_id))
         # Delete from db
-        curr = SESSION.query(ChatF).all()
+        curr = SESSION.query(ChatD).all()
         for U in curr:
             if int(U.chat_id) == int(chat_id):
                 SESSION.delete(U)
@@ -512,13 +512,13 @@ def get_drules(dynasty_id):
 
 def fban_user(dynasty_id, user_id, first_name, last_name, user_name, reason, time):
     with DYNASTY_LOCK:
-        r = SESSION.query(BansF).all()
+        r = SESSION.query(BansD).all()
         for I in r:
             if I.dynasty_id == dynasty_id:
                 if int(I.user_id) == int(user_id):
                     SESSION.delete(I)
 
-        r = BansF(
+        r = BansD(
             str(dynasty_id), str(user_id), first_name, last_name, user_name, reason,
             time)
 
@@ -546,13 +546,13 @@ def multi_fban_user(multi_dynasty_id, multi_user_id, multi_first_name,
             last_name = multi_last_name[x]
             user_name = multi_user_name[x]
             reason = multi_reason[x]
-            r = SESSION.query(BansF).all()
+            r = SESSION.query(BansD).all()
             for I in r:
                 if I.dynasty_id == dynasty_id:
                     if int(I.user_id) == int(user_id):
                         SESSION.delete(I)
 
-            r = BansF(
+            r = BansD(
                 str(dynasty_id), str(user_id), first_name, last_name, user_name,
                 reason, time)
 
@@ -577,7 +577,7 @@ def multi_fban_user(multi_dynasty_id, multi_user_id, multi_first_name,
 
 def un_fban_user(dynasty_id, user_id):
     with DYNASTY_LOCK:
-        r = SESSION.query(BansF).all()
+        r = SESSION.query(BansD).all()
         for I in r:
             if I.dynasty_id == dynasty_id:
                 if int(I.user_id) == int(user_id):
@@ -598,7 +598,7 @@ def get_fban_user(dynasty_id, user_id):
     if list_fbanned is None:
         DYNASTY_BANNED_USERID[dynasty_id] = []
     if user_id in DYNASTY_BANNED_USERID[dynasty_id]:
-        r = SESSION.query(BansF).all()
+        r = SESSION.query(BansD).all()
         reason = None
         for I in r:
             if I.dynasty_id == dynasty_id:
@@ -818,7 +818,7 @@ def __load_all_dynasties():
 def __load_all_dynasties_chats():
     global DYNASTY_CHATS, DYNASTY_CHATS_BYID
     try:
-        qall = SESSION.query(ChatF).all()
+        qall = SESSION.query(ChatD).all()
         DYNASTY_CHATS = {}
         DYNASTY_CHATS_BYID = {}
         for x in qall:
@@ -844,7 +844,7 @@ def __load_all_dynasties_banned():
     try:
         DYNASTY_BANNED_USERID = {}
         DYNASTY_BANNED_FULL = {}
-        qall = SESSION.query(BansF).all()
+        qall = SESSION.query(BansD).all()
         for x in qall:
             check = DYNASTY_BANNED_USERID.get(x.dynasty_id)
             if check is None:
