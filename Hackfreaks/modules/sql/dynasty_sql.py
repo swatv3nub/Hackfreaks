@@ -84,7 +84,7 @@ class DynastySubs(BASE):
 
 
 # Dropping db
-# Dynastyerations.__table__.drop()
+# Dynasties.__table__.drop()
 # ChatF.__table__.drop()
 # BansF.__table__.drop()
 # DynastySubs.__table__.drop()
@@ -196,7 +196,7 @@ def get_user_fbanlist(user_id):
 def new_dynasty(owner_id, dynasty_name, dynasty_id):
     with DYNASTY_LOCK:
         global DYNASTY_BYOWNER, DYNASTY_BYDYNASTYID, DYNASTY_BYNAME
-        dynasty = Dynastyerations(
+        dynasty = Dynasties(
             str(owner_id), dynasty_name, str(dynasty_id),
             'Rules is not set in this Dynasty.', None,
             str({
@@ -285,7 +285,7 @@ def del_dynasty(dynasty_id):
         if MYDYNASTY_SUBSCRIBER.get(dynasty_id):
             MYDYNASTY_SUBSCRIBER.pop(dynasty_id)
         # Delete from database
-        curr = SESSION.query(Dynastyerations).get(dynasty_id)
+        curr = SESSION.query(Dynasties).get(dynasty_id)
         if curr:
             SESSION.delete(curr)
             SESSION.commit()
@@ -295,7 +295,7 @@ def del_dynasty(dynasty_id):
 def rename_dynasty(dynasty_id, owner_id, newname):
     with DYNASTY_LOCK:
         global DYNASTY_BYDYNASTYID, DYNASTY_BYOWNER, DYNASTY_BYNAME
-        dynasty = SESSION.query(Dynastyerations).get(dynasty_id)
+        dynasty = SESSION.query(Dynasties).get(dynasty_id)
         if not dynasty:
             return False
         dynasty.dynasty_name = newname
@@ -373,7 +373,7 @@ def user_demote_dynasty(dynasty_id, user_id):
             'members': str(members)
         })
         # Set on database
-        dynasty = Dynastyerations(
+        dynasty = Dynasties(
             str(owner_id), dynasty_name, str(dynasty_id), dynasty_rules, dynasty_log,
             str({
                 'owner': str(owner_id),
@@ -422,7 +422,7 @@ def user_join_dynasty(dynasty_id, user_id):
             'members': str(members)
         })
         # Set on database
-        dynasty = Dynastyerations(
+        dynasty = Dynasties(
             str(owner_id), dynasty_name, str(dynasty_id), dynasty_rules, dynasty_log,
             str({
                 'owner': str(owner_id),
@@ -496,7 +496,7 @@ def set_drules(dynasty_id, rules):
         DYNASTY_BYDYNASTYID[str(dynasty_id)]['drules'] = dynasty_rules
         DYNASTY_BYNAME[dynasty_name]['drules'] = dynasty_rules
         # Set on database
-        dynasty = Dynastyerations(
+        dynasty = Dynasties(
             str(owner_id), dynasty_name, str(dynasty_id), dynasty_rules, dynasty_log,
             str(dynasty_members))
         SESSION.merge(dynasty)
@@ -713,7 +713,7 @@ def set_dynasty_log(dynasty_id, chat_id):
         DYNASTY_BYDYNASTYID[str(dynasty_id)]['dlog'] = dynasty_log
         DYNASTY_BYNAME[dynasty_name]['dlog'] = dynasty_log
         # Set on database
-        dynasty = Dynastyerations(
+        dynasty = Dynasties(
             str(owner_id), dynasty_name, str(dynasty_id), dynasty_rules, dynasty_log,
             str(dynasty_members))
         SESSION.merge(dynasty)
@@ -776,7 +776,7 @@ def get_subscriber(dynasty_id):
 def __load_all_dynasties():
     global DYNASTY_BYOWNER, DYNASTY_BYDYNASTYID, DYNASTY_BYNAME
     try:
-        dynasties = SESSION.query(Dynastyerations).all()
+        dynasties = SESSION.query(Dynasties).all()
         for x in dynasties:  # remove tuple by ( ,)
             # Dynasty by Owner
             check = DYNASTY_BYOWNER.get(x.owner_id)
