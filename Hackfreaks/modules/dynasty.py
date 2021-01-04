@@ -1209,10 +1209,10 @@ def dynasty_ban_list(update: Update, context: CallbackContext):
                 backups += json.dumps(json_parser)
                 backups += "\n"
             with BytesIO(str.encode(backups)) as output:
-                output.name = "saitama_dbanned_users.json"
+                output.name = "Hackfreaks_Dbanned_Users.json"
                 update.effective_message.reply_document(
                     document=output,
-                    filename="saitama_dbanned_users.json",
+                    filename="Hackfreaks_Dbanned_Users.json",
                     caption="Total {} User are blocked by the Dynasty {}."
                     .format(len(getdban), info['dname']))
             return
@@ -1246,10 +1246,10 @@ def dynasty_ban_list(update: Update, context: CallbackContext):
                     reason=getuserinfo['reason'])
                 backups += "\n"
             with BytesIO(str.encode(backups)) as output:
-                output.name = "saitama_dbanned_users.csv"
+                output.name = "Hackfreaks_Dbanned_Users.csv"
                 update.effective_message.reply_document(
                     document=output,
-                    filename="saitama_dbanned_users.csv",
+                    filename="Hackfreaks_Dbanned_Users.csv",
                     caption="Total {} User are blocked by Dynasty {}."
                     .format(len(getdban), info['dname']))
             return
