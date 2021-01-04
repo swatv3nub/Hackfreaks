@@ -58,18 +58,17 @@ Hosted in Heroku with Mongo Database,
 I Can make your group management fun and easy!
 Press or type /help to Get to know about my Modules
 ==========================
-✗ [Updates Channel](t.me/HackfreaksUpdates).
-✗ [Support Group](t.me/HackfreaksSupport).
+✗ [Updates Channel](t.me/Indianofficialupdates).
+✗ [Support Group](t.me/Indianofficialbotsupport).
 ✗ [Repository](github.com/swatv3nub/Hackfreaks)
 
-Maintained by @TheFuckErGuy
+Maintained by @Godof_Hackers
 Wanna Add me to your Group? Just click the button below!
 """
 
 buttons = [
     [
-        InlineKeyboardButton(
-            text="About Project Hackfreaks", url="https://t.me/ProjectHackfreaks"
+        InlineKeyboardButton 
         ),
         InlineKeyboardButton(text="Add Me to a group âž•", url="https://t.me/MrHackfreaksRobot?startgroup=true"),
     ]
@@ -94,8 +93,6 @@ And the following:
 """.format(
     dispatcher.bot.first_name, ""
     if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n")
-
-HACKFREAKS_IMG = "telegra.ph/file/4538e359834b77487e88b.jpg"
 
 DONATE_STRING = """Hope You are Satisfied with Me. As of now I don't need any Donations
 Since I am Hosted in Heroku with a Cheap Database add-on. If I need Some After Growing and Upgrading to a Faster and Advanced Hosting,
@@ -197,21 +194,21 @@ def start(update: Update, context: CallbackContext):
                 reply_markup=InlineKeyboardMarkup(                   
                           [[
                               InlineKeyboardButton(
-                              text="🔥Add Hackfreaks To Your Group🔥",
+                              text="🔥Add Indian Official Bot To your Group🔥",
                               url="t.me/{}?startgroup=true".format(
                                   context.bot.username))
                           ], [
                               InlineKeyboardButton(
-                              text="About Project Hackfreaks", 
-                              url="https://t.me/ProjectHackfreaks"
+                              text="About Project Indian Official Bot", 
+                              url="https://t.me/Indianofficialupdates"
         )],
                           [
                               InlineKeyboardButton(
                               text="🍁Support Group🍁",
-                              url=f"https://t.me/HackfreaksSupport"),
+                              url=f"https://t.me/Indianofficialbotsupport"),
                               InlineKeyboardButton(
                               text="✨Updates Channel✨",
-                              url="https://t.me/HackfreaksUpdates")
+                              url="https://t.me/Indianofficialupdates")
                           ]])) 
     else:
         update.effective_message.reply_text(
@@ -462,7 +459,7 @@ def get_settings(update: Update, context: CallbackContext):
                 ]]))
         else:
             text = "Click here to check your settings."
-
+Ooh
     else:
         send_settings(chat.id, user.id, True)
 
