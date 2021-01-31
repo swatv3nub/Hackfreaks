@@ -58,20 +58,20 @@ Hosted in Heroku with Mongo Database,
 I Can make your group management fun and easy!
 Press or type /help to Get to know about my Modules
 ==========================
-✗ [Updates Channel](t.me/HackfreaksUpdates).
-✗ [Support Group](t.me/HackfreaksSupport).
-✗ [Repository](github.com/swatv3nub/Hackfreaks)
+✗ [Updates Channel](t.me/indianbotupdare).
+✗ [Support Group](t.me/indianbotsupport).
+✗ [Repository](t.me/IndianOfficial_robot)
 
-Maintained by @TheFuckErGuy
+Maintained by @Godof_hackers
 Wanna Add me to your Group? Just click the button below!
 """
 
 buttons = [
     [
         InlineKeyboardButton(
-            text="About Project Hackfreaks", url="https://t.me/ProjectHackfreaks"
+            text="About Project Hackfreaks", url="https://t.me/indianbotsupport"
         ),
-        InlineKeyboardButton(text="Add Me to a group âž•", url="https://t.me/MrHackfreaksRobot?startgroup=true"),
+        InlineKeyboardButton(text="Add Me to a group âž•", url="https://t.me/IndianOfficial_Robot?startgroup=true"),
     ]
 ]
 
