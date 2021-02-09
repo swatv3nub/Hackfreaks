@@ -1,4 +1,4 @@
-from Hackfreaks import DB_URI
+from Hackfreaks import SQLALCHEMY_DATABASE_URI
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import scoped_session, sessionmaker
