@@ -54,7 +54,7 @@ PM_START_TEXT = """
 Hi {}, my name is {}! 
 I am a Pro group management bot, with some Special features.
  
-Hosted in Heroku with Mongo Database,
+Hosted in Heroku with ElephantSQL Database,
 I Can make your group management fun and easy!
 Press or type /help to Get to know about my Modules
 ==========================
