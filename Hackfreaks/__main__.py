@@ -62,7 +62,7 @@ Press or type /help to Get to know about my Modules
 ✗ [Support Group](t.me/HackfreaksSupport).
 ✗ [Repository](github.com/swatv3nub/Hackfreaks)
 
-Maintained by @TheFuckErGuy
+Maintained by @Swonit
 Wanna Add me to your Group? Just click the button below!
 """
 
