@@ -273,7 +273,7 @@ def hitme(update: Update, context: CallbackContext):
     res = update.effective_chat.unban_member(
         user_id)  # unban on current user = kick
     if res:
-        update.effective_message.reply_text("*hites you out of the group*")
+        update.effective_message.reply_text("*Hits you out of the group*")
     else:
         update.effective_message.reply_text("Huh? I can't :/")
 
