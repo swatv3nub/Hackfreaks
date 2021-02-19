@@ -5,7 +5,7 @@ from telegram.error import BadRequest
 from telegram.ext import CallbackContext, CommandHandler, Filters, run_async
 from telegram.utils.helpers import mention_html, mention_markdown, escape_markdown
 
-from Hackfreaks import DRAGONS, dispatcher
+from Hackfreaks import OWNER_ID, dispatcher
 from Hackfreaks.modules.disable import DisableAbleCommandHandler
 from Hackfreaks.modules.helper_funcs.chat_status import (bot_admin, can_pin,
                                                            can_promote,
@@ -34,7 +34,7 @@ def promote(update: Update, context: CallbackContext) -> str:
     promoter = chat.get_member(user.id)
 
     if not (promoter.can_promote_members or
-            promoter.status == "creator") and not user.id in DRAGONS:
+            promoter.status == "creator") and not user.id in OWNER_ID:
         message.reply_text("You don't have the necessary rights to do that!")
         return
 
