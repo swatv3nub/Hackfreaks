@@ -60,7 +60,6 @@ Press or type /help to Get to know about my Modules
 ==========================
 ✗ Updates Channel - @HackfreaksUpdates
 ✗ Support Group - @HackfreaksSupport
-✗ Repository - https://github.com/swatv3nub/Hackfreaks
 
 Maintained by @MaskedVirus
 Wanna Add me to your Group? Just click the button below!
