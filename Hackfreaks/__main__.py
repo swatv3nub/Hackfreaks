@@ -62,18 +62,9 @@ Press or type /help to Get to know about my Modules
 ✗ [Support Group](t.me/HackfreaksSupport).
 ✗ [Repository](github.com/swatv3nub/Hackfreaks)
 
-Maintained by @Swonit
+Maintained by @MaskedVirus
 Wanna Add me to your Group? Just click the button below!
 """
-
-buttons = [
-    [
-        InlineKeyboardButton(
-            text="About Project Hackfreaks", url="https://t.me/ProjectHackfreaks"
-        ),
-        InlineKeyboardButton(text="Add Me to a group âž•", url="https://t.me/MrHackfreaksRobot?startgroup=true"),
-    ]
-]
 
 HELP_STRINGS = """
 Hello there! My name is *{}*.
@@ -95,11 +86,61 @@ And the following:
     dispatcher.bot.first_name, ""
     if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n")
 
-HACKFREAKS_IMG = "telegra.ph/file/4538e359834b77487e88b.jpg"
 
-DONATE_STRING = """Hope You are Satisfied with Me. As of now I don't need any Donations
-Since I am Hosted in Heroku with a Cheap Database add-on. If I need Some After Growing and Upgrading to a Faster and Advanced Hosting,
-I will update this String."""
+DONATE_STRING = """
+Hope You are Satisfied with Me. As of now I don't need any Donations
+Since I am Hosted in Heroku with a Cheap ElephantSQL Database. If I need Some After Growing and Upgrading to a Faster and Advanced Hosting,
+I will update this String.
+"""
+
+ABOUT_TEXT = """
+*Hackfreaks - An Advanced Group Manager*
+Build to Manage Your Groups Easily!
+
+You Can Get Full Help Menu 
+By Typing /help
+
+Hope you are satisfied with my service.
+If you like you can donate some money too💰, Haha.
+
+Report Bugs/Error At @HackfreaksSupport
+"""
+
+ABOUTME_STRINGS = """
+*Heya, I Am Hackfreaks*
+A Python Based Group-Manager
+Bot!
+
+*My Owner:*
+➥ @MaskedVirus
+*Co-Dev:*
+➥ @okay_retard
+
+*Based on Paul's Marie Bot*
+
+Thanks To All Who Made Me
+That Much To Manage Your Groups!
+
+*Updates Channel: @HackfreaksUpdates
+Support Chat: @HackfreaksSupport*
+"""
+
+TERMS_STRINGS = """
+*Terms And Conditions*
+
+✗ No One's Group ID Or Data 
+Is Saved Here!
+✗ Only Your Name, Id And Username
+Are Saved Here!
+✗ Don't Spam The Bot.
+✗ Respect the Owner/Devs of the Bot
+✗ If You Found Any Spammer, Scammer 
+Or Anyone Doing Wrong Things
+Report Us At-> @HackfreaksSupport
+
+*Updates Channel: @HackfreaksUpdates*
+"""
+
 
 IMPORTED = {}
 MIGRATEABLE = []
@@ -161,9 +202,9 @@ def send_help(chat_id, text, keyboard=None):
 
 
 @run_async
-def test(update: Update, context: CallbackContext):
+def alive(update: Update, context: CallbackContext):
     # pprint(eval(str(update)))
-    # update.effective_message.reply_text("Hola tester! _I_ *have* `markdown`", parse_mode=ParseMode.MARKDOWN)
+    # update.effective_message.reply_text("Hola, I am Alive and Kicking! _I_ *have* `markdowns` too, Awoo", parse_mode=ParseMode.MARKDOWN)
     update.effective_message.reply_text("This person edited a message")
     print(update.effective_message)
 
@@ -190,34 +231,53 @@ def start(update: Update, context: CallbackContext):
 
         else:
             first_name = update.effective_user.first_name
-            update.effective_message.reply_photo(
-                HACKFREAKS_IMG,
-                caption=PM_START_TEXT.format(escape_markdown(first_name), escape_markdown(context.bot.first_name), OWNER_ID),
+            update.effective_message.reply_text(
+                PM_START_TEXT.format(escape_markdown(first_name), escape_markdown(context.bot.first_name), OWNER_ID),
                 parse_mode=ParseMode.MARKDOWN,
                 reply_markup=InlineKeyboardMarkup(                   
                           [[
                               InlineKeyboardButton(
-                              text="🔥Add Hackfreaks To Your Group🔥",
-                              url="t.me/{}?startgroup=true".format(
-                                  context.bot.username))
-                          ], [
-                              InlineKeyboardButton(
-                              text="About Project Hackfreaks", 
-                              url="https://t.me/ProjectHackfreaks"
-        )],
+                              text="Add To Your Group",
+                              url="t.me/MrHackfreaksRobot?startgroup=true")
+                          ],
                           [
                               InlineKeyboardButton(
-                              text="🍁Support Group🍁",
-                              url=f"https://t.me/HackfreaksSupport"),
+                              text="Guide",
+                              callback_data="guide_menu"),
                               InlineKeyboardButton(
-                              text="✨Updates Channel✨",
-                              url="https://t.me/HackfreaksUpdates")
+                              text="Help",
+                              callback_data="help_back")                  
                           ]])) 
     else:
         update.effective_message.reply_text(
             "I'm online!\n<b>Up since:</b> <code>{}</code>".format(uptime),
             parse_mode=ParseMode.HTML)
 
+#advanced_help
+def guide_menu(update: Update, context: CallbackContext):
+    
+    update.effective_message.edit_text(ABOUT_TEXT, parse_mode=ParseMode.MARKDOWN, reply_markup=InlineKeyboardMarkup(
+                                                [[InlineKeyboardButton(text="About Me", callback_data="aboutme_bot_menu"), InlineKeyboardButton(text="Commands", callback_data="help_back")],
+                                                 [InlineKeyboardButton(text="T&C", callback_data="terms_menu"), InlineKeyboardButton(text="Go Back", callback_data="start")]]))
+
+#terms
+def terms_menu(update: Update, context: CallbackContext):
+    
+    update.effective_message.edit_text(TERMS_STRINGS, parse_mode=ParseMode.MARKDOWN, reply_markup=InlineKeyboardMarkup(
+                                                [[InlineKeyboardButton(text="Go Back", callback_data="guide_menu")]]))
+    
+   
+
+#about_bot
+def aboutme_bot_menu(update: Update, context: CallbackContext):
+    
+    update.effective_message.edit_text(ABOUTME_STRINGS, parse_mode=ParseMode.MARKDOWN, reply_markup=InlineKeyboardMarkup(
+                                                [[InlineKeyboardButton(text="Updates Channel", url="t.me/HackfreaksUpdates"), InlineKeyboardButton(text="Support Group", url="t.me/HackfreaksSupport")], [InlineKeyboardButton(text="Bot Logs", url="t.me/HackfreaksLogs"), InlineKeyboardButton(text="Go Back", callback_data="guide_menu")]]))
+
+
+@run_async
+def about(update: Update, context: CallbackContext):
+    update.effective_message.reply_text(ABOUT_TEXT, parse_mode=ParseMode.MARKDOWN, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="⫷Back", callback_data="help_back")]])) 
 
 # for test purposes
 def error_callback(update: Update, context: CallbackContext):
@@ -256,6 +316,7 @@ def help_button(update, context):
     prev_match = re.match(r"help_prev\((.+?)\)", query.data)
     next_match = re.match(r"help_next\((.+?)\)", query.data)
     back_match = re.match(r"help_back", query.data)
+    about_match = re.match(r"about_match", query.data)
 
     print(query.message.chat.id)
 
@@ -270,7 +331,7 @@ def help_button(update, context):
                 disable_web_page_preview=True,
                 reply_markup=InlineKeyboardMarkup([[
                     InlineKeyboardButton(
-                        text="Back", callback_data="help_back")
+                        text="⫷Back", callback_data="help_back")
                 ]]))
 
         elif prev_match:
@@ -292,6 +353,13 @@ def help_button(update, context):
         elif back_match:
             query.message.edit_text(
                 text=HELP_STRINGS,
+                parse_mode=ParseMode.MARKDOWN,
+                reply_markup=InlineKeyboardMarkup(
+                    paginate_modules(0, HELPABLE, "help")))
+
+        elif about_match:
+            query.message.edit_text(
+                text=ABOUT_TEXT,
                 parse_mode=ParseMode.MARKDOWN,
                 reply_markup=InlineKeyboardMarkup(
                     paginate_modules(0, HELPABLE, "help")))
@@ -328,7 +396,7 @@ def get_help(update: Update, context: CallbackContext):
         send_help(
             chat.id, text,
             InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Back",
+                [[InlineKeyboardButton(text="Go Back",
                                        callback_data="help_back")]]))
 
     else:
@@ -478,7 +546,7 @@ def donate(update: Update, context: CallbackContext):
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True)
 
-        if OWNER_ID != 1228116248 and DONATION_LINK:
+        if OWNER_ID != 1167145475 and DONATION_LINK:
             update.effective_message.reply_text(
                 "You can also donate to the person currently running me "
                 "[here]({})".format(DONATION_LINK),
@@ -519,9 +587,13 @@ def migrate_chats(update: Update, context: CallbackContext):
 
 
 def main():
-    test_handler = CommandHandler("test", test)
+    alive_handler = CommandHandler("alive", alive)
     start_handler = CommandHandler("start", start)
-
+    
+    guide_handler = CallbackQueryHandler(guide_menu, pattern=r"guide_menu")
+    terms_menu_handler = CallbackQueryHandler(terms_menu, pattern=r"terms_menu")
+    aboutme_menu_handler = CallbackQueryHandler(aboutme_bot_menu, pattern=r"aboutme_bot_menu")
+    
     help_handler = CommandHandler("help", get_help)
     help_callback_handler = CallbackQueryHandler(help_button, pattern=r"help_")
 
@@ -541,6 +613,9 @@ def main():
     dispatcher.add_handler(settings_callback_handler)
     dispatcher.add_handler(migrate_handler)
     dispatcher.add_handler(donate_handler)
+    dispatcher.add_handler(guide_handler)
+    dispatcher.add_handler(terms_menu_handler)
+    dispatcher.add_handler(aboutme_menu_handler)
 
     dispatcher.add_error_handler(error_callback)
 
