@@ -277,12 +277,12 @@ def terms_menu(update: Update, context: CallbackContext):
 def aboutme_bot_menu(update: Update, context: CallbackContext):
     
     update.effective_message.edit_text(ABOUTME_STRINGS, parse_mode=ParseMode.MARKDOWN, reply_markup=InlineKeyboardMarkup(
-                                                [[InlineKeyboardButton(text="Updates Channel", url="t.me/HackfreaksUpdates"), InlineKeyboardButton(text="Support Group", url="t.me/HackfreaksSupport")], [InlineKeyboardButton(text="Bot Logs", url="t.me/HackfreaksLogs"), InlineKeyboardButton(text="Go Back", callback_data="guide_menu")]]))
+                                                [[InlineKeyboardButton(text="Updates Channel", url="t.me/HackfreaksUpdates"), InlineKeyboardButton(text="Support Group", url="t.me/HackfreaksSupport")], [InlineKeyboardButton(text="Global Ban Logs", url="t.me/HackfreaksLogs"), InlineKeyboardButton(text="Go Back", callback_data="guide_menu")]]))
 
 
 @run_async
 def about(update: Update, context: CallbackContext):
-    update.effective_message.reply_text(ABOUT_TEXT, parse_mode=ParseMode.MARKDOWN, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="⫷Back", callback_data="help_back")]])) 
+    update.effective_message.reply_text(ABOUT_TEXT, parse_mode=ParseMode.MARKDOWN, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Go Back", callback_data="help_back")]])) 
 
 # for test purposes
 def error_callback(update: Update, context: CallbackContext):
