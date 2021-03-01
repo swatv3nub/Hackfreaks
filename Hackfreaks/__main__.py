@@ -58,9 +58,9 @@ Hosted in Heroku with ElephantSQL Database,
 I Can make your group management fun and easy!
 Press or type /help to Get to know about my Modules
 ==========================
-✗ [Updates Channel](t.me/HackfreaksUpdates).
-✗ [Support Group](t.me/HackfreaksSupport).
-✗ [Repository](github.com/swatv3nub/Hackfreaks)
+✗ Updates Channel - @HackfreaksUpdates
+✗ Support Group - @HackfreaksSupport
+✗ Repository - https://github.com/swatv3nub/Hackfreaks
 
 Maintained by @MaskedVirus
 Wanna Add me to your Group? Just click the button below!
@@ -237,15 +237,18 @@ def start(update: Update, context: CallbackContext):
                 reply_markup=InlineKeyboardMarkup(                   
                           [[
                               InlineKeyboardButton(
-                              text="Add To Your Group",
-                              url="t.me/MrHackfreaksRobot?startgroup=true")
+                              text="Add To Your Group 👥",
+                              url="t.me/MrHackfreaksRobot?startgroup=true"),
+                              InlineKeyboardButton(
+                              text="Source Code ✨",
+                              url="https://github.com/swatv3nub/Hackfreaks")
                           ],
                           [
                               InlineKeyboardButton(
-                              text="Guide",
+                              text="Guide 📒",
                               callback_data="guide_menu"),
                               InlineKeyboardButton(
-                              text="Help",
+                              text="Help 📖",
                               callback_data="help_back")                  
                           ]])) 
     else:
