@@ -58,8 +58,11 @@ Hosted in Heroku with ElephantSQL Database,
 I Can make your group management fun and easy!
 Press or type /help to Get to know about my Modules
 ==========================
-✗ Updates Channel - @HackfreaksUpdates
-✗ Support Group - @HackfreaksSupport
+✗ Updates Channel 
+- @HackfreaksUpdates
+
+✗ Support Group 
+- @HackfreaksSupport
 
 Maintained by @MaskedVirus
 Wanna Add me to your Group? Just click the button below!
