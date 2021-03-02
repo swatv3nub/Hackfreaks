@@ -109,7 +109,7 @@ Report Bugs/Error At @HackfreaksSupport
 """
 
 ABOUTME_STRINGS = """
-*Heya, I Am Hackfreaks*
+*I Am Hackfreaks*
 A Python Based Group-Manager
 Bot!
 
