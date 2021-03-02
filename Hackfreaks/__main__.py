@@ -114,9 +114,9 @@ ABOUTME_STRINGS = """
 A Python Based Group-Manager
 Bot!
 
-*My Owner:*
+<b>My Owner:</b>
 ➥ @MaskedVirus
-*Co-Dev:*
+<b>Co-Dev:</b>
 ➥ @okay_retard
 
 Based on Paul's Marie Bot
