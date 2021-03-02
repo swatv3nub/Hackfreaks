@@ -1,5 +1,6 @@
 import importlib
 import time
+import html
 import re
 from sys import argv
 from typing import Optional
@@ -109,7 +110,7 @@ Report Bugs/Error At @HackfreaksSupport
 """
 
 ABOUTME_STRINGS = """
-*I Am Hackfreaks*
+<b>I Am Hackfreaks</b>
 A Python Based Group-Manager
 Bot!
 
@@ -276,7 +277,7 @@ def terms_menu(update: Update, context: CallbackContext):
 #about_bot
 def aboutme_bot_menu(update: Update, context: CallbackContext):
     
-    update.effective_message.edit_text(ABOUTME_STRINGS, parse_mode='markdown', reply_markup=InlineKeyboardMarkup(
+    update.effective_message.edit_text(ABOUTME_STRINGS, parse_mode='html', reply_markup=InlineKeyboardMarkup(
                                                 [[InlineKeyboardButton(text="Updates Channel", url="t.me/HackfreaksUpdates"), InlineKeyboardButton(text="Support Group", url="t.me/HackfreaksSupport")], [InlineKeyboardButton(text="Global Ban Logs", url="t.me/HackfreaksLogs"), InlineKeyboardButton(text="Go Back", callback_data="guide_menu")]]))
 
 
