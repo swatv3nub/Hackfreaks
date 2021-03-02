@@ -118,13 +118,13 @@ Bot!
 *Co-Dev:*
 ➥ @okay_retard
 
-*Based on Paul's Marie Bot*
+Based on Paul's Marie Bot
 
 Thanks To All Who Made Me
 That Much To Manage Your Groups!
 
-*Updates Channel: @HackfreaksUpdates
-Support Chat: @HackfreaksSupport*
+Updates Channel: @HackfreaksUpdates
+Support Chat: @HackfreaksSupport
 """
 
 TERMS_STRINGS = """
@@ -263,7 +263,7 @@ def guide_menu(update: Update, context: CallbackContext):
     
     update.effective_message.edit_text(ABOUT_TEXT, parse_mode=ParseMode.MARKDOWN, reply_markup=InlineKeyboardMarkup(
                                                 [[InlineKeyboardButton(text="About Me", callback_data="aboutme_bot_menu"), InlineKeyboardButton(text="Commands", callback_data="help_back")],
-                                                 [InlineKeyboardButton(text="T&C", callback_data="terms_menu"), InlineKeyboardButton(text="Go Back", callback_data="start")]]))
+                                                 [InlineKeyboardButton(text="T&C", callback_data="terms_menu"), InlineKeyboardButton(text="Basic Config", url="https://telegra.ph/Hackfreaks-Tutorial-03-02-2")]]))
 
 #terms
 def terms_menu(update: Update, context: CallbackContext):
