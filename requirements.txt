@@ -19,7 +19,6 @@ CurrencyConverter
 googletrans
 jikanpy
 speedtest-cli
-coffeehouse
 regex
 bleach
 git+https://github.com/swatv3nub/python-markdown2.git
