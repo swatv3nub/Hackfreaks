@@ -40,6 +40,6 @@ googletrans
 mtranslate
 aiohttp[speedups]
 nekos.py
-spamprotection
+Intellivoid-SPB
 pymongo==3.11.0
 dnspython==2.0.0
