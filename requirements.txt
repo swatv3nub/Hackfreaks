@@ -4,7 +4,8 @@ lxml
 beautifulsoup4
 requests
 sqlalchemy==1.3.23
-python-telegram-bot==12.8
+python-telegram-bot==13.4.1
+pyrogram
 psycopg2-binary
 feedparser
 pynewtonmath
@@ -29,6 +30,7 @@ alphabet_detector
 pyrate-limiter
 gtts
 nekos.py
+configparser
 fontTools
 typing
 tswift
