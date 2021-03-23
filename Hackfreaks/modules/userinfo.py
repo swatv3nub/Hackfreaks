@@ -26,88 +26,10 @@ from Hackfreaks.modules.helper_funcs.chat_status import sudo_plus
 from Hackfreaks.modules.helper_funcs.extraction import extract_user
 from Hackfreaks import telethn as HackfreaksTelethonClient, TIGERS, DRAGONS, DEMONS
 
+from spamprotection.sync import SPBClient
+from spamprotection.errors import HostDownError
 
-def no_by_per(totalhp, percentage):
-    """
-    rtype: num of `percentage` from total
-    eg: 1000, 10 -> 10% of 1000 (100)
-    """
-    return totalhp * percentage / 100
-
-
-def get_percentage(totalhp, earnedhp):
-    """
-    rtype: percentage of `totalhp` num
-    eg: (1000, 100) will return 10%
-    """
-
-    matched_less = totalhp - earnedhp
-    per_of_totalhp = 100 - matched_less * 100.0 / totalhp
-    per_of_totalhp = str(int(per_of_totalhp))
-    return per_of_totalhp
-
-
-def hpmanager(user):
-    total_hp = (get_user_num_chats(user.id) + 10) * 10
-
-    if not is_user_gbanned(user.id):
-
-        # Assign new var `new_hp` since we need `total_hp` in
-        # end to calculate percentage.
-        new_hp = total_hp
-
-        # if no username decrease 25% of hp.
-        if not user.username:
-            new_hp -= no_by_per(total_hp, 25)
-        try:
-            dispatcher.bot.get_user_profile_photos(user.id).photos[0][-1]
-        except IndexError:
-            # no profile photo ==> -25% of hp
-            new_hp -= no_by_per(total_hp, 25)
-        # if no /setme exist ==> -20% of hp
-        if not sql.get_user_me_info(user.id):
-            new_hp -= no_by_per(total_hp, 20)
-        # if no bio exsit ==> -10% of hp
-        if not sql.get_user_bio(user.id):
-            new_hp -= no_by_per(total_hp, 10)
-
-        if is_afk(user.id):
-            afkst = check_afk_status(user.id)
-            # if user is afk and no reason then decrease 7%
-            # else if reason exist decrease 5%
-            if not afkst.reason:
-                new_hp -= no_by_per(total_hp, 7)
-            else:
-                new_hp -= no_by_per(total_hp, 5)
-
-        # fbanned users will have (2*number of fbans) less from max HP
-        # Example: if HP is 100 but user has 5 diff fbans
-        # Available HP is (2*5) = 10% less than Max HP
-        # So.. 10% of 100HP = 90HP
-
-
-# Commenting out fban health decrease cause it wasnt working and isnt needed ig.
-#_, fbanlist = get_user_fbanlist(user.id)
-#new_hp -= no_by_per(total_hp, 2 * len(fbanlist))
-
-# Bad status effects:
-# gbanned users will always have 5% HP from max HP
-# Example: If HP is 100 but gbanned
-# Available HP is 5% of 100 = 5HP
-
-    else:
-        new_hp = no_by_per(total_hp, 5)
-
-    return {
-        "earnedhp": int(new_hp),
-        "totalhp": int(total_hp),
-        "percentage": get_percentage(total_hp, new_hp)
-    }
-
-
-def make_bar(per):
-    done = min(round(per / 10), 10)
-    return "■" * done + "□" * (10 - done)
+client = SPBClient()
 
 
 @run_async
@@ -201,7 +123,8 @@ def gifid(update: Update, context: CallbackContext):
 
 @run_async
 def info(update: Update, context: CallbackContext):
-    bot, args = context.bot, context.args
+    bot = context.bot
+    args = context.args
     message = update.effective_message
     chat = update.effective_chat
     user_id = extract_user(update.effective_message, args)
@@ -213,22 +136,25 @@ def info(update: Update, context: CallbackContext):
         user = message.from_user
 
     elif not message.reply_to_message and (
-            not args or
-        (len(args) >= 1 and not args[0].startswith("@") and
-         not args[0].isdigit() and
-         not message.parse_entities([MessageEntity.TEXT_MENTION]))):
+        not args
+        or (
+            len(args) >= 1
+            and not args[0].startswith("@")
+            and not args[0].isdigit()
+            and not message.parse_entities([MessageEntity.TEXT_MENTION])
+        )
+    ):
         message.reply_text("I can't extract a user from this.")
         return
 
     else:
         return
 
-    rep = message.reply_text(
-        "<code>Searching...</code>", parse_mode=ParseMode.HTML)
-
-    text = (f"╒═══「<b> Search results:</b> 」\n"
-            f"ID: <code>{user.id}</code>\n"
-            f"First Name: {html.escape(user.first_name)}")
+    text = (
+        f"<b>General:</b>\n"
+        f"ID: <code>{user.id}</code>\n"
+        f"First Name: {html.escape(user.first_name)}"
+    )
 
     if user.last_name:
         text += f"\nLast Name: {html.escape(user.last_name)}"
@@ -236,83 +162,100 @@ def info(update: Update, context: CallbackContext):
     if user.username:
         text += f"\nUsername: @{html.escape(user.username)}"
 
-    text += f"\nPermalink: {mention_html(user.id, 'link')}"
-
-    if chat.type != "private" and user_id != bot.id:
-        _stext = "\nPresence: <code>{}</code>"
-
-        afk_st = is_afk(user.id)
-        if afk_st:
-            text += _stext.format("AFK")
-        else:
-            status = status = bot.get_chat_member(chat.id, user.id).status
-            if status:
-                if status in {"left", "kicked"}:
-                    text += _stext.format("Not here")
-                elif status == "member":
-                    text += _stext.format("Detected")
-                elif status in {"administrator", "creator"}:
-                    text += _stext.format("Admin")
-    if user_id not in [bot.id, 777000, 1087968824]:
-        userhp = hpmanager(user)
-        text += f"\n\n<b>Health:</b> <code>{userhp['earnedhp']}/{userhp['totalhp']}</code>\n[<i>{make_bar(int(userhp['percentage']))} </i>{userhp['percentage']}%]"
+    text += f"\nPermanent user link: {mention_html(user.id, 'link')}"
 
     try:
         spamwtc = sw.get_ban(int(user.id))
         if spamwtc:
-            text += "\n\n<b>This person is Spamwatched!</b>"
+            text += "<b>\n\nSpamWatch:\n</b>"
+            text += "<b>This person is banned in Spamwatch!</b>"
             text += f"\nReason: <pre>{spamwtc.reason}</pre>"
             text += "\nAppeal at @SpamWatchSupport"
         else:
-            pass
+            text += "<b>\n\nSpamWatch:</b>\n Not banned"
     except:
         pass  # don't crash if api is down somehow...
 
+    try:
+        status = client.raw_output(int(user.id))
+        ptid = status["results"]["private_telegram_id"]
+        op = status["results"]["attributes"]["is_operator"]
+        ag = status["results"]["attributes"]["is_agent"]
+        wl = status["results"]["attributes"]["is_whitelisted"]
+        ps = status["results"]["attributes"]["is_potential_spammer"]
+        sp = status["results"]["spam_prediction"]["spam_prediction"]
+        hamp = status["results"]["spam_prediction"]["ham_prediction"]
+        blc = status["results"]["attributes"]["is_blacklisted"]
+        if blc:
+            blres = status["results"]["attributes"]["blacklist_reason"]
+        else:
+            blres = None
+        text += "\n\n<b>SpamProtection:</b>"
+        text += f"<b>\nPrivate Telegram ID:</b> <code>{ptid}</code>\n"
+        text += f"<b>Operator:</b> <code>{op}</code>\n"
+        text += f"<b>Agent:</b> <code>{ag}</code>\n"
+        text += f"<b>Whitelisted:</b> <code>{wl}</code>\n"
+        text += f"<b>Spam Prediction:</b> <code>{sp}</code>\n"
+        text += f"<b>Ham Prediction:</b> <code>{hamp}</code>\n"
+        text += f"<b>Potential Spammer:</b> <code>{ps}</code>\n"
+        text += f"<b>Blacklisted:</b> <code>{blc}</code>\n"
+        text += f"<b>Blacklist Reason:</b> <code>{blres}</code>\n"
+    except HostDownError:
+        text += "\n\n<b>SpamProtection:</b>"
+        text += "\nCan't connect to Intellivoid SpamProtection API\n"
+
     disaster_level_present = False
 
-    if user.id == OWNER_ID:
-        text += "\n\nThe FigherStrength of this person is 'Emperor'."
-        disaster_level_present = True
-    elif user.id in DEV_USERS:
-        text += "\n\nThis user is one of my DEV🍁'."
-        disaster_level_present = True
-    elif user.id in DRAGONS:
-        text += "\n\nThe FigherStrength of this person is Elite'."
-        disaster_level_present = True
-    elif user.id in DEMONS:
-        text += "\n\nThe FigherStrength of this person is Knight."
-        disaster_level_present = True
-    elif user.id in TIGERS:
-        text += "\n\nThe FigherStrength of this person is Horsemen."
-        disaster_level_present = True
-    elif user.id in WOLVES:
-        text += "\n\nThe FigherStrength of this person is Goblin."
-        disaster_level_present = True
-
-    if disaster_level_present:
-        text += ' [<a href="https://t.me/HackfreaksUpdates/7">?</a>]'.format(
-            bot.username)
+    num_chats = sql.get_user_num_chats(user.id)
+    text += f"\nChat count: <code>{num_chats}</code>"
 
     try:
         user_member = chat.get_member(user.id)
-        if user_member.status == 'administrator':
+        if user_member.status == "administrator":
             result = requests.post(
                 f"https://api.telegram.org/bot{TOKEN}/getChatMember?chat_id={chat.id}&user_id={user.id}"
             )
             result = result.json()["result"]
             if "custom_title" in result.keys():
-                custom_title = result['custom_title']
-                text += f"\n\nTitle:\n<b>{custom_title}</b>"
+                custom_title = result["custom_title"]
+                text += f"\nThis user holds the title <b>{custom_title}</b> here."
     except BadRequest:
         pass
 
+
+    if user.id == OWNER_ID:
+        text += f"\nThis person is my owner"
+        disaster_level_present = True
+    elif user.id in DEV_USERS:
+        text += f"\nThis Person is a part of my Devs"
+        disaster_level_present = True
+    elif user.id in DRAGONS:
+        text += f"\nThis Person is an Elite"
+        disaster_level_present = True
+    elif user.id in DEMONS:
+        text += f"\nThis Person is a Knight"
+        disaster_level_present = True
+    elif user.id in WOLVES:
+        text += f"\nThis person is a Horsemen"
+        disaster_level_present = True
+    elif user.id in TIGERS:
+        text += f"\nThis Person is a Goblin"
+        disaster_level_present = True
+
+    if disaster_level_present:
+        text += ' [<a href="https://t.me/{}?start=nations">?</a>]'.format(bot.username)
+
+    text += "\n"
     for mod in USER_INFO:
+        if mod.__mod_name__ == "Users":
+            continue
+
         try:
-            mod_info = mod.__user_info__(user.id).strip()
+            mod_info = mod.__user_info__(user.id)
         except TypeError:
-            mod_info = mod.__user_info__(user.id, chat.id).strip()
+            mod_info = mod.__user_info__(user.id, chat.id)
         if mod_info:
-            text += "\n\n" + mod_info
+            text += "\n" + mod_info
 
     if INFOPIC:
         try:
