@@ -25,6 +25,10 @@ from Hackfreaks.modules.sql.users_sql import get_user_num_chats
 from Hackfreaks.modules.helper_funcs.chat_status import sudo_plus
 from Hackfreaks.modules.helper_funcs.extraction import extract_user
 from Hackfreaks import telethn as HackfreaksTelethonClient, TIGERS, DRAGONS, DEMONS
+from telegram import __version__
+from psutil import cpu_percent, virtual_memory, disk_usage, boot_time
+import platform
+from platform import python_version
 
 from spamprotection.sync import SPBClient
 from spamprotection.errors import HostDownError
@@ -343,14 +347,45 @@ def set_about_me(update: Update, context: CallbackContext):
 
 @run_async
 @sudo_plus
-def stats(update: Update, context: CallbackContext):
-    process = subprocess.Popen(
-        "neofetch --stdout", shell=True, text=True, stdout=subprocess.PIPE)
-    output = process.communicate()[0]
-    stats = "<b>Current stats:</b>\n" + "\n" + output + "\n".join(
-        [mod.__stats__() for mod in STATS])
-    result = re.sub(r'(\d+)', r'<code>\1</code>', stats)
-    update.effective_message.reply_text(result, parse_mode=ParseMode.HTML)
+def stats(update, context):
+    uptime = datetime.datetime.fromtimestamp(boot_time()).strftime("%Y-%m-%d %H:%M:%S")
+    status = "*>-------< System >-------<*\n"
+    status += "*System uptime:* " + str(uptime) + "\n"
+
+    uname = platform.uname()
+    status += "*System:* " + str(uname.system) + "\n"
+    status += "*Node name:* " + str(uname.node) + "\n"
+    status += "*Release:* " + str(uname.release) + "\n"
+    status += "*Machine:* " + str(uname.machine) + "\n"
+
+    mem = virtual_memory()
+    cpu = cpu_percent()
+    disk = disk_usage("/")
+    status += "*CPU usage:* " + str(cpu) + " %\n"
+    status += "*Ram usage:* " + str(mem[2]) + " %\n"
+    status += "*Storage used:* " + str(disk[3]) + " %\n\n"
+    status += "*Python version:* " + python_version() + "\n"
+    status += "*Library version:* " + str(__version__) + "\n"
+    try:
+        update.effective_message.reply_text(
+
+            f"*[Hackfreaks](t.me/MrHackfreaksRobot), *\n" +
+            "Maintained by [丂ᴡ๏ɴɪᴛ](t.me/MaskedVirus)\n" +
+            "Library used : python-telegram-bot\n\n" + status +
+            "\n*Bot statistics*:\n"
+            + "\n".join([mod.__stats__() for mod in STATS]) +
+            "\n\n*Source*: [GitHub](https://github.com/swatv3nub/Hackfreaks)",
+        parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
+    except BaseException:
+        update.effective_message.reply_text(
+
+            f"*Hackfreaks (@{context.bot.username}), *\n" +
+            "built by [丂ᴡ๏ɴɪᴛ](t.me/MaskedVirus)\n" +
+            "Library used : python-telegram-bot\n" +
+            "\n*Bot statistics*:\n"
+            + "\n".join([mod.__stats__() for mod in STATS]) +
+            "\n\n*[GitHub](https://github.com/swatv3nub/Hackfreaks)",
+        parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
 
 
 @run_async
