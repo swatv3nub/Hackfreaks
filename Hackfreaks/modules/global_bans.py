@@ -589,11 +589,11 @@ UNGBAN_HANDLER = CommandHandler("ungban", ungban)
 GBAN_LIST = CommandHandler("gbanlist", gbanlist)
 
 GBAN_STATUS = CommandHandler(
-    "spamrefiner", gbanstat, filters=Filters.chat_type.groups
+    "spamrefiner", gbanstat, filters=Filters.groups
 )
 
 GBAN_ENFORCER = MessageHandler(
-    Filters.all & Filters.chat_type.groups, enforce_gban
+    Filters.all & Filters.groups, enforce_gban
 )
 
 SPBTOGGLE_HANDLER = CommandHandler("spb", spbtoggle)
