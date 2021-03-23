@@ -575,6 +575,8 @@ def __chat_settings__(chat_id, user_id):
 __help__ = f"""
 *Admins only:*
  • `/spamrefiner <on/off/yes/no>`*:* Will toggle our antispam tech or return your current settings.
+*Devs only:*
+ • `/spb <on/off>`*:* Will Toggle SPB API Bans.(specially cuz SPB can be down sometimes, ensuring fully functionality of the bot)
 
 Spam Refining, used by bot devs to ban spammers across all groups. This helps protect \
 you and your groups by removing spam flooders as quickly as possible.
@@ -589,11 +591,11 @@ UNGBAN_HANDLER = CommandHandler("ungban", ungban)
 GBAN_LIST = CommandHandler("gbanlist", gbanlist)
 
 GBAN_STATUS = CommandHandler(
-    "spamrefiner", gbanstat, filters=Filters.groups
+    "spamrefiner", gbanstat, filters=Filters.group
 )
 
 GBAN_ENFORCER = MessageHandler(
-    Filters.all & Filters.groups, enforce_gban
+    Filters.all & Filters.group, enforce_gban
 )
 
 SPBTOGGLE_HANDLER = CommandHandler("spb", spbtoggle)
