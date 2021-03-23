@@ -380,7 +380,7 @@ def stats(update, context):
         update.effective_message.reply_text(
 
             f"*Hackfreaks (@{context.bot.username}), *\n" +
-            "built by [丂ᴡ๏ɴɪᴛ](t.me/MaskedVirus)\n" +
+            "Maintained by [丂ᴡ๏ɴɪᴛ](t.me/MaskedVirus)\n" +
             "Library used : python-telegram-bot\n" +
             "\n*Bot statistics*:\n"
             + "\n".join([mod.__stats__() for mod in STATS]) +
