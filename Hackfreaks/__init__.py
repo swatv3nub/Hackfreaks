@@ -182,7 +182,7 @@ updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
 telethn = TelegramClient("hackfreaks", API_ID, API_HASH)
 dispatcher = updater.dispatcher
 
-pyromode = Client("FreakyPyro", api_id=APP_ID, api_hash=API_HASH, bot_token=TOKEN, workers=16)
+pyromode = Client("FreakyPyro", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN, workers=16)
 apps = []
 apps.append(pyromode)
 
