@@ -157,17 +157,17 @@ def info(update: Update, context: CallbackContext):
 
     text = (
         f"<b>General:</b>\n"
-        f"ID: <code>{user.id}</code>\n"
-        f"First Name: {html.escape(user.first_name)}"
+        f"*ID:* <code>{user.id}</code>\n"
+        f"*First Name:* {html.escape(user.first_name)}"
     )
 
     if user.last_name:
-        text += f"\nLast Name: {html.escape(user.last_name)}"
+        text += f"\n*Last Name:* {html.escape(user.last_name)}"
 
     if user.username:
-        text += f"\nUsername: @{html.escape(user.username)}"
+        text += f"\n*Username:* @{html.escape(user.username)}"
 
-    text += f"\nPermanent user link: {mention_html(user.id, 'link')}"
+    text += f"\n*Permanent user link:* {mention_html(user.id, 'link')}"
 
     try:
         spamwtc = sw.get_ban(int(user.id))
@@ -212,7 +212,7 @@ def info(update: Update, context: CallbackContext):
     disaster_level_present = False
 
     num_chats = get_user_num_chats(user.id)
-    text += f"\nChat count: <code>{num_chats}</code>"
+    text += f"\n*Chat count:* <code>{num_chats}</code>"
 
     try:
         user_member = chat.get_member(user.id)
@@ -229,26 +229,23 @@ def info(update: Update, context: CallbackContext):
 
 
     if user.id == OWNER_ID:
-        text += f"\nThis person is my owner"
+        text += f"\n*This person is my owner*"
         disaster_level_present = True
     elif user.id in DEV_USERS:
-        text += f"\nThis Person is a part of my Devs"
+        text += f"\n*This Person is a part of my Devs*"
         disaster_level_present = True
     elif user.id in DRAGONS:
-        text += f"\nThis Person is an Elite"
+        text += f"\n*This Person is an Elite*"
         disaster_level_present = True
     elif user.id in DEMONS:
-        text += f"\nThis Person is a Knight"
+        text += f"\n*This Person is a Knight*"
         disaster_level_present = True
     elif user.id in WOLVES:
-        text += f"\nThis person is a Horsemen"
+        text += f"\n*This person is a Horsemen*"
         disaster_level_present = True
     elif user.id in TIGERS:
-        text += f"\nThis Person is a Goblin"
+        text += f"\n*This Person is a Goblin*"
         disaster_level_present = True
-
-    if disaster_level_present:
-        text += ' [<a href="https://t.me/{}?start=nations">?</a>]'.format(bot.username)
 
     text += "\n"
     for mod in USER_INFO:
