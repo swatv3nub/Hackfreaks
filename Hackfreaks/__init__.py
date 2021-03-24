@@ -7,6 +7,10 @@ import spamwatch
 import telegram.ext as tg
 from telethon import TelegramClient
 
+from pyrogram import Client, errors
+from pyrogram.errors.exceptions.bad_request_400 import PeerIdInvalid, ChannelInvalid
+from pyrogram.types import Chat, User
+
 StartTime = time.time()
 
 # enable logging
@@ -177,6 +181,36 @@ else:
 updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
 telethn = TelegramClient("hackfreaks", API_ID, API_HASH)
 dispatcher = updater.dispatcher
+
+pyromode = Client("FreakyPyro", api_id=APP_ID, api_hash=API_HASH, bot_token=TOKEN, workers=16)
+apps = []
+apps.append(pyromode)
+
+async def get_entity(client, entity):
+    entity_client = client
+    if not isinstance(entity, Chat):
+        try:
+            entity = int(entity)
+        except ValueError:
+            pass
+        except TypeError:
+            entity = entity.id
+        try:
+            entity = await client.get_chat(entity)
+        except (PeerIdInvalid, ChannelInvalid):
+            for pyromode in apps:
+                if pyromode != client:
+                    try:
+                        entity = await pyromode.get_chat(entity)
+                    except (PeerIdInvalid, ChannelInvalid):
+                        pass
+                    else:
+                        entity_client = pyromode
+                        break
+            else:
+                entity = await pyromode.get_chat(entity)
+                entity_client = pyromode
+    return entity, entity_client
 
 DRAGONS = list(DRAGONS) + list(DEV_USERS)
 DEV_USERS = list(DEV_USERS)
