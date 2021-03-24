@@ -29,6 +29,7 @@ spamwatch
 alphabet_detector
 pyrate-limiter
 gtts
+TgCrypto
 nekos.py
 configparser
 fontTools
