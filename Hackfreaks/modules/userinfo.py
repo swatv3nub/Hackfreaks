@@ -211,7 +211,7 @@ def info(update: Update, context: CallbackContext):
 
     disaster_level_present = False
 
-    num_chats = sql.get_user_num_chats(user.id)
+    num_chats = get_user_num_chats(user.id)
     text += f"\nChat count: <code>{num_chats}</code>"
 
     try:
