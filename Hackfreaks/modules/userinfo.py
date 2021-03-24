@@ -364,7 +364,7 @@ def stats(update, context):
     try:
         update.effective_message.reply_text(
 
-            f"*[Hackfreaks](t.me/MrHackfreaksRobot), *\n" +
+            f"*Hackfreaks (@{context.bot.username}), *\n" +
             "Maintained by [🇮🇳 スウォニット](t.me/MaskedVirus)\n" +
             "Library used : python-telegram-bot\n\n" + status +
             "\n*Bot statistics*:\n"
