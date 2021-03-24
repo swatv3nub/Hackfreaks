@@ -486,8 +486,9 @@ Examples:
  `/bio @username(defaults to yours if not specified).`
  `/setbio This user is a wolf` (reply to the user)
 
-*Overall Information about you:*
+*Information about you:*
  • `/info`*:* get information about a user. 
+ • `/spbinfo`*:* get information in SpamProtection about a user.
  
 *What is that health thingy?*
  Come and see [HP System explained](https://t.me/HackfreaksUpdates/8)
