@@ -552,7 +552,7 @@ def __user_info__(user_id):
         return ""
     if user_id == dispatcher.bot.id:
         return ""
-    if int(user_id) in DRAGONS + DEMOMS + TIGERS:
+    if int(user_id) in DRAGONS + DEMONS + TIGERS:
         return ""
     if is_gbanned:
         text = text.format("Yes")
