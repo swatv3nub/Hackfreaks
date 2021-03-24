@@ -353,12 +353,6 @@ def stats(update, context):
     status = "*>-------< System >-------<*\n"
     status += "*System uptime:* " + str(uptime) + "\n"
 
-    uname = platform.uname()
-    status += "*System:* " + str(uname.system) + "\n"
-    status += "*Node name:* " + str(uname.node) + "\n"
-    status += "*Release:* " + str(uname.release) + "\n"
-    status += "*Machine:* " + str(uname.machine) + "\n"
-
     mem = virtual_memory()
     cpu = cpu_percent()
     disk = disk_usage("/")
@@ -371,7 +365,7 @@ def stats(update, context):
         update.effective_message.reply_text(
 
             f"*[Hackfreaks](t.me/MrHackfreaksRobot), *\n" +
-            "Maintained by [丂ᴡ๏ɴɪᴛ](t.me/MaskedVirus)\n" +
+            "Maintained by [🇮🇳 スウォニット](t.me/MaskedVirus)\n" +
             "Library used : python-telegram-bot\n\n" + status +
             "\n*Bot statistics*:\n"
             + "\n".join([mod.__stats__() for mod in STATS]) +
@@ -381,7 +375,7 @@ def stats(update, context):
         update.effective_message.reply_text(
 
             f"*Hackfreaks (@{context.bot.username}), *\n" +
-            "Maintained by [丂ᴡ๏ɴɪᴛ](t.me/MaskedVirus)\n" +
+            "Maintained by [🇮🇳 スウォニット](t.me/MaskedVirus)\n" +
             "Library used : python-telegram-bot\n" +
             "\n*Bot statistics*:\n"
             + "\n".join([mod.__stats__() for mod in STATS]) +
