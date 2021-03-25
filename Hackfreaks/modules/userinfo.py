@@ -347,7 +347,7 @@ def set_about_me(update: Update, context: CallbackContext):
 @sudo_plus
 def stats(update, context):
     uptime = datetime.datetime.fromtimestamp(boot_time()).strftime("%Y-%m-%d %H:%M:%S")
-    status = "*>-------< System >-------<*\n"
+    status = "\n\n*>-------< System >-------<*\n"
     status += "*System uptime:* " + str(uptime) + "\n"
 
     mem = virtual_memory()
