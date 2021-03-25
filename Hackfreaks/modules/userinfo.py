@@ -358,13 +358,13 @@ def stats(update, context):
     status += "*Storage used:* " + str(disk[3]) + " %\n\n"
     status += "*>-------< Library Info >-------<*\n"
     status += "*Python version:* " + python_version() + "\n"
+    status += "*Library used:* python-telegram-bot\n"
     status += "*Library version:* " + str(__version__) + "\n"
     try:
         update.effective_message.reply_text(
 
             f"*I am Hackfreaks*\n" +
-            "*Maintained by* [🇮🇳 スウォニット](t.me/MaskedVirus)\n" +
-            "*Library used:* python-telegram-bot\n\n" + status +
+            "*Maintained by* [🇮🇳 スウォニット](t.me/MaskedVirus)\n" + status +
             "\n*>-------< Statistics >-------<*\n"
             + "\n".join([mod.__stats__() for mod in STATS]) +
             "\n\n*Source:* [GitHub](https://github.com/swatv3nub/Hackfreaks)",
