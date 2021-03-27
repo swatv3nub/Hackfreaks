@@ -350,6 +350,11 @@ def stats(update, context):
     status = "\n\n*>-------< System >-------<*\n"
     status += "*System uptime:* " + str(uptime) + "\n"
 
+    specs = platform.specs()
+    status += "*System:* " + str(specs.system) + "\n"
+    status += "*Node name:* " + str(specs.node) + "\n"
+    status += "*Machine:* " + str(specs.machine) + "\n"
+
     mem = virtual_memory()
     cpu = cpu_percent()
     disk = disk_usage("/")
