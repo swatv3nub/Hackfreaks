@@ -1,7 +1,20 @@
 ![MrHackfreaks](https://telegra.ph/file/4538e359834b77487e88b.jpg) 
 # MrHackfreaksRobot
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity) [![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://perso.crans.org/besson/LICENSE.html) [![Open Source Love svg2](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com) [![Updates channel!](https://img.shields.io/badge/Join%20Channel-!-green)](https://telegram.dog/HackfreaksUpdates)
+[![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
+[![ForTheBadge built-with-love](http://ForTheBadge.com/images/badges/built-with-love.svg)](https://GitHub.com/swatv3nub/)</br>
 
+
+![Python Version](https://img.shields.io/badge/python-3.9-green?style=for-the-badge&logo=appveyor)
+![Issues](https://img.shields.io/github/issues/swatv3nub/Hackfreaks?style=for-the-badge&logo=appveyor)
+![Forks](https://img.shields.io/github/forks/swatv3nub/Hackfreaks?style=for-the-badge&logo=appveyor)
+![Stars](https://img.shields.io/github/stars/swatv3nub/Hackfreaks?style=for-the-badge&logo=appveyor)
+![LICENSE](https://img.shields.io/github/license/swatv3nub/Hackfreaks?style=for-the-badge&logo=appveyor)
+![Contributors](https://img.shields.io/github/contributors/swatv3nub/Hackfreaks?style=for-the-badge&logo=appveyor)
+![Repository Size](https://img.shields.io/github/repo-size/swatv3nub/Hackfreaks?style=for-the-badge&logo=appveyor)</br>
+
+
+[![Join Support!](https://img.shields.io/badge/Support%20Chat-Support-green)](https://t.me/HackfreaksSupport)
+[![Join Updates!](https://img.shields.io/badge/Join%20Channel-Updates-green)](https://t.me/HackfreaksUpdates)
 
 A modular Telegram Python bot running on python3 with a sqlalchemy database.
 
