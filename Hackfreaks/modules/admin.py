@@ -459,6 +459,7 @@ __help__ = """
  • `/invitelink`*:* gets invitelink
  • `/promote`*:* promotes the user replied to
  • `/demote`*:* demotes the user replied to
+ • `/admincache`*:* Updates the admin cache of the Group in Database.
  • `/title <title here>`*:* sets a custom title for an admin that the bot promoted
 """
 
@@ -487,7 +488,7 @@ dispatcher.add_handler(DEMOTE_HANDLER)
 dispatcher.add_handler(SET_TITLE_HANDLER)
 
 __mod_name__ = "Admin"
-__command_list__ = ["adminlist", "admins", "invitelink", "promote", "demote", "admincache"]
+__commanUpdate the admin cache, to take into account new admins/admin permissions.d_list__ = ["adminlist", "admins", "invitelink", "promote", "demote", "admincache"]
 __handlers__ = [
     ADMINLIST_HANDLER, PIN_HANDLER, UNPIN_HANDLER, INVITE_HANDLER,
     PROMOTE_HANDLER, DEMOTE_HANDLER, ADMIN_CACHE_HANDLER, SET_TITLE_HANDLER
