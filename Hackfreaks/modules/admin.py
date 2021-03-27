@@ -7,10 +7,13 @@ from telegram.utils.helpers import mention_html, mention_markdown, escape_markdo
 
 from Hackfreaks import OWNER_ID, dispatcher
 from Hackfreaks.modules.disable import DisableAbleCommandHandler
-from Hackfreaks.modules.helper_funcs.chat_status import (bot_admin, can_pin,
-                                                           can_promote,
-                                                           connection_status,
-                                                           user_admin)
+from Hackfreaks.modules.helper_funcs.chat_status import (bot_admin, 
+                                                         can_pin,
+                                                         can_promote,
+                                                         connection_status,
+                                                         user_admin,
+                                                         ADMIN_CACHE,
+                                                        )
 from Hackfreaks.modules.helper_funcs.extraction import (extract_user,
                                                           extract_user_and_text)
 from Hackfreaks.modules.log_channel import loggable
@@ -172,6 +175,16 @@ def demote(update: Update, context: CallbackContext) -> str:
         return
 
 
+@run_async
+@user_admin
+def admincache(update, _):
+    try:
+        ADMIN_CACHE.pop(update.effective_chat.id)
+    except KeyError:
+        pass
+
+    update.effective_message.reply_text("Refreshed the Adminlist of this Group in my Database")
+    
 @run_async
 @connection_status
 @bot_admin
@@ -458,6 +471,9 @@ INVITE_HANDLER = DisableAbleCommandHandler("invitelink", invite)
 
 PROMOTE_HANDLER = DisableAbleCommandHandler("promote", promote)
 DEMOTE_HANDLER = DisableAbleCommandHandler("demote", demote)
+ADMIN_CACHE_HANDLER = CommandHandler(
+    "admincache", admincache, filters=Filters.group
+)
 
 SET_TITLE_HANDLER = CommandHandler("title", set_title)
 
@@ -466,12 +482,13 @@ dispatcher.add_handler(PIN_HANDLER)
 dispatcher.add_handler(UNPIN_HANDLER)
 dispatcher.add_handler(INVITE_HANDLER)
 dispatcher.add_handler(PROMOTE_HANDLER)
+dispatcher.add_handler(ADMIN_CACHE_HANDLER)
 dispatcher.add_handler(DEMOTE_HANDLER)
 dispatcher.add_handler(SET_TITLE_HANDLER)
 
 __mod_name__ = "Admin"
-__command_list__ = ["adminlist", "admins", "invitelink", "promote", "demote"]
+__command_list__ = ["adminlist", "admins", "invitelink", "promote", "demote", "admincache"]
 __handlers__ = [
     ADMINLIST_HANDLER, PIN_HANDLER, UNPIN_HANDLER, INVITE_HANDLER,
-    PROMOTE_HANDLER, DEMOTE_HANDLER, SET_TITLE_HANDLER
+    PROMOTE_HANDLER, DEMOTE_HANDLER, ADMIN_CACHE_HANDLER, SET_TITLE_HANDLER
 ]
