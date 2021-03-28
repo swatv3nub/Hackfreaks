@@ -1,4 +1,4 @@
-aimport sys
+import sys
 import traceback
 from functools import wraps
 from Hackfreaks import pyromode, JOIN_LOGGER
