@@ -46,3 +46,5 @@ nekos.py
 Intellivoid-SPB
 pymongo==3.11.0
 dnspython==2.0.0
+youtube-dl
+youtube_search
