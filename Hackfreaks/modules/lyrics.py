@@ -39,13 +39,14 @@ def lyrics(update, context):
         
                 
 __help__ = """
-Want to get the lyrics of your favorite songs straight from the app? This module is perfect for that!
+Want to get the lyrics of your favorite songs straight from the app? Plus You can get the Song uploaded here on your request
 *Available commands:*
  - /lyrics <song>: returns the lyrics of that song.
+ - /song <song>: uploads the song directly to telegram from youtube.
  You can either enter just the song name or both the artist and song name.
 """
 
-__mod_name__ = "Lyrics"
+__mod_name__ = "Music"
 
 
 
