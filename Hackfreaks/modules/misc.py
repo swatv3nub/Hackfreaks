@@ -93,6 +93,8 @@ Example:
       _OR_
  `/cash 1 usd inr`
 Output: `1.0 USD = 75.505 INR`
+ • `/encrypt <texts>` *:* can only be decrypted using this bot
+ • `/decrypt <encrypted text>` *:* Decrypt Texts encrypted using this bot
 """
 
 ECHO_HANDLER = DisableAbleCommandHandler("echo", echo, filters=Filters.group)
