@@ -207,7 +207,7 @@ def temp_ban(update: Update, context: CallbackContext) -> str:
 @user_admin
 @user_can_ban
 @loggable
-def hit(update: Update, context: CallbackContext) -> str:
+def kick(update: Update, context: CallbackContext) -> str:
     chat = update.effective_chat
     user = update.effective_user
     message = update.effective_message
@@ -263,7 +263,7 @@ def hit(update: Update, context: CallbackContext) -> str:
 @run_async
 @bot_admin
 @can_restrict
-def hitme(update: Update, context: CallbackContext):
+def kickme(update: Update, context: CallbackContext):
     user_id = update.effective_message.from_user.id
     if is_user_admin(update.effective_chat, user_id):
         update.effective_message.reply_text(
@@ -375,28 +375,31 @@ def selfunban(context: CallbackContext, update: Update) -> str:
 
 
 __help__ = """
- • `/hitme`*:* hits the user who issued the command
+ • `/kickme`*:* hits the user who issued the command
 *Admins only:*
  • `/ban <userhandle>`*:* bans a user. (via handle, or reply)
+ • `/dban` <userhandle>*:* bans a user and deletes the message
+ • `/sban` <userhandle>*:* silently bans the user
  • `/tban <userhandle> x(m/h/d)`*:* bans a user for `x` time. (via handle, or reply). `m` = `minutes`, `h` = `hours`, `d` = `days`.
  • `/unban <userhandle>`*:* unbans a user. (via handle, or reply)
- • `/hit <userhandle>`*:* Hit a user out of the group, (via handle, or reply)
+ • `/kick <userhandle>`*:* Kicks a user out of the group, (via handle, or reply)
+ • `/dkick` <userhandle>*:* Kicks a user and deletes the message.
 """
 
 BAN_HANDLER = CommandHandler("ban", ban)
 TEMPBAN_HANDLER = CommandHandler(["tban"], temp_ban)
-HIT_HANDLER = CommandHandler("hit", hit)
+KICK_HANDLER = CommandHandler("kick", kick)
 UNBAN_HANDLER = CommandHandler("unban", unban)
 ROAR_HANDLER = CommandHandler("roar", selfunban)
-HITME_HANDLER = DisableAbleCommandHandler(
-    "hitme", hitme, filters=Filters.group)
+KICKME_HANDLER = DisableAbleCommandHandler(
+    "kickme", kickme, filters=Filters.group)
 
 dispatcher.add_handler(BAN_HANDLER)
 dispatcher.add_handler(TEMPBAN_HANDLER)
-dispatcher.add_handler(HIT_HANDLER)
+dispatcher.add_handler(KICK_HANDLER)
 dispatcher.add_handler(UNBAN_HANDLER)
 dispatcher.add_handler(ROAR_HANDLER)
-dispatcher.add_handler(HITME_HANDLER)
+dispatcher.add_handler(KICKME_HANDLER)
 
 __mod_name__ = "Restrictions"
 __handlers__ = [
