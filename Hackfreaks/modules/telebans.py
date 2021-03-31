@@ -8,7 +8,7 @@ from telethon.tl.functions.channels import EditBannedRequest
 from telethon.tl.types import ChatBannedRights
 
 
-@hackfreaksrobot.on(events.NewMessage(pattern="^[!/]dkick ?(.*)"))
+@telethn.on(events.NewMessage(pattern="^[!/]dkick ?(.*)"))
 async def dkick(event):
 
     if not await user_is_admin(
@@ -33,7 +33,7 @@ async def dkick(event):
     await zx.delete()
     await telethn.kick_participant(event.chat_id, x)
 
-@hackfreaksrobot.on(events.NewMessage(pattern="^[!/]dban ?(.*)"))
+@telethn.on(events.NewMessage(pattern="^[!/]dban ?(.*)"))
 async def dban(event):
 
     if not await user_is_admin(
@@ -57,7 +57,7 @@ async def dban(event):
     await zx.delete()
     await telethn(EditBannedRequest(event.chat_id, x, ChatBannedRights(until_date=None, view_messages=True)))
 
-@hackfreaksrobot.on(events.NewMessage(pattern="^[!/]sban ?(.*)"))
+@telethn.on(events.NewMessage(pattern="^[!/]sban ?(.*)"))
 async def dban(event):
 
     if not await user_is_admin(
