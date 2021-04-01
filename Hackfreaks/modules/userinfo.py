@@ -310,6 +310,20 @@ def about_me(update: Update, context: CallbackContext):
         update.effective_message.reply_text(
             "There isnt one, use /setme to set one.")
 
+@run_async
+def stickerid(update: Update, comtext: CallBackContext):
+    msg = update.effective_message
+    if msg.reply_to_message and msg.reply_to_message.sticker:
+        update.effective_message.reply_text("Hello " +
+                                            "[{}](tg://user?id={})".format(msg.from_user.first_name, msg.from_user.id)
+                                            + ", The sticker id you are replying is :\n```" + 
+                                            escape_markdown(msg.reply_to_message.sticker.file_id) + "```",
+                                            parse_mode=ParseMode.MARKDOWN)
+    else:
+        update.effective_message.reply_text("Hello " + "[{}](tg://user?id={})".format(msg.from_user.first_name,
+                                            msg.from_user.id) + ", Please reply to sticker message to get id sticker",
+                                            parse_mode=ParseMode.MARKDOWN)
+
 
 @run_async
 def set_about_me(update: Update, context: CallbackContext):
@@ -501,6 +515,7 @@ GET_BIO_HANDLER = DisableAbleCommandHandler("bio", about_bio)
 STATS_HANDLER = CommandHandler("stats", stats)
 ID_HANDLER = DisableAbleCommandHandler("id", get_id)
 GIFID_HANDLER = DisableAbleCommandHandler("gifid", gifid)
+STICKERID_HANDLER =  DisableAbleCommandHandler("stickerid", stickerid)
 INFO_HANDLER = DisableAbleCommandHandler(("info", "book"), info)
 
 SET_ABOUT_HANDLER = DisableAbleCommandHandler("setme", set_about_me)
@@ -516,8 +531,8 @@ dispatcher.add_handler(SET_ABOUT_HANDLER)
 dispatcher.add_handler(GET_ABOUT_HANDLER)
 
 __mod_name__ = "Info"
-__command_list__ = ["setbio", "bio", "setme", "me", "info"]
+__command_list__ = ["setbio", "bio", "setme", "me", "info", "stickerid"]
 __handlers__ = [
-    ID_HANDLER, GIFID_HANDLER, INFO_HANDLER, SET_BIO_HANDLER, GET_BIO_HANDLER,
+    ID_HANDLER, GIFID_HANDLER, STICKERID_HANDLER, INFO_HANDLER, SET_BIO_HANDLER, GET_BIO_HANDLER,
     SET_ABOUT_HANDLER, GET_ABOUT_HANDLER, STATS_HANDLER
 ]
