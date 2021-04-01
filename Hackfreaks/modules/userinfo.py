@@ -311,7 +311,7 @@ def about_me(update: Update, context: CallbackContext):
             "There isnt one, use /setme to set one.")
 
 @run_async
-def stickerid(update: Update, comtext: CallBackContext):
+def stickerid(update: Update, context: CallbackContext):
     msg = update.effective_message
     if msg.reply_to_message and msg.reply_to_message.sticker:
         update.effective_message.reply_text("Hello " +
