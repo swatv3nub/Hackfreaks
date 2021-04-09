@@ -26,7 +26,7 @@ def get_size(bytes, suffix="B"):
 @dev_plus
 @run_async
 def status(update: Update, context: CallbackContext):
-        bot = context.bot
+    bot = context.bot
 	stat = "*>-------< Basic >-------<*\n"
 	stat += f"*Hackfreaks Version:* `{VERSION}`""\n"
 	stat += f"*Python Version:* `"+python_version()+"`\n"
@@ -52,17 +52,17 @@ def status(update: Update, context: CallbackContext):
 	cpuu += f"*Current Frequency:* `{cpufreq.current:.2f}Mhz`\n"
 	for i, percentage in enumerate(psutil.cpu_percent(percpu=True)):
 	    cpuu += f"*Core {i}:* `{percentage}%`\n"
-	cpuu += f"*Total CPU Usage:* `{psutil.cpu_percent()}%`\n"
-	svmem = psutil.virtual_memory()
-	memm += "*>-------< Memory >-------<*"
-	memm += f"*Total:* `{get_size(svmem.total)}`\n"
-	memm += f"*Available:* `{get_size(svmem.available)}`\n"
-	memm += f"*Used:* `{get_size(svmem.used)}`\n"
-	memm += f"*Percentage:* `{svmem.percent}%`\n"
-	disk = disk_usage("/")
-	memm += "*Storage used:* " + str(disk[3]) + " %\n\n"
-	foinal = str(stat)+ str(softw) + str(cpuu) + str(memm) + "\n"
-	update.effective_message.reply_text(foinal, parse_mode=ParseMode.MARKDOWN)        
+	    cpuu += f"*Total CPU Usage:* `{psutil.cpu_percent()}%`\n"
+	    svmem = psutil.virtual_memory()
+	    memm += "*>-------< Memory >-------<*"
+    	memm += f"*Total:* `{get_size(svmem.total)}`\n"
+    	memm += f"*Available:* `{get_size(svmem.available)}`\n"
+	    memm += f"*Used:* `{get_size(svmem.used)}`\n"
+    	memm += f"*Percentage:* `{svmem.percent}%`\n"
+	    disk = disk_usage("/")
+	    memm += "*Storage used:* " + str(disk[3]) + " %\n\n"
+	    foinal = str(stat)+ str(softw) + str(cpuu) + str(memm) + "\n"
+    	update.effective_message.reply_text(foinal, parse_mode=ParseMode.MARKDOWN)        
 
 STATUS_HANDLER = CommandHandler("system", status, filters=CustomFilters.sudo_filter)
 
