@@ -27,8 +27,6 @@ def get_size(bytes, suffix="B"):
 @run_async
 def status(update: Update, context: CallbackContext):
         bot = context.bot
-	chat = update.effective_chat
-	
 	stat = "*>-------< Basic >-------<*\n"
 	stat += f"*Hackfreaks Version:* `{VERSION}`""\n"
 	stat += f"*Python Version:* `"+python_version()+"`\n"
@@ -63,8 +61,8 @@ def status(update: Update, context: CallbackContext):
 	memm += f"*Percentage:* `{svmem.percent}%`\n"
 	disk = disk_usage("/")
 	memm += "*Storage used:* " + str(disk[3]) + " %\n\n"
-	reply = str(stat)+ str(softw) + str(cpuu) + str(memm) + "\n"
-	bot.send_message(chat.id, reply, parse_mode=ParseMode.MARKDOWN)        
+	foinal = str(stat)+ str(softw) + str(cpuu) + str(memm) + "\n"
+	update.effective_message.reply_text(foinal, parse_mode=ParseMode.MARKDOWN)        
 
 STATUS_HANDLER = CommandHandler("system", status, filters=CustomFilters.sudo_filter)
 
