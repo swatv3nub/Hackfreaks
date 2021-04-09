@@ -4,7 +4,7 @@ import platform
 from datetime import datetime
 from platform import python_version, uname
 from telegram import Update, Bot, ParseMode, InlineKeyboardMarkup, InlineKeyboardButton, __version__
-from telegram.ext import run_async, CallbackQueryHandler, CommandHandler
+from telegram.ext import run_async, CallbackQueryHandler, CommandHandler, CallBackContext
 
 from Hackfreaks import dispatcher, DEV_USERS
 from Hackfreaks.modules.disable import DisableAbleCommandHandler
@@ -25,7 +25,8 @@ def get_size(bytes, suffix="B"):
 	
 @dev_plus
 @run_async
-def status(bot: Bot, update: Update):
+def status(update: Update, context: CallbackContext):
+        bot = context.bot
 	chat = update.effective_chat
 	
 	stat = "*>-------< Basic >-------<*\n"
