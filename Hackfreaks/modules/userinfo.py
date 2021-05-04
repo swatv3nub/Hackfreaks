@@ -362,7 +362,7 @@ def set_about_me(update: Update, context: CallbackContext):
 @run_async
 @sudo_plus
 def stats(update, context):
-    db_size = SESSION.execute("SELECT pg_size_pretty(pg_database_size(current_database()))").scalar_one_or_none()
+    #db_size = SESSION.execute("SELECT pg_size_pretty(pg_database_size(current_database()))").scalar_one_or_none()
     uptime = datetime.datetime.fromtimestamp(boot_time()).strftime("%Y-%m-%d %H:%M:%S")
     status = "\n\n*>-------< System >-------<*\n"
     status += "*System uptime:* " + str(uptime) + "\n"
@@ -382,7 +382,7 @@ def stats(update, context):
     status += "*Python version:* " + python_version() + "\n"
     status += "*python-telegram-bot version:* " + str(__version__) + "\n"
     status += "*• Pyrogram version:* " + str(pyrover) + "\n"
-    status += "*• Database size:* " + str(db_size) + "\n"
+    #status += "*• Database size:* " + str(db_size) + "\n"
     try:
         update.effective_message.reply_text(
 
