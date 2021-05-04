@@ -18,6 +18,7 @@ from telegram.utils.helpers import escape_markdown, mention_html
 from Hackfreaks import (DEV_USERS, OWNER_ID, DRAGONS, DEMONS, TIGERS, WOLVES,
                           INFOPIC, dispatcher, sw)
 from Hackfreaks.__main__ import STATS, TOKEN, USER_INFO
+from Hackfreaks.modules.sql import SESSION
 import Hackfreaks.modules.sql.userinfo_sql as sql
 from Hackfreaks.modules.disable import DisableAbleCommandHandler
 from Hackfreaks.modules.sql.global_bans_sql import is_user_gbanned
@@ -27,6 +28,7 @@ from Hackfreaks.modules.helper_funcs.chat_status import sudo_plus
 from Hackfreaks.modules.helper_funcs.extraction import extract_user
 from Hackfreaks import telethn as HackfreaksTelethonClient, TIGERS, DRAGONS, DEMONS
 from telegram import __version__
+from pyrogram import __version__ as pyrover
 from psutil import cpu_percent, virtual_memory, disk_usage, boot_time
 import platform
 from platform import python_version
@@ -360,6 +362,7 @@ def set_about_me(update: Update, context: CallbackContext):
 @run_async
 @sudo_plus
 def stats(update, context):
+    db_size = SESSION.execute("SELECT pg_size_pretty(pg_database_size(current_database()))").scalar_one_or_none()
     uptime = datetime.datetime.fromtimestamp(boot_time()).strftime("%Y-%m-%d %H:%M:%S")
     status = "\n\n*>-------< System >-------<*\n"
     status += "*System uptime:* " + str(uptime) + "\n"
@@ -377,8 +380,9 @@ def stats(update, context):
     status += "*Storage used:* " + str(disk[3]) + " %\n\n"
     status += "*>-------< Library Info >-------<*\n"
     status += "*Python version:* " + python_version() + "\n"
-    status += "*Library used:* python-telegram-bot\n"
-    status += "*Library version:* " + str(__version__) + "\n"
+    status += "*python-telegram-bot version:* " + str(__version__) + "\n"
+    status += "*• Pyrogram version:* " + str(pyrover) + "\n"
+    status += "*• Database size:* " + str(db_size) + "\n"
     try:
         update.effective_message.reply_text(
 
@@ -503,10 +507,7 @@ Examples:
  `/setbio This user is a wolf` (reply to the user)
 
 *Information about you:*
- • `/info`*:* get information about a user. 
- 
-*What is that health thingy?*
- Come and see [HP System explained](https://t.me/HackfreaksUpdates/8)
+ • `/info`*:* get information about a user.
 """
 
 SET_BIO_HANDLER = DisableAbleCommandHandler("setbio", set_about_bio)
