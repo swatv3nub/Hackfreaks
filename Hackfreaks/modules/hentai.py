@@ -1,3 +1,7 @@
+#Stɑrry Shivɑm // This file some part of Nekobot
+#This module from https://github.com/SA7ANI/ERZA
+#Rework and whitelist chat by @SA7ANI
+
 import nekos
 import Hackfreaks.modules.sql.hentai_sql as sql
 from functools import wraps
